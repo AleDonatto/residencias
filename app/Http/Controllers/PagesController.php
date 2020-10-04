@@ -49,8 +49,8 @@ class PagesController extends Controller
             $iduser = User::where('email', $request->email)->first(); 
 
             $alumno = new Alumnos;
-            $alumno->nombre = $request->nombre;
-            $alumno->apellidos = $request->apellidos;
+            $alumno->nombre = $request->name;
+            $alumno->apellidos = $request->lastname;
             $alumno->nControl = $request->matricula;
             $alumno->user_id = $iduser->id;
             $alumno->save();
