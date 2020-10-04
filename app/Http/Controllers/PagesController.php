@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Alumnos;
+use App\Models\Docente;
 
 class PagesController extends Controller
 {
@@ -43,6 +45,15 @@ class PagesController extends Controller
             $usuario->password = bcrypt($request->password);
             $usuario->tipo_user = 1;
             $usuario->save();
+
+            $iduser = User::where('email', $request->email)->first(); 
+
+            $alumno = new Alumnos;
+            $alumno->nombre = $request->nombre;
+            $alumno->apellidos = $request->apellidos;
+            $alumno->nControl = $request->matricula;
+            $alumno->user_id = $iduser->id;
+            $alumno->save();
             
             $credentials = $request->only('matricula', 'password');
 
@@ -79,6 +90,15 @@ class PagesController extends Controller
             $usuario->password = bcrypt($request->password);
             $usuario->tipo_user = 2;
             $usuario->save();
+
+            $iduser = User::where('email', $request->email)->first();
+
+            $docente = new Docente;
+            $docente->matricula = $request->matricula;
+            $docente->nombre = $request->name;
+            $docente->apellidos = $request->lastname;
+            $docente->user_id = $iduser->id;
+            $docente->save();
             
             $credentials = $request->only('matricula', 'password');
 
@@ -89,6 +109,10 @@ class PagesController extends Controller
                 return back();
             }
         }
+    }
+
+    public function invitado(){
+        return view('invitado');    
     }
 
 }

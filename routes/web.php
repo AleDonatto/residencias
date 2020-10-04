@@ -29,7 +29,9 @@ Route::post('app_login', [PagesController::class, 'app_login'])->name('app_login
 
 Route::post('app_register', [PagesController::class,'app_register'])->name('app_register');
 
-Route::post('app_register_docente', [PagesCOntroller::class, 'app_register_docente'])->name('app_register_docente');
+Route::post('app_register_docente', [PagesController::class, 'app_register_docente'])->name('app_register_docente');
+
+Route::get('invitado', [PagesController::class, 'invitado'])->name('invitado');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
