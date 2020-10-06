@@ -17,6 +17,8 @@ class Alumnos extends Model
         'nombre',
         'apellidos',
         'nControl',
+        'carrera',
+        'semestre',
         'user_id'
     ];
     

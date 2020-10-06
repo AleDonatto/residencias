@@ -21,6 +21,7 @@ class PagesController extends Controller
         return $request;
     }
 
+    //registro de alumnos 
     public function app_register(Request $request){
 
         $validation = $request->validate([
@@ -29,7 +30,10 @@ class PagesController extends Controller
             'matricula' => 'required|integer',
             'email' => 'required|email',
             'password' => 'required|string',
-            'password_confirmation' => 'required|string'
+            'password_confirmation' => 'required|string',
+            'direccion' => 'required|string',
+            'carrera' => 'required|string',
+            'semestre' => 'required|string'
         ]);
 
         if($request->password != $request->password_confirmation){
@@ -43,6 +47,7 @@ class PagesController extends Controller
             $usuario->matricula = $request->matricula;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
+            $usuario->direccion = $request->direccion;
             $usuario->tipo_user = 1;
             $usuario->save();
 
@@ -52,6 +57,8 @@ class PagesController extends Controller
             $alumno->nombre = $request->name;
             $alumno->apellidos = $request->lastname;
             $alumno->nControl = $request->matricula;
+            $alumno->carrera = $request->carrera;
+            $alumno->semestre = $request->semestre;
             $alumno->user_id = $iduser->id;
             $alumno->save();
             

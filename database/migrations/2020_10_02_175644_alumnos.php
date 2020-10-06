@@ -18,6 +18,8 @@ class Alumnos extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('nControl');
+            $table->string('carrera');
+            $table->integer('semestre');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
             $table->timestamps();

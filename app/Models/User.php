@@ -29,7 +29,8 @@ class User extends Authenticatable
         'matricula',
         'email',
         'password',
-        'tipo_user'
+        'tipo_user',
+        'direccion'
     ];
 
     /**

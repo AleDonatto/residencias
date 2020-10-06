@@ -32,11 +32,15 @@
               </div>
               <div class="hidden md:block">
                 <div class="ml-4 flex items-center md:ml-6">
+                  <a href="{{ route('login') }}" class="px-3 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white
+                  hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"> Iniciar Sesion</a>
                   <a href="{{ route('register') }}" class="px-3 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white
                   hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"> Registrarme</a>
                 </div>
               </div>
               <div class="-mr-2 flex md:hidden">
+                <a href="{{ route('login') }}" class="px-3 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white
+                  hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"> Iniciar Sesion</a>
                 <a href="{{ route('register') }}" class="px-3 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white
                   hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"> Registrarme</a>
                 <!-- Mobile menu button -->
@@ -180,5 +184,9 @@
 
         @livewireScripts
         <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+          import swal from 'sweetalert';
+
+        </script>
     </body>
 </html>
