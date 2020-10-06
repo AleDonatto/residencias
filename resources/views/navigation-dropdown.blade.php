@@ -15,9 +15,9 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    @if( Auth::id() == 1)
+                    @if( Auth::user()->tipo_user == 1)
                         @include('menu.alumnos')
-                    @elseif( Auth::id() == 2 )
+                    @elseif( Auth::user()->tipo_user == 2 )
                         @include('menu.docente')
                     @endif
                 </div>
