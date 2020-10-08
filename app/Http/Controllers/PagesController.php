@@ -95,6 +95,7 @@ class PagesController extends Controller
             $usuario->matricula = $request->matricula;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
+            $usuario->direccion = $request->direccion;
             $usuario->tipo_user = 2;
             $usuario->save();
 
