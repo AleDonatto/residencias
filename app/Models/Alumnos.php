@@ -14,8 +14,6 @@ class Alumnos extends Model
 
     protected $fillable = [
         'idAlumno',
-        'nombre',
-        'apellidos',
         'nControl',
         'carrera',
         'semestre',

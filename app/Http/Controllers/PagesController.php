@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Alumnos;
 use App\Models\Docente;
@@ -37,14 +38,30 @@ class PagesController extends Controller
         ]);
 
         if($request->password != $request->password_confirmation){
-            $mesanje = 'Las contraseñas no coinciden';
-            return back()->with(compact('mensaje'));
+            $mesanje = 'Passwords do not match';
+            return back()->withErrors($mesanje);
         }else{
+
+            $ncontrol = $this->verificarNControl($request->matricula);
+            $email = $this->verificarEmail($request->email);
+            
+            if($email == 1 && $ncontrol == 1){
+                $erroremail = "Email alredy exist";
+                $errorNControl = "N. Control alredy exist";
+                return back()->withErrors(compact('erroremail','errorNControl'));
+            }
+            else if($email == 1 && $ncontrol == 0){
+                $erroremail = "Email alredy exist";
+                return back()->withErrors(compact('erroremail'));
+            }
+            else if($email == 0 && $ncontrol == 1){
+                $errorNControl = "N. Control alredy exist";
+                return back()->withErrors(compact('errorNControl'));
+            } 
 
             $usuario = new User;
             $usuario->name = $request->name;
             $usuario->lastname = $request->lastname;
-            $usuario->matricula = $request->matricula;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
             $usuario->direccion = $request->direccion;
@@ -54,15 +71,13 @@ class PagesController extends Controller
             $iduser = User::where('email', $request->email)->first(); 
 
             $alumno = new Alumnos;
-            $alumno->nombre = $request->name;
-            $alumno->apellidos = $request->lastname;
             $alumno->nControl = $request->matricula;
             $alumno->carrera = $request->carrera;
             $alumno->semestre = $request->semestre;
             $alumno->user_id = $iduser->id;
             $alumno->save();
             
-            $credentials = $request->only('matricula', 'password');
+            $credentials = $request->only('email', 'password');
 
             if (Auth::attempt($credentials)) {
                 // Authentication passed...
@@ -78,7 +93,7 @@ class PagesController extends Controller
         $validation = $request->validate([
             'name' => 'required|string',
             'lastname' => 'required|string',
-            'matricula' => 'required|integer',
+            'matricula' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string',
             'password_confirmation' => 'required|string'
@@ -89,10 +104,26 @@ class PagesController extends Controller
             return back()->with(compact('mensaje'));
         }else{
 
+            $matricula = $this->verificarMatricula($request->matricula);
+            $email = $this->verificarEmail($request->email);
+            
+            if($email == 1 && $matricula == 1){
+                $erroremail = "Email alredy exist";
+                $errorNControl = "Matricula alredy exist";
+                return back()->withErrors(compact('erroremail','errorNControl'));
+            }
+            else if($email == 1 && $matricula == 0){
+                $erroremail = "Email alredy exist";
+                return back()->withErrors(compact('erroremail'));
+            }
+            else if($email == 0 && $matricula == 1){
+                $errorNControl = "Matricula alredy exist";
+                return back()->withErrors(compact('errorNControl'));
+            }
+
             $usuario = new User;
             $usuario->name = $request->name;
             $usuario->lastname = $request->lastname;
-            $usuario->matricula = $request->matricula;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
             $usuario->direccion = $request->direccion;
@@ -103,12 +134,10 @@ class PagesController extends Controller
 
             $docente = new Docente;
             $docente->matricula = $request->matricula;
-            $docente->nombre = $request->name;
-            $docente->apellidos = $request->lastname;
             $docente->user_id = $iduser->id;
             $docente->save();
             
-            $credentials = $request->only('matricula', 'password');
+            $credentials = $request->only('email', 'password');
 
             if (Auth::attempt($credentials)) {
                 // Authentication passed...
@@ -121,6 +150,22 @@ class PagesController extends Controller
 
     public function invitado(){
         return view('invitado');    
+    }
+
+    protected function verificarNControl($ncontrol){
+
+        $alumno = DB::table('alumnos')->where('nControl', $ncontrol)->get();
+        return $alumno->count(); 
+    }
+    
+    protected function verificarMatricula($matricula){
+        $alumno = DB::table('docente')->where('matricula', $matricula)->get();
+        return $alumno->count(); 
+    }
+
+    protected function verificarEmail($email){
+        $usuario = DB::table('users')->where('email', $email)->get();
+        return $usuario->count();
     }
 
 }

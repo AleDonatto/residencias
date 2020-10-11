@@ -38,7 +38,6 @@
                             <a href="{{ route('register_docente') }}" class="ml-4 text-sm text-gray-700 underline">Register Docente</a>
                         @endif
 
-
                     @endif
                 </div>
             @endif

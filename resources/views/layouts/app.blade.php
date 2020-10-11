@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/layouts.css') }}">
 
         @livewireStyles
 
@@ -20,7 +21,8 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-dropdown')
+            @include('menu.prueba')
+            <!--aqui va el livewire navigation-dropdown-->
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
@@ -32,12 +34,12 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-                @yield('content')
             </main>
         </div>
 
         @stack('modals')
 
         @livewireScripts
+        <script src="{{ asset('js/invitado.js') }}"></script>
     </body>
 </html>
