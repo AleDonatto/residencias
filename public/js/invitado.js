@@ -21,3 +21,18 @@ const menuMore = document.querySelector('#menuMore');
 buttonMore.addEventListener('click', () => { 
     menuMore.classList.toggle('hidden')
 })
+
+
+const buttonMobile = document.querySelector('#buttonMobile');
+const menuMobile = document.querySelector('#menuMobile');
+const buttonCloseMobiel = document.querySelector('#buttonCloseMobile');
+
+buttonMobile.addEventListener('click', () => { 
+    menuMobile.classList.toggle('hidden')
+})
+
+buttonCloseMobiel.addEventListener('click', () => { 
+    menuMobile.classList.toggle('hidden')
+})
+
+

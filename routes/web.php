@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PrivateController;
+use App\Http\Controllers\DatosAlumnosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,12 @@ Route::post('app_register', [PagesController::class,'app_register'])->name('app_
 Route::post('app_register_docente', [PagesController::class, 'app_register_docente'])->name('app_register_docente');
 
 Route::get('invitado', [PagesController::class, 'invitado'])->name('invitado');
+
+Route::get('datos_socioeconomicos', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')->middleware('auth');
+
+Route::resource('datos_alumno', DatosAlumnosController::class)->only([
+    'index', 'store'
+]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

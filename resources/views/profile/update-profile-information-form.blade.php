@@ -65,14 +65,6 @@
             <x-jet-input id="lastname" type="text" class="mt-1 block w-full" wire:model.defer="state.lastname" autocomplete="lastname" />
             <x-jet-input-error for="lastname" class="mt-2" />
         </div>
-
-        <!-- Direccion -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="direccion" value="{{ __('Direccion') }}" />
-            <x-jet-input id="direccion" type="text" class="mt-1 block w-full" wire:model.defer="state.direccion" autocomplete="Direccion" />
-            <x-jet-input-error for="direccion" class="mt-2" />
-        </div>
-
         <!-- Email -->
         <!--<div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />

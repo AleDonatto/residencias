@@ -32,13 +32,12 @@ class PagesController extends Controller
             'email' => 'required|email',
             'password' => 'required|string',
             'password_confirmation' => 'required|string',
-            'direccion' => 'required|string',
             'carrera' => 'required|string',
             'semestre' => 'required|string'
         ]);
 
         if($request->password != $request->password_confirmation){
-            $mesanje = 'Passwords do not match';
+            $mesanje = 'Passwords dosent match';
             return back()->withErrors($mesanje);
         }else{
 
@@ -64,8 +63,8 @@ class PagesController extends Controller
             $usuario->lastname = $request->lastname;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
-            $usuario->direccion = $request->direccion;
             $usuario->tipo_user = 1;
+            $usuario->perfil_completo = false;
             $usuario->save();
 
             $iduser = User::where('email', $request->email)->first(); 
@@ -126,8 +125,8 @@ class PagesController extends Controller
             $usuario->lastname = $request->lastname;
             $usuario->email = $request->email;
             $usuario->password = bcrypt($request->password);
-            $usuario->direccion = $request->direccion;
             $usuario->tipo_user = 2;
+            $usuario->perfil_completo = false;
             $usuario->save();
 
             $iduser = User::where('email', $request->email)->first();

@@ -22,6 +22,7 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('menu.prueba')
+            @livewire('navigation-dropdown')
             <!--aqui va el livewire navigation-dropdown-->
 
             <!-- Page Heading -->

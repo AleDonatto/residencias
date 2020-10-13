@@ -38,10 +38,6 @@
                     <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                 </div>
             </div>
-            <div class="mb-6">
-                <x-jet-label value="{{ __('Direccion') }}" />
-                <x-jet-input class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autofocus autocomplete="direccion" />
-            </div>
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <x-jet-label value="{{ __('Carrera') }}" />
@@ -70,6 +66,9 @@
                         <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
