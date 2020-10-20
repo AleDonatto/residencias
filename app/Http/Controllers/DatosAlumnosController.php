@@ -61,7 +61,7 @@ class DatosAlumnosController extends Controller
 
         
         $datos = new Alumnos_datos;
-        $datos->docente_id = $idAlumno->user_id;
+        $datos->docente_id = $idAlumno->idAlumno;
         $datos->direccion = $request->direccion;
         $datos->colonia = $request->colonia;
         $datos->ciudad = $request->ciudad;

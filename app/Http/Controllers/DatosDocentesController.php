@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Docente;
 use App\Models\Docente_datos;
+use App\Models\User;
 
 class DatosDocentesController extends Controller
 {
@@ -60,7 +61,7 @@ class DatosDocentesController extends Controller
         $idDocente = Docente::where('user_id', $idUser )->first();
 
         $datos = new Docente_datos;
-        $datos->docente_id = $idDocente->user_id;
+        $datos->docente_id = $idDocente->idDocente;
         $datos->direccion = $request->direccion;
         $datos->colonia = $request->colonia;
         $datos->ciudad = $request->ciudad;
