@@ -8,6 +8,7 @@
       <div class="flex justify-between items-center border-b-2 border-gray-100 py-4 md:justify-start md:space-x-10">
         <div class="lg:w-0 lg:flex-1">
             <a href="{{ route('dashboard') }}">
+                <img src="{{ asset('img/logo.jpeg') }}" alt="">
                 <x-jet-application-mark class="block h-9 w-auto" />
             </a>
         </div>

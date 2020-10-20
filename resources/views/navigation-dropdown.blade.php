@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <img src="{{ asset('img/logo.jpeg') }}" alt="logo tecnologico" width="50px" height="50px">
+                        <!--<x-jet-application-mark class="block h-9 w-auto" />-->
                     </a>
                 </div>
 
@@ -15,11 +16,6 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    @if( Auth::user()->tipo_user == 1)
-                        @include('menu.alumnos')
-                    @elseif( Auth::user()->tipo_user == 2 )
-                        @include('menu.docente')
-                    @endif
                 </div>
             </div>
 

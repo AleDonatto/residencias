@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Alumnos_datos;
-use App\Models\Alumnos;
-use App\Models\User;
+use App\Models\Docente;
+use App\Models\Docente_datos;
 
-class DatosAlumnosController extends Controller
+class DatosDocentesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,6 +41,7 @@ class DatosAlumnosController extends Controller
         $validation = $request->validate([
             'direccion' => 'required|string',
             'colonia' => 'required|string',
+            'ciudad' => 'required|string',
             'telefono' => 'required|string',
             'codigo_postal' => 'required|string',
             'curp' => 'required|string',
@@ -57,11 +57,10 @@ class DatosAlumnosController extends Controller
         ]);
 
         $idUser = Auth::id();
-        $idAlumno = Alumnos::where('user_id', $idUser )->first();
+        $idDocente = Docente::where('user_id', $idUser )->first();
 
-        
-        $datos = new Alumnos_datos;
-        $datos->docente_id = $idAlumno->user_id;
+        $datos = new Docente_datos;
+        $datos->docente_id = $idDocente->user_id;
         $datos->direccion = $request->direccion;
         $datos->colonia = $request->colonia;
         $datos->ciudad = $request->ciudad;
