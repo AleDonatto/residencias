@@ -101,39 +101,142 @@
 
         <hr class="divide-y divide-blue-300">
         <div class="divide-y divide-blue-300">
-          <div class="text-center py-2">Contacto Externo</div>
+          <div class="text-center py-2">Informacion de Familiares</div>
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full md:w-1/4 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="conEmergencia">
-              Nombre del Contacto de Emergencia
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre_madre">
+              Nombre Completo Madre
             </label>
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-            id="contacto_Emergencia" name="contacto_Emergencia" type="text" placeholder="Contacto de Emergencia">
+            id="nombre_madre" name="nombre_madre" type="text" placeholder="Nombre Madre">
           </div>
           <div class="w-full md:w-1/4 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_contacto">
-              Telefono 1 del Contacto
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="domicilio_madre">
+              Domicilio
             </label>
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-            id="telefono_contacto" name="telefono_contacto" type="text" placeholder="Telefono 1">
+            id="domicilio_madre" name="domicilio_madre" type="text" placeholder="Domicilio">
           </div>
           <div class="w-full md:w-1/4 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_contacto2">
-              Telefono 2 del Contacto
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="colonia_madre">
+              Colonia
             </label>
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-            id="telefono_contacto2" name="telefono_contacto2" type="text" placeholder="Telefono 2">
+            id="colonia_madre" name="colonia_madre" type="text" placeholder="Colonia">
           </div>
           <div class="w-full md:w-1/4 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="parentesco">
-              Parentesco
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_madre">
+              Telefono
             </label>
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-            id="parentesco" name="parentesco" type="text" placeholder="Parentesco">
+            id="telefono_madre" name="telefono_madre" type="text" placeholder="Telefono">
           </div>
         </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre_padre">
+              Nombre Completo Padre
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="nombre_padre" name="nombre_padre" type="text" placeholder="Nombre Padre">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="domicilio_padre">
+              Domicilio
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="domicilio_padre" name="domicilio_padre" type="text" placeholder="Domicilio">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="colonia_padre">
+              Colonia
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="colonia_padre" name="colonia_padre" type="text" placeholder="Colonia">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_padre">
+              Telefono
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="telefono_padre" name="telefono_padre" type="text" placeholder="Telefono">
+          </div>
+        </div>
+
+        <hr class="divide-y divide-blue-300">
+        <div class="divide-y divide-blue-300">
+          <div class="text-center py-2">Informacion del Trabajo</div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="empresa">
+              Empresa
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="empresa" name="empresa" type="text" placeholder="Empresa">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="domicilio_empresa">
+              Domicilio Empresa
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="domicilio_empresa" name="domicilio_empresa" type="text" placeholder="Domicilio Empresa">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="colonia_empresa">
+              Colonia Empresa
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="colonia_empresa" name="colonia_empresa" type="text" placeholder="Colonia Empresa">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ciudad_empresa">
+              Ciudad Empresa
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="ciudad_empresa" name="ciudad_empresa" type="text" placeholder="Ciudad Empresa">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="puesto_empresa">
+              Puesto
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="puesto_empresa" name="puesto_empresa" type="text" placeholder="Puesto Empresa">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="antiguedad">
+              Antiguedad
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="antiguedad" name="antiguedad" type="text" placeholder="Antiguedad">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="jefe_inmediato">
+              Jefe Inmediato
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="jefe_inmediato" name="jefe_inmediato" type="text" placeholder="Jefe Inmediato">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="antiguedad">
+              Turno
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="turno" name="turno" type="text" placeholder="Turno">
+          </div>
+          <div class="w-full md:w-1/4 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_padre">
+              Telefono
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+            id="telefono_padre" name="telefono_padre" type="text" placeholder="Telefono">
+          </div>
+        </div>
+
 
         <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
           Agregar Datos 

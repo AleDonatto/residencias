@@ -39,9 +39,11 @@ class DatosAlumnosController extends Controller
     public function store(Request $request)
     {
         //
+        return $request;
         $validation = $request->validate([
             'direccion' => 'required|string',
             'colonia' => 'required|string',
+            'ciudad'=> 'required|string',
             'telefono' => 'required|string',
             'codigo_postal' => 'required|string',
             'curp' => 'required|string',
@@ -50,16 +52,27 @@ class DatosAlumnosController extends Controller
             'alergias' => 'required|string',
             'alergias_medicamento' => 'required|string',
             'complicaciones_medicas' => 'required|string',
-            'contacto_Emergencia' => 'required|string',
-            'telefono_contacto' => 'required|string',
-            'telefono_contacto2' => 'required|string',
-            'parentesco' => 'required|string'
+            'nombre_madre' => 'required|string',
+            'domicilio_madre' => 'required|string',
+            'colonia_madre' => 'required|string',
+            'telefono_madre' => 'required|string',
+            'nombre_padre' => 'required|string',
+            'domicilio_padre' => 'required|string',
+            'colonia_padre' => 'required|string',
+            'telefono_padre' => 'required|string',
+            'empresa' => 'required|string',
+            'domicilio_empresa' => 'required|string',
+            'colonia_empresa' => 'required|string',
+            'ciudad_empresa' => 'required|string',
+            'puesto_empresa' => 'required|string',
+            'antiguedad' => 'required|string',
+            'jefe_inmediato' => 'required|string',
+            'turno' => 'required|string'
         ]);
 
         $idUser = Auth::id();
         $idAlumno = Alumnos::where('user_id', $idUser )->first();
 
-        
         $datos = new Alumnos_datos;
         $datos->docente_id = $idAlumno->idAlumno;
         $datos->direccion = $request->direccion;
@@ -73,10 +86,22 @@ class DatosAlumnosController extends Controller
         $datos->alergias = $request->alergias;
         $datos->medicamentos_alergicos = $request->alergias_medicamento;
         $datos->complicaciones_medicas = $request->complicaciones_medicas;
-        $datos->contac_emerg = $request->contacto_Emergencia;
-        $datos->tel_contact = $request->telefono_contacto;
-        $datos->tel2_contact = $request->telefono_contacto2;
-        $datos->parentesco = $request->parentesco;
+        $datos->contacto1 = $request->nombre_madre;
+        $datos->direccion_contact = $request->direccion_madre;
+        $datos->colonia1 = $request->telefono_madre;
+        $datos->tel_contact = $request->parentesco;
+        $datos->contacto2 = $request->nombre_padre;
+        $datos->direccion2 = $request->direccion_padre;
+        $datos->colonia2 = $request->colonia_padre;
+        $datos->tel_contact2 = $request->telefono_padre;
+        $datos->empresa = $request->empresa;
+        $datos->domicilio_mepresa = $request->domicilio_empresa;
+        $datos->colonia_empresa = $request->colonia_empresa;
+        $datos->ciudad_empresa = $request->ciudad_empresa;
+        $datos->puesto = $request->puesto_empresa;
+        $datos->antiguedad = $request->antiguedad;
+        $datos->nombre_jefe = $request->jefe_inmediato;
+        $datos->turno = $request->turno;
         $datos->save();
 
         $actualizauser = User::where('id', $idUser )

@@ -24,7 +24,7 @@
 
             <div class="flex flex-wrap -mx-3 mb-0">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <x-jet-label value="{{ __('Matricula') }}"></x-jet-label>
+                    <x-jet-label value="{{ __('Clave del Docente') }}"></x-jet-label>
                     <x-jet-input class="block mt-1 w-full" type="text" name="matricula" :value="old('matricula')" 
                     required ></x-jet-input>
                 </div>

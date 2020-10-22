@@ -19,7 +19,7 @@ class Asignatura extends Migration
             $table->string('semestre',10);
             $table->string('planEstudio');
             $table->string('claveMateria');
-            $table->enum('academia',['ISC','LA','IBQ','IGE','IEM','CP','ARQ']);
+            $table->enum('academia',['ISC','LA','IBQ','IGE','IEM','CP','ARQ','CB']);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class Asignatura extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asignatura');
+        Schema::dropIfExists('materias');
     }
 }

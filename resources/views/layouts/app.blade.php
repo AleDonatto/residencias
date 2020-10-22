@@ -26,13 +26,6 @@
             @livewire('navigation-dropdown')
             <!--aqui va el livewire navigation-dropdown-->
 
-            <!-- Page Heading -->
-            
-            <!-- Page Content -->
-            <!--<main>
-                {{ $slot }}
-            </main>-->
-
             <!-- sidebar -->
             <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center nunito static fixed shadow">
 

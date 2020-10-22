@@ -17,6 +17,17 @@
                 </div>
             @endif
 
+            <x-jet-section-border></x-jet-section-border>
+            @if(Auth::user()->tipo_user == 1)
+            <div class="mt-10 sm:mt-0">
+                @livewire('alumnos-socioeconomicos')
+            </div>
+            @elseif(Auth::user()->tipo_user == 2)
+            <div class="mt-10 sm:mt-0">
+                @livewire('datos-socieconomicos')
+            </div>
+            @endif
+
             @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <x-jet-section-border />
 
