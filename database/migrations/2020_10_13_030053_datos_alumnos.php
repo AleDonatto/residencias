@@ -24,9 +24,9 @@ class DatosAlumnos extends Migration
             $table->string('ciudad',50);
             $table->string('cp',10);
             $table->string('telefono',10);
-            $table->string('curp',10);
+            $table->string('curp',25);
             $table->string('num_seguro',15);
-            $table->string('tipo_sangre',10);
+            $table->enum('tipo_sangre',['O+','O-','A+','A-','B+','B-','AB+','AB-']);
             $table->string('alergias');
             $table->string('medicamentos_alergicos');
             $table->string('complicaciones_medicas');
@@ -35,13 +35,15 @@ class DatosAlumnos extends Migration
             $table->string('colonia1',50);
             $table->string('tel_contact',10);
             $table->string('contacto2',100);
+            $table->string('direccion_contact2',50);
             $table->string('colonia2',50);
             $table->string('tel_contact2',10);
             $table->string('empresa',100);
             $table->string('domicilio_empresa',70);
             $table->string('colonia_empresa',50);
             $table->string('ciudad_empresa',50);
-            $table->string('atiguedad',50);
+            $table->string('puesto',50);
+            $table->string('antiguedad',50);
             $table->string('nombre_jefe',50);
             $table->string('turno',50);
             $table->foreign('alumno_id')->references('idAlumno')->on('alumnos');  

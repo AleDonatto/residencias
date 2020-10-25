@@ -33,7 +33,7 @@ class Alumnos_datos extends Model
         'colonia1',
         'tel_contact',
         'contacto2',
-        'direccion2',
+        'direccion_contact2',
         'colonia2',
         'tel_contact2',
         'empresa',

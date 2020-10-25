@@ -68,6 +68,7 @@ class PagesController extends Controller
             $usuario->save();
 
             $iduser = User::where('email', $request->email)->first(); 
+            $iduser->assignRole('Alumno');
 
             $alumno = new Alumnos;
             $alumno->nControl = $request->matricula;
@@ -132,6 +133,7 @@ class PagesController extends Controller
             $usuario->save();
 
             $iduser = User::where('email', $request->email)->first();
+            $iduser->assignRole('Docente');
 
             $docente = new Docente;
             $docente->matricula = $request->matricula;

@@ -1,3 +1,5 @@
+//const { delay } = require("lodash");
+
 function ventana(){
     swal({
         title: "Un momento!",
@@ -8,7 +10,7 @@ function ventana(){
 }
 
 
-const button = document.querySelector('#buttonMenu');
+/*const button = document.querySelector('#buttonMenu');
 const menu = document.querySelector('#menuSplit');
 
 button.addEventListener('click', () => { 
@@ -33,6 +35,16 @@ buttonMobile.addEventListener('click', () => {
 
 buttonCloseMobiel.addEventListener('click', () => { 
     menuMobile.classList.toggle('hidden')
-})
+})*/
+
+const mensajeSave = document.querySelector('#mensajeSave')
+const buttonSave = document.querySelector('#save')
+
+buttonSave.addEventListener('click', () => {
+    setTimeout(() => {
+       mensajeSave.classList.toggle('hidden'); 
+    }, 4000);
+
+} );
 
 

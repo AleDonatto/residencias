@@ -37,7 +37,9 @@ Route::post('app_register_docente', [PagesController::class, 'app_register_docen
 
 Route::get('invitado', [PagesController::class, 'invitado'])->name('invitado');
 
-Route::get('datos_socioeconomicos_alumno', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')->middleware('auth');
+Route::get('datos_socioeconomicos_alumno', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')
+->middleware('auth','permission:datos.store');
+
 Route::get('datos_socioeconomicos_docente', [PrivateController::class, 'perfil_completo_docente'])->name('dsoceco_docente')->middleware('auth');
 
 Route::resource('datos_alumno', DatosAlumnosController::class)->only([

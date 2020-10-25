@@ -39,9 +39,12 @@ class DatosAlumnosController extends Controller
     public function store(Request $request)
     {
         //
-        return $request;
         $validation = $request->validate([
             'direccion' => 'required|string',
+            'lugar_nacimiento' => 'required',
+            'fecha_nacimiento' => 'required',
+            'genero' => 'required|string',
+            'estado_civil' => 'required|string',
             'colonia' => 'required|string',
             'ciudad'=> 'required|string',
             'telefono' => 'required|string',
@@ -74,7 +77,11 @@ class DatosAlumnosController extends Controller
         $idAlumno = Alumnos::where('user_id', $idUser )->first();
 
         $datos = new Alumnos_datos;
-        $datos->docente_id = $idAlumno->idAlumno;
+        $datos->alumno_id = $idAlumno->idAlumno;
+        $datos->lugNac = $request->lugar_nacimiento;
+        $datos->fechaNac = $request->fecha_nacimiento;
+        $datos->genero = $request->genero;
+        $datos->estado_civil = $request->estado_civil;
         $datos->direccion = $request->direccion;
         $datos->colonia = $request->colonia;
         $datos->ciudad = $request->ciudad;
@@ -87,15 +94,15 @@ class DatosAlumnosController extends Controller
         $datos->medicamentos_alergicos = $request->alergias_medicamento;
         $datos->complicaciones_medicas = $request->complicaciones_medicas;
         $datos->contacto1 = $request->nombre_madre;
-        $datos->direccion_contact = $request->direccion_madre;
-        $datos->colonia1 = $request->telefono_madre;
-        $datos->tel_contact = $request->parentesco;
+        $datos->direccion_contact = $request->domicilio_madre;
+        $datos->colonia1 = $request->colonia_madre;
+        $datos->tel_contact = $request->telefono_madre;
         $datos->contacto2 = $request->nombre_padre;
-        $datos->direccion2 = $request->direccion_padre;
+        $datos->direccion_contact2 = $request->domicilio_padre;
         $datos->colonia2 = $request->colonia_padre;
         $datos->tel_contact2 = $request->telefono_padre;
         $datos->empresa = $request->empresa;
-        $datos->domicilio_mepresa = $request->domicilio_empresa;
+        $datos->domicilio_empresa = $request->domicilio_empresa;
         $datos->colonia_empresa = $request->colonia_empresa;
         $datos->ciudad_empresa = $request->ciudad_empresa;
         $datos->puesto = $request->puesto_empresa;
