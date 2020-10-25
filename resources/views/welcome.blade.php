@@ -63,11 +63,11 @@
                                     @else
                                         <a href="{{ route('invitado') }}" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">invitado</a>
                                         @if(Route::has('register'))
-                                        <a href="#" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Alumno</a>
+                                        <a href="{{ route('register') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Alumno</a>
                                         @endif
 
                                         @if(Route::has('register_docente'))
-                                        <a href="#" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Docente</a>
+                                        <a href="{{ route('register_docente') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Docente</a>
                                         @endif
                                     @endif
                                 <a href="{{ url('/login') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Login</a>
