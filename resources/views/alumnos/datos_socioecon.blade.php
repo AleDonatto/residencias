@@ -188,6 +188,7 @@
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             id="telefono_madre" name="telefono_madre" type="text" placeholder="Telefono">
           </div>
+
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre_padre">
               Nombre Completo Padre
@@ -215,6 +216,52 @@
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             id="telefono_padre" name="telefono_padre" type="text" placeholder="Telefono">
+          </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/3 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre_contacto">
+              Contacto de Emergencia
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            id="nombre_contacto" name="nombre_contacto" type="text" placeholder="Contacto de Emergencia">
+          </div>
+          <div class="w-full md:w-1/3 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_contacto">
+              Telefono
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            id="telefono_contacto" name="telefono_contacto" type="text" placeholder="Telefono del Contacto">
+          </div>
+          <div class="w-full md:w-1/3 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="parentesco_contacto">
+              Parentesco
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            id="parentesco_contacto" name="parentesco_contacto" type="text" placeholder="Parentesco">
+          </div>
+
+          <div class="w-full md:w-1/3 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="nombre_contacto2">
+              Contacto de Emergencia 2
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            id="nombre_contacto2" name="nombre_contacto2" type="text" placeholder="Contacto de Emergencia 2">
+          </div>
+          <div class="w-full md:w-1/3 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_contacto2">
+              Telefono
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            id="telefono_contacto2" name="telefono_contacto2" type="text" placeholder="Telefono contacto">
+          </div>
+          <div class="w-full md:w-1/3 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="parentesco_contacto2">
+              Parentesco
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            id="parentesco_contacto2" name="parentesco_contacto2" type="text" placeholder="Parentesco">
           </div>
         </div>
 

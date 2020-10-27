@@ -15,9 +15,9 @@ class DatosAlumnos extends Migration
     {
         Schema::create('datos_alumnos', function (Blueprint $table) {
             $table->unsignedBigInteger('alumno_id');
-            $table->string('lugNac',50);
+            $table->string('lugarNac',50);
             $table->date('fechaNac');
-            $table->enum('genero',['Masculino','Femenino']);
+            $table->enum('genero',['masculino','femenino']);
             $table->string('estado_civil',50);
             $table->string('direccion',50);
             $table->string('colonia',50);
@@ -30,14 +30,20 @@ class DatosAlumnos extends Migration
             $table->string('alergias');
             $table->string('medicamentos_alergicos');
             $table->string('complicaciones_medicas');
-            $table->string('contacto1',100);
-            $table->string('direccion_contact',50);
-            $table->string('colonia1',50);
-            $table->string('tel_contact',10);
-            $table->string('contacto2',100);
-            $table->string('direccion_contact2',50);
-            $table->string('colonia2',50);
-            $table->string('tel_contact2',10);
+            $table->string('nom_madre',100);
+            $table->string('direccion_madre',50);
+            $table->string('colonia_madre',50);
+            $table->string('tel_madre',10);
+            $table->string('nom_padre',100);
+            $table->string('direccion_padre',50);
+            $table->string('colonia_padre',50);
+            $table->string('tel_padre',10);
+            $table->string('contacto_emergencia');
+            $table->string('tel_contacto');
+            $table->string('parentesco');
+            $table->string('contacto_emergencia2');
+            $table->string('tel_contacto2');
+            $table->string('parentesco2');
             $table->string('empresa',100);
             $table->string('domicilio_empresa',70);
             $table->string('colonia_empresa',50);

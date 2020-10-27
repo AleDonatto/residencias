@@ -24,17 +24,17 @@
                     </div>
                     <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                         <x-jet-label for="genero" value="{{ __('Genero') }}" />
-                        <div class="inline-block relative w-64">
+                        <div class="inline-block relative w-full">
                             <select name="genero" wire:model.defer="genero" class="mt-1 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="Femenino">Femenino</option>
-                                <option value="Masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="masculino">Masculino</option>
                             </select>
                         </div>
                         <x-jet-input-error for="genero" class="mt-2" />
                     </div>
                     <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                         <x-jet-label for="estado_civil" value="{{ __('Estado Civil') }}" />
-                        <div class="inline-block relative w-64">
+                        <div class="inline-block relative w-full">
                             <select name="estado_civil" wire:model.defer="estado_civil" class="mt-1 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="divorciado">Divorciado</option>
                                 <option value="soltero">Soltero</option>
@@ -77,6 +77,8 @@
                     </div>
                 </div>
 
+                <hr class="divide-y divide-blue-300 my-2">
+
                 <div class="flex flex-wrap -mx-3 mb-1">
                     <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                         <x-jet-label for="curp" value="{{ __('CURP') }}" />
@@ -116,28 +118,30 @@
                     </div>
                 </div>
 
+                <hr class="divide-y divide-blue-300 my-2">
+
                 <div class="flex flex-wrap -mx-3 mb-1">
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="nombre_madre" value="{{ __('Nombre Madre') }}" />
-                        <x-jet-input id="nombre_madre" type="text" class="mt-1 block w-full" wire:model.defer="contacto1" />
+                        <x-jet-input id="nombre_madre" type="text" class="mt-1 block w-full" wire:model.defer="nom_madre" />
                         <x-jet-input-error for="nombre_madre" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="direccion_madre" value="{{ __('Direccion') }}" />
-                        <x-jet-input id="durireccion_madre" class="mt-1 block w-full" type="text" wire:model.defer="direccion_contact" />
+                        <x-jet-input id="durireccion_madre" class="mt-1 block w-full" type="text" wire:model.defer="direccion_madre" />
                         <x-jet-input-error for="direccion_madre" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="colonia_madre" value="{{ __('Colonia ') }}" />
-                        <x-jet-input id="colonia_madre" name="colonia_madre" type="text" class="mt-1 block w-full" wire:model.defer="colonia1" />
+                        <x-jet-input id="colonia_madre" name="colonia_madre" type="text" class="mt-1 block w-full" wire:model.defer="colonia_madre" />
                         <x-jet-input-error for="colonia_madre" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="telefono_madre" value="{{ __('Telefono ') }}" />
-                        <x-jet-input id="telefono_madre" name="telefono_madre" type="text" class="mt-1 my-1 block w-full" wire:model.defer="tel_contact" />
+                        <x-jet-input id="telefono_madre" name="telefono_madre" type="text" class="mt-1 my-1 block w-full" wire:model.defer="tel_madre" />
                         <x-jet-input-error for="telefono_madre" class="mt-2" />
                     </div>
                 </div>
@@ -145,28 +149,70 @@
                 <div class="flex flex-wrap -mx-3 mb-1">
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="nombre_padre" value="{{ __('Nombre Padre') }}" />
-                        <x-jet-input id="nombre_padre" type="text" class="mt-1 block w-full" wire:model.defer="contacto2" />
+                        <x-jet-input id="nombre_padre" type="text" class="mt-1 block w-full" wire:model.defer="nom_padre" />
                         <x-jet-input-error for="nombre_apdre" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="direccion_padre" value="{{ __('Direccion') }}" />
-                        <x-jet-input id="durireccion_padre" class="mt-1 block w-full" type="text" wire:model.defer="direccion_contact2" />
+                        <x-jet-input id="durireccion_padre" class="mt-1 block w-full" type="text" wire:model.defer="direccion_padre" />
                         <x-jet-input-error for="direccion_padre" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="colonia_padre" value="{{ __('Colonia ') }}" />
-                        <x-jet-input id="colonia_padre" name="colonia_padre" type="text" class="mt-1 block w-full" wire:model.defer="colonia2" />
+                        <x-jet-input id="colonia_padre" name="colonia_padre" type="text" class="mt-1 block w-full" wire:model.defer="colonia_padre" />
                         <x-jet-input-error for="colonia_padre" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/4 px-3">
                         <x-jet-label for="telefono_padre" value="{{ __('Telefono ') }}" />
-                        <x-jet-input id="telefono_padre" name="telefono_padre" type="text" class="mt-1 my-1 block w-full" wire:model.defer="tel_contact2" />
+                        <x-jet-input id="telefono_padre" name="telefono_padre" type="text" class="mt-1 my-1 block w-full" wire:model.defer="tel_padre" />
                         <x-jet-input-error for="telefono_padre" class="mt-2" />
                     </div>
                 </div>
+
+                <hr class="divide-y divide-blue-300 my-2">
+
+                <div class="flex flex-wrap -mx-3 mb-1">
+                    <div class="w-full md:w-1/3 px-3">
+                        <x-jet-label for="contacto" value="{{ __('Contacto de Emergencia') }}" />
+                        <x-jet-input id="contacto" type="text" class="mt-1 block w-full" wire:model.defer="contacto" />
+                        <x-jet-input-error for="contacto" class="mt-2" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 px-3">
+                        <x-jet-label for="telefono_contacto" value="{{ __('Telefono') }}" />
+                        <x-jet-input id="telefono_contacto" class="mt-1 block w-full" type="text" wire:model.defer="telefono_contacto" />
+                        <x-jet-input-error for="telefono_contacto" class="mt-2" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 px-3">
+                        <x-jet-label for="parentesco_contacto" value="{{ __('Parentesco') }}" />
+                        <x-jet-input id="parentesco_contacto" name="parentesco_contacto" type="text" class="mt-1 block w-full" wire:model.defer="parentesco_contacto" />
+                        <x-jet-input-error for="parentesco_contacto" class="mt-2" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 px-3">
+                        <x-jet-label for="contacto" value="{{ __('Contacto de Emergencia') }}" />
+                        <x-jet-input id="contacto" type="text" class="mt-1 block w-full" wire:model.defer="contacto2" />
+                        <x-jet-input-error for="contacto" class="mt-2" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 px-3">
+                        <x-jet-label for="telefono_contacto" value="{{ __('Telefono') }}" />
+                        <x-jet-input id="telefono_contacto" class="mt-1 block w-full" type="text" wire:model.defer="telefono_contacto2" />
+                        <x-jet-input-error for="telefono_contacto" class="mt-2" />
+                    </div>
+
+                    <div class="w-full md:w-1/3 px-3">
+                        <x-jet-label for="parentesco_contacto" value="{{ __('Parentesco') }}" />
+                        <x-jet-input id="parentesco_contacto" name="parentesco_contacto" type="text" class="mt-1 block w-full" wire:model.defer="parentesco_contacto2" />
+                        <x-jet-input-error for="parentesco_contacto" class="mt-2" />
+                    </div>
+                </div>
+
+                <hr class="divide-y divide-blue-300 my-2">
 
                 <div class="flex flex-wrap -mx-3 mb-1">
                     <div class="w-full md:w-1/4 px-3">

@@ -9,10 +9,15 @@ use App\Models\Docente_datos;
 
 class DatosSocieconomicos extends Component
 {
+    public $lugarNac, $fechaNac, $estado_civil, $genero;
     public $idDatos, $direccion, $colonia, $ciudad, $telefono, $cp, $curp, $numSeguro, $tipo_sangre;
-    public $alergias, $medAlergias, $compliMedicas, $contacto, $tel1, $tel2, $parentesco, $message;
+    public $alergias, $medAlergias, $compliMedicas, $contacto, $tel1, $parentesco1, $contacto2, $tel2, $parentesco2, $message;
 
     protected $rules = [
+        'lugarNac' => 'required|string',
+        'fechaNac' => 'required|string',
+        'estado_civil' => 'required|string',
+        'genero' => 'required|string',
         'direccion' => 'required|string',
         'colonia' => 'required|string',
         'ciudad' => 'required|string',
@@ -25,9 +30,11 @@ class DatosSocieconomicos extends Component
         'medAlergias' => 'required|string',
         'compliMedicas' => 'required|string',
         'contacto' => 'required|string',
-        'parentesco' => 'required|string',
+        'parentesco1' => 'required|string',
         'tel1' => 'required|string',
-        'tel2' => 'required|string'
+        'contacto2' => 'required|string',
+        'parentesco2' => 'required|string',
+        'tel2' => 'required|string',
     ];
 
     public function render()
@@ -43,6 +50,10 @@ class DatosSocieconomicos extends Component
         
         Docente_datos::where('docente_id', $this->idDatos)
         ->update([
+            'lugarNac' => $this->lugarNac,
+            'fechaNac' => $this->fechaNac,
+            'estado_civil' => $this->estado_civil,
+            'genero' => $this->genero,
             'direccion' => $this->direccion,
             'colonia' => $this->colonia,
             'ciudad' => $this->ciudad,
@@ -54,10 +65,12 @@ class DatosSocieconomicos extends Component
             'alergias' => $this->alergias,
             'medicamentos_alergicos' => $this->medAlergias,
             'complicaciones_medicas' => $this->compliMedicas,
-            'contac_emerg' => $this->contacto,
-            'tel_contact' => $this->tel2,
-            'tel2_contact' => $this->tel2,
-            'parentesco' => $this->parentesco
+            'contacto_emerg' => $this->contacto,
+            'tel_contacto' => $this->tel1,
+            'parentesco' => $this->parentesco1,
+            'contacto_emerg2' => $this->contacto2,
+            'tel_contacto2' => $this->tel2,
+            'parentesco2' => $this->parentesco2
         ]);
     
         return $this->message = 'Guardado';  
@@ -71,6 +84,10 @@ class DatosSocieconomicos extends Component
 
         foreach($datosDocente as $item){
             $this->idDatos = $item->docente_id;
+            $this->lugarNac = $item->lugarNac;
+            $this->fechaNac = $item->fechaNac;
+            $this->genero = $item->genero;
+            $this->estado_civil = $item->estado_civil;
             $this->direccion = $item->direccion;
             $this->colonia = $item->colonia;
             $this->ciudad = $item->ciudad;
@@ -82,10 +99,12 @@ class DatosSocieconomicos extends Component
             $this->alergias = $item->alergias;
             $this->medAlergias = $item->medicamentos_alergicos;
             $this->compliMedicas = $item->complicaciones_medicas;
-            $this->contacto = $item->contac_emerg;
-            $this->tel1 = $item->tel_contact;
-            $this->tel2 = $item->tel2_contact;
-            $this->parentesco = $item->parentesco;   
+            $this->contacto = $item->contacto_emerg;
+            $this->tel1 = $item->tel_contacto;
+            $this->parentesco1 = $item->parentesco;
+            $this->contacto2 = $item->contacto_emerg2;
+            $this->tel2 = $item->tel_contacto2;
+            $this->parentesco2 = $item->parentesco2;   
         }
     }
 

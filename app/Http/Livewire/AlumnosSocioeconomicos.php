@@ -11,10 +11,12 @@ use App\Models\Alumnos_datos;
 class AlumnosSocioeconomicos extends Component
 {
 
-    public $alumno_id,$lugNac,$fechaNac,$genero,$estado_civil,$direccion,$colonia,$cp,$ciudad,$telefono,$curp,$num_seguro,
-    $tipo_sangre,$alergias,$medicamentos_alergicos,$complicaciones_medicas,$contacto1,$direccion_contact,$colonia1,$tel_contact,
-    $contacto2,$direccion_contact2,$colonia2,$tel_contact2,$empresa,$domicilio_empresa,$colonia_empresa,$ciudad_empresa,$puesto,$antiguedad,
-    $nombre_jefe,$turno, $message;
+    public $alumno_id,$lugNac,$fechaNac,$genero,$estado_civil,$direccion,$colonia,$cp,$ciudad,$telefono,$curp,$num_seguro;
+    public $tipo_sangre,$alergias,$medicamentos_alergicos,$complicaciones_medicas;
+    public $nom_madre,$direccion_madre,$tel_madre,$colonia_madre,$nom_padre,$direccion_padre,$tel_padre,$colonia_padre;
+    public $contacto,$telefono_contacto,$parentesco_contacto,$contacto2,$telefono_contacto2,$parentesco_contacto2; 
+    public $empresa,$domicilio_empresa,$colonia_empresa,$ciudad_empresa;
+    public $puesto,$antiguedad,$nombre_jefe,$turno, $message;
     
     protected $rules = [
         'lugNac' => 'required|string',
@@ -32,14 +34,23 @@ class AlumnosSocioeconomicos extends Component
         'alergias' => 'required|string',
         'medicamentos_alergicos' => 'required|string',
         'complicaciones_medicas' => 'required|string',
-        'contacto1' => 'required|string',
-        'direccion_contact' => 'required|string',
-        'colonia1' => 'required|string',
-        'tel_contact' => 'required|string',
+
+        'nom_madre' => 'required|string',
+        'direccion_madre' => 'required|string',
+        'colonia_madre' => 'required|string',
+        'tel_madre' => 'required|string',
+        'nom_padre' => 'required|string',
+        'direccion_padre' => 'required|string',
+        'colonia_padre' => 'required|string',
+        'tel_padre' => 'required|string',
+
+        'contacto' => 'required|string',
+        'telefono_contacto' => 'required|string',
+        'parentesco_contacto' => 'required|string',
         'contacto2' => 'required|string',
-        'direccion_contact2' => 'required|string',
-        'colonia2' => 'required|string',
-        'tel_contact2' => 'required|string',
+        'telefono_contacto2' => 'required|string',
+        'parentesco_contacto2' => 'required|string',
+
         'empresa'=> 'required|string',
         'domicilio_empresa' => 'required|string',
         'colonia_empresa' => 'required|string',
@@ -61,7 +72,7 @@ class AlumnosSocioeconomicos extends Component
 
         Alumnos_datos::where('alumno_id', $this->alumno_id)
         ->update([
-            'lugNac' => $this->lugNac,
+            'lugarNac' => $this->lugNac,
             'fechaNac' => $this->fechaNac,
             'genero' => $this->genero,
             'estado_civil' => $this->estado_civil,
@@ -76,14 +87,23 @@ class AlumnosSocioeconomicos extends Component
             'alergias' => $this->alergias,
             'medicamentos_alergicos' => $this->medicamentos_alergicos,
             'complicaciones_medicas' => $this->complicaciones_medicas,
-            'contacto1' => $this->contacto1,
-            'direccion_contact' => $this->direccion_contact,
-            'colonia1' => $this->colonia1,
-            'tel_contact' => $this->tel_contact,
-            'contacto2' => $this->contacto2,
-            'direccion_contact2' => $this->direccion_contact2,
-            'colonia2' => $this->colonia2,
-            'tel_contact2' => $this->tel_contact2,
+            
+            'nom_madre' => $this->nom_madre,
+            'direccion_madre' => $this->direccion_madre,
+            'colonia_madre' => $this->colonia_madre,
+            'tel_madre' => $this->tel_madre,
+            'nom_padre' => $this->nom_padre,
+            'direccion_padre' => $this->direccion_padre,
+            'colonia_padre' => $this->colonia_padre,
+            'tel_padre' => $this->tel_padre,
+
+            'contacto_emergencia' => $this->contacto,
+            'tel_contacto' => $this->telefono_contacto,
+            'parentesco' => $this->parentesco_contacto,
+            'contacto_emergencia2' => $this->contacto2,
+            'tel_contacto2' => $this->telefono_contacto2,
+            'parentesco2' => $this->parentesco_contacto2,
+
             'empresa' => $this->empresa,
             'domicilio_empresa' => $this->domicilio_empresa,
             'colonia_empresa' => $this->colonia_empresa,
@@ -102,7 +122,7 @@ class AlumnosSocioeconomicos extends Component
         $datosAlumno = Alumnos_datos::where('alumno_id', $idAlumno->idAlumno)->get();
 
         foreach($datosAlumno as $item){
-            $this->lugNac = $item->lugNac;
+            $this->lugNac = $item->lugarNac;
             $this->fechaNac = $item->fechaNac;
             $this->genero = $item->genero;
             $this->estado_civil = $item->estado_civil;
@@ -117,14 +137,23 @@ class AlumnosSocioeconomicos extends Component
             $this->alergias = $item->alergias;
             $this->medicamentos_alergicos = $item->medicamentos_alergicos;
             $this->complicaciones_medicas = $item->complicaciones_medicas;
-            $this->contacto1 = $item->contacto1;
-            $this->direccion_contact = $item->direccion_contact;
-            $this->colonia1 = $item->colonia1;
-            $this->tel_contact = $item->tel_contact;
-            $this->contacto2 = $item->contacto2;
-            $this->direccion_contact2 = $item->direccion_contact2;
-            $this->colonia2 = $item->colonia2;
-            $this->tel_contact2 = $item->tel_contact2;
+
+            $this->nom_madre = $item->nom_madre; 
+            $this->direccion_madre = $item->direccion_madre;
+            $this->colonia_madre = $item->colonia_madre;
+            $this->tel_madre = $item->tel_madre;
+            $this->nom_padre = $item->nom_padre;
+            $this->direccion_padre = $item->direccion_padre;  
+            $this->colonia_padre = $item->colonia_padre;
+            $this->tel_padre = $item->tel_padre; 
+
+            $this->contacto = $item->contacto_emergencia; 
+            $this->telefono_contacto = $item->tel_contacto; 
+            $this->parentesco_contacto = $item->parentesco ;
+            $this->contacto2 = $item->contacto_emergencia2;
+            $this->telefono_contacto2 = $item->tel_contacto2; 
+            $this->parentesco_contacto2 = $item->parentesco2;
+
             $this->empresa = $item->empresa;
             $this->domicilio_empresa = $item->domicilio_empresa;
             $this->colonia_empresa = $item->colonia_empresa;

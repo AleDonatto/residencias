@@ -15,6 +15,10 @@ class DatosDocente extends Migration
     {
         Schema::create('datos_docente', function (Blueprint $table) {
             $table->unsignedBigInteger('docente_id');
+            $table->string('lugarNac',50);
+            $table->date('fechaNac');
+            $table->enum('genero',['masculino','femenino']);
+            $table->string('estado_civil',50);
             $table->string('direccion');
             $table->string('colonia');
             $table->string('ciudad');
@@ -26,10 +30,12 @@ class DatosDocente extends Migration
             $table->string('alergias');
             $table->string('medicamentos_alergicos');
             $table->string('complicaciones_medicas');
-            $table->string('contac_emerg');
-            $table->string('tel_contact');
-            $table->string('tel2_contact');
+            $table->string('contacto_emerg');
+            $table->string('tel_contacto');
             $table->string('parentesco');
+            $table->string('contacto_emerg2');
+            $table->string('tel_contacto2');
+            $table->string('parentesco2');
             $table->foreign('docente_id')->references('idDocente')->on('docente'); 
             $table->timestamps();
         });

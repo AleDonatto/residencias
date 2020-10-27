@@ -40,6 +40,10 @@ class DatosDocentesController extends Controller
     {
         //
         $validation = $request->validate([
+            'lugar_nacimiento' => 'required|string',
+            'fecha_nacimiento' => 'required|string',
+            'estado_civil' => 'required|string',
+            'genero' => 'required|string', 
             'direccion' => 'required|string',
             'colonia' => 'required|string',
             'ciudad' => 'required|string',
@@ -53,8 +57,10 @@ class DatosDocentesController extends Controller
             'complicaciones_medicas' => 'required|string',
             'contacto_Emergencia' => 'required|string',
             'telefono_contacto' => 'required|string',
+            'parentesco' => 'required|string',
+            'contacto_Emergencia2' => 'required|string',
             'telefono_contacto2' => 'required|string',
-            'parentesco' => 'required|string'
+            'parentesco2' => 'required|string',
         ]);
 
         $idUser = Auth::id();
@@ -62,6 +68,10 @@ class DatosDocentesController extends Controller
 
         $datos = new Docente_datos;
         $datos->docente_id = $idDocente->idDocente;
+        $datos->lugarNac = $request->lugar_nacimiento;
+        $datos->fechaNac = $request->fecha_nacimiento;
+        $datos->estado_civil = $request->estado_civil;
+        $datos->genero = $request->genero;
         $datos->direccion = $request->direccion;
         $datos->colonia = $request->colonia;
         $datos->ciudad = $request->ciudad;
@@ -73,10 +83,12 @@ class DatosDocentesController extends Controller
         $datos->alergias = $request->alergias;
         $datos->medicamentos_alergicos = $request->alergias_medicamento;
         $datos->complicaciones_medicas = $request->complicaciones_medicas;
-        $datos->contac_emerg = $request->contacto_Emergencia;
-        $datos->tel_contact = $request->telefono_contacto;
-        $datos->tel2_contact = $request->telefono_contacto2;
+        $datos->contacto_emerg = $request->contacto_Emergencia;
+        $datos->tel_contacto = $request->telefono_contacto;
         $datos->parentesco = $request->parentesco;
+        $datos->contacto_emerg2 = $request->contacto_Emergencia2;
+        $datos->tel_contacto2 = $request->telefono_contacto2;
+        $datos->parentesco2 = $request->parentesco2;
         $datos->save();
 
         $actualizauser = User::where('id', $idUser )

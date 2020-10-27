@@ -13,6 +13,10 @@ class Docente_datos extends Model
 
     protected $fillable = [
         'docente_id',
+        'lugarNac',
+        'fechaNac',
+        'genero',
+        'estado_civil',
         'direccion',
         'colonia',
         'ciudad',
@@ -24,9 +28,11 @@ class Docente_datos extends Model
         'alergias',
         'medicamentos_alergicos',
         'complicaciones_medicas',
-        'contac_emerg',
-        'tel_contact',
-        'tel2_contact',
-        'parentesco'
+        'contacto_emerg',
+        'tel_contacto',
+        'parentesco',
+        'contacto_emerg2',
+        'tel_contacto2',
+        'parentesco2'
     ];
 }

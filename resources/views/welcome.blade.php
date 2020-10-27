@@ -61,7 +61,7 @@
                                     @auth
                                     <a href="{{ url('/dashboard') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Dashboard</a>
                                     @else
-                                        <a href="{{ route('invitado') }}" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">invitado</a>
+                                        <a href="{{ route('invitado') }}" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Invitado</a>
                                         @if(Route::has('register'))
                                         <a href="{{ route('register') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Alumno</a>
                                         @endif
