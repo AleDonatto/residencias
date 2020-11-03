@@ -5,6 +5,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PrivateController;
 use App\Http\Controllers\DatosAlumnosController;
 use App\Http\Controllers\DatosDocentesController;
+use App\Http\Controllers\CursosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,21 +36,26 @@ Route::post('app_register', [PagesController::class,'app_register'])->name('app_
 
 Route::post('app_register_docente', [PagesController::class, 'app_register_docente'])->name('app_register_docente');
 
-Route::get('invitado', [PagesController::class, 'invitado'])->name('invitado');
+Route::get('invitados', [PagesController::class, 'invitado'])->name('invitado');
 
-Route::get('datos_socioeconomicos_alumno', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')
+Route::get('datos_socioeconomicos_alumnos', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')
 ->middleware('auth','permission:datos.store');
 
-Route::get('datos_socioeconomicos_docente', [PrivateController::class, 'perfil_completo_docente'])->name('dsoceco_docente')->middleware('auth');
+Route::get('datos_socioeconomicos_docentes', [PrivateController::class, 'perfil_completo_docente'])->name('dsoceco_docente')->middleware('auth');
 
-Route::resource('datos_alumno', DatosAlumnosController::class)->only([
+Route::get('descripcion_cursos/{id}', [PrivateController::class, 'descripcionCursoAlumno'])->name('descripcionCurso')->middleware('auth');
+
+Route::resource('datos_alumnos', DatosAlumnosController::class)->only([
     'index', 'store'
 ])->middleware('auth');
 
-Route::resource('datos_docente', DatosDocentesController::class)->only([
+Route::resource('datos_docentes', DatosDocentesController::class)->only([
     'index', 'store'
 ])->middleware('auth');
 
+Route::resource('cursos_docente', CursosController::class)->only([
+    'index', 'store', 'show'
+])->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

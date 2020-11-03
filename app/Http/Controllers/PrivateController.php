@@ -15,5 +15,10 @@ class PrivateController extends Controller
     public function perfil_completo_docente(){
         return view('docente.datos_socioecon');
     }
+
+    //vista de descripcion del curso para el alumno
+    public function descripcionCursoAlumno($id){
+        return view('alumnos.descripcionCurso');
+    }
     
 }

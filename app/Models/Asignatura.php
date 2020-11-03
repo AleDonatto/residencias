@@ -9,13 +9,15 @@ class Asignatura extends Model
 {
     use HasFactory;
 
-    protected $table = 'asignatura';
-    protected $primaryKey = 'idAsignatura';
+    protected $table = 'materias';
+    protected $primaryKey = 'idMateria';
 
     protected $fillable = [
-        'idAsignatura',
-        'nombreAsignatura',
+        'idMateria',
+        'nombreMateria',
+        'semestre',
         'planEstudio',
-        'user_id'
+        'claveMateria',
+        'academia'
     ];
 }

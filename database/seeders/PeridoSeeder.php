@@ -15,7 +15,7 @@ class PeridoSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('periodo')->insert([
+        /*DB::table('periodo')->insert([
             'periodo' => 'Enero-Junio',
             'year' => '2020'
         ],[
@@ -25,6 +25,21 @@ class PeridoSeeder extends Seeder
             'periodo' => 'Verano',
             'year' => '2020'
         ],[
+            'periodo' => 'Enero-Junio',
+            'year' => '2021'
+        ]);*/
+
+        DB::table('periodo')->insert([
+            'periodo' => 'Agosto-Diciembre',
+            'year' => '2020'
+        ]);
+
+        DB::table('periodo')->insert([
+            'periodo' => 'Verano',
+            'year' => '2020'
+        ]);
+
+        DB::table('periodo')->insert([
             'periodo' => 'Enero-Junio',
             'year' => '2021'
         ]);

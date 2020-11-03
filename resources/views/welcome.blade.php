@@ -69,8 +69,8 @@
                                         @if(Route::has('register_docente'))
                                         <a href="{{ route('register_docente') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Docente</a>
                                         @endif
+                                        <a href="{{ url('/login') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Login</a>
                                     @endif
-                                <a href="{{ url('/login') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Login</a>
                                 @endif
                             </div>
                         </nav>
@@ -139,8 +139,9 @@
                         <div class="sm:text-center lg:text-left">
                             <h2 class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
                                 Mejora tus conociminetos y habilidades con 
-                                <br class="xl:hidden">
-                                <span class="text-indigo-600">trabajos en linea</span>
+                                <!--<br class="xl:hidden">-->
+                                <br>
+                                <span class="text-indigo-600"> ITA Works-Online</span>
                             </h2>
                             <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
@@ -164,6 +165,173 @@
             <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                 <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="">
             </div>
+        </div>
+
+        <div>
+            <h2 class="font-sans text-5xl text-gray-500 text-center mt-5">Carreras</h2>
+        </div>
+
+        <div class="bg-gray-200 p-2">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-3 grap-4">
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class="">Ingenieria en Sistemas Computacionales</h4>
+                        </div>
+                        <h4 class="text-blue-700 ">Objetivo General</h4>
+                        <p class="mt-1 text-justify">Formar profesionistas líderes con visión estratégica y 
+                            amplio sentido ético; capaz de diseñar, desarrollar, 
+                            implementar y administrar tecnología computacional para 
+                            aportar soluciones innovadoras en beneficio de la sociedad; 
+                            en un contexto global, multidisciplinario y sostenible.
+                        </p>
+                    </div>
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class="">Ingenieria Electromecanica</h4>
+                        </div>
+                        <h4 class="text-blue-700">Objetivo General</h4>
+                        <p class="mt-1 text-justify">
+                            Formar profesionistas de excelencia en Ingeniería Electromecánica, 
+                            con actitud emprendedora, liderazgo y capacidad de: analizar, 
+                            diagnosticar, diseñar, seleccionar, instalar, administrar, mantener e 
+                            innovar sistemas electromecánicos, en forma eficiente, segura y económica, 
+                            considerando las normas y estándares nacionales e internacionales de forma 
+                            sustentable con plena conciencia ética, humanística y social.
+                        </p>
+                    </div>
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class="">Ingenieria Bioquimica</h4>
+                        </div>
+                        <h4 class="text-blue-700">Objetivo General</h4>
+                        <p class="mt-1 text-justify">
+                            Objetivos Educacionales del  programa educativo de Ingeniería Bioquímica del 
+                            Instituto Tecnológico de Acapulco que refieren a los Conocimientos, 
+                            Habilidades, Actitudes y Valores que los egresados alcanzarán en un 
+                            plazo de 3 a 5 años después de su egreso en la Institución.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-2">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-3 grap-4">
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class=""></h4>
+                        </div>
+                        <h4 class="text-blue-700 "></h4>
+                        <p class="mt-1 text-justify">
+                        </p>
+                    </div>
+                    <div class="mt-1 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-1">
+                            <h4 class="">Ingenieria en Gestion Empresarial</h4>
+                        </div>
+                        <h4 class="text-blue-700">Objetivo General</h4>
+                        <p class="mt-1 text-justify">
+                            Formar profesionales que contribuyan a la gestión de empresas e innovación de procesos; 
+                            así como al diseño, implementación y desarrollo de sistemas estratégicos de negocios, 
+                            optimizando recursos en un entorno global, con ética y responsabilidad social.
+                        </p>
+                    </div>
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class=""></h4>
+                        </div>
+                        <h4 class="text-blue-700"></h4>
+                        <p class="mt-1 text-justify">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-200 p-2">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-3 grap-4">
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class="">Licenciatura en Administracion</h4>
+                        </div>
+                        <h4 class="text-blue-700 ">Objetivo General</h4>
+                        <p class="mt-1 text-justify">
+                            Formar profesionales de la administración comprometidos con las demandas y 
+                            oportunidades del entorno, con una visión estratégica, humanista y global, 
+                            que actúen como agentes de cambio, a través del diseño, innovación y 
+                            dirección en organizaciones.
+                        </p>
+                    </div>
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class="">Contado Publico</h4>
+                        </div>
+                        <h4 class="text-blue-700">Objetivo General</h4>
+                        <p class="mt-1 text-justify">
+                            Formar profesionales de la contaduría capaces de analizar la situación económica, 
+                            financiera y fiscal de la empresa para la toma de decisiones, así como crear, 
+                            dirigir, innovar y optimizar los recursos; ser competitivos en un entorno nacional 
+                            e internacional, basado en conocimientos, habilidades directivas y actitudes con una 
+                            visión emprendedora, ética, crítica, y de liderazgo, a través de la investigación y 
+                            uso de la tecnología de la información, fomentando el desarrollo sustentable.
+                        </p>
+                    </div>
+                    <div class="mt-3 px-8">
+                        <div class="fons-sans text-2xl text-gray-900 mt-5">
+                            <h4 class="">Arquitectura</h4>
+                        </div>
+                        <h4 class="text-blue-700">Objetivo General</h4>
+                        <p class="mt-1 text-justify">
+                            Formar profesionistas líderes con excelencia académica y humanística, 
+                            capaces de planear diseñar, gestionar y construir el hábitat humano 
+                            con alto desempeño y vocación de servicio a la sociedad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer mt-5 bg-blue-900 h-64">
+            <div class="divide-y divide-y-reverse divide-gray-400">
+                <div class="py-2">
+                    <div class="container mx-auto px-4">
+                        <div class="grid grid-cols-2 grap-4">
+                            <div class="grid grid-rows-2 grid-flow-col grap-4">
+                                <div class="text-white mt-2">
+                                    <h4 class="font-bold">Direccion</h4>
+                                    <p>Av. Instituto Tecnológico s/n Crucero del Cayaco C.P. 39905</p>
+                                </div>
+                                <div class="text-white mt-5">
+                                    <h4 class="font-bold">Contacto</h4>
+                                    <p>Email: dir_acapulco@tecnm.mx</p>
+                                </div>
+                                <div class="text-white mt-2">
+                                    <h4 class="font-bold">Enlaces</h4>
+                                    <p>Portal de Obligaciones de Transparencia
+                                        INAI
+                                    </p>
+                                </div>
+                                <div class="text-white mt-5">
+                                    <h4 class="font-bold">Numero de Visitas</h4>
+                                    <p>1</p>
+                                </div>
+                            </div>
+                            <div class=""></div>
+                        </div>
+                    </div>        
+                </div>
+
+                <div class="py-2">
+                    <div class="container mx-auto px-4 absolute mt-5">
+                        <p class="text-center text-white">© Copyright 2020 TecNM Campus Acapulco - Todos los Derechos Reservados</p>
+                        <p class="text-center"></p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
   
 

@@ -39,10 +39,11 @@
           </div>
         </div>
       </div>
+
       @elseif( Auth::user()->perfil_completo && Auth::user()->tipo_user == 1)
-      <h2>Las materias van aqui</h2>
+        @include('alumnos.viewCursos')
       @elseif( Auth::user()->perfil_completo && Auth::user()->tipo_user == 2)
-      <h2>Aqui va algo del docente</h2>
+        @include('docente.cursos_docente')
       @endif
 
     </div>
