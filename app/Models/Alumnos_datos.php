@@ -41,14 +41,6 @@ class Alumnos_datos extends Model
         'parentesco',
         'contacto_emergencia2',
         'tel_contacto2',
-        'parentesco2',
-        'empresa',
-        'domicilio_empresa',
-        'colonia_empresa',
-        'ciudad_empresa',
-        'puesto',
-        'antiguedad',
-        'nombre_jefe',
-        'turno'
+        'parentesco2'
     ];
 }

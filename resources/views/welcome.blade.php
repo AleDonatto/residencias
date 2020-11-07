@@ -69,7 +69,7 @@
                                         @if(Route::has('register_docente'))
                                         <a href="{{ route('register_docente') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Docente</a>
                                         @endif
-                                        <a href="{{ url('/login') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Login</a>
+                                        <a href="{{ url('/login') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Iniciar Sesion</a>
                                     @endif
                                 @endif
                             </div>

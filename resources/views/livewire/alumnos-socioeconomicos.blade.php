@@ -212,61 +212,6 @@
                     </div>
                 </div>
 
-                <hr class="divide-y divide-blue-300 my-2">
-
-                <div class="flex flex-wrap -mx-3 mb-1">
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="empresa" value="{{ __('Empresa') }}" />
-                        <x-jet-input id="empresa" type="text" class="mt-1 block w-full" wire:model.defer="empresa" />
-                        <x-jet-input-error for="empresa" class="mt-2" />
-                    </div>
-
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="direccion_empresa" value="{{ __('Direccion Empresa') }}" />
-                        <x-jet-input id="durireccion_empresa" class="mt-1 block w-full" type="text" wire:model.defer="domicilio_empresa" />
-                        <x-jet-input-error for="direccion_empresa" class="mt-2" />
-                    </div>
-
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="colonia_empresa" value="{{ __('Colonia Empresa') }}" />
-                        <x-jet-input id="colonia_ampresa" name="colonia_empresa" type="text" class="mt-1 block w-full" wire:model.defer="colonia_empresa" />
-                        <x-jet-input-error for="colonia_empresa" class="mt-2" />
-                    </div>
-
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="puesto" value="{{ __('Puesto') }}" />
-                        <x-jet-input id="puestp" name="puesto" type="text" class="mt-1 my-1 block w-full" wire:model.defer="puesto" />
-                        <x-jet-input-error for="puesto" class="mt-2" />
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="antiguedad" value="{{ __('Antiguedad') }}" />
-                        <x-jet-input id="antiguedad" type="text" class="mt-1 block w-full" wire:model.defer="antiguedad" />
-                        <x-jet-input-error for="antiguedad" class="mt-2" />
-                    </div>
-
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="jefe" value="{{ __('Nombre Jefe Inmediato') }}" />
-                        <x-jet-input id="jefe" class="mt-1 block w-full" type="text" wire:model.defer="nombre_jefe" />
-                        <x-jet-input-error for="jefe" class="mt-2" />
-                    </div>
-
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="turno" value="{{ __('Turno') }}" />
-                        <x-jet-input id="turno" name="turno" type="text" class="mt-1 block w-full" wire:model.defer="turno" />
-                        <x-jet-input-error for="turno" class="mt-2" />
-                    </div>
-
-                    <div class="w-full md:w-1/4 px-3">
-                        <x-jet-label for="ciudad_empresa" value="{{ __('Ciudad Empresa') }}" />
-                        <x-jet-input id="ciudad_empresa" name="ciudad_empresa" type="text" class="mt-1 block w-full" wire:model.defer="ciudad_empresa" />
-                        <x-jet-input-error for="ciudad_empresa" class="mt-2" />
-                    </div>
-                </div>
-
-
                 <div class="flex justify-end">
                     <p class="animate-pulse text-gray-400 mx-8" id="mensajeSave">
                         {{ $message }}

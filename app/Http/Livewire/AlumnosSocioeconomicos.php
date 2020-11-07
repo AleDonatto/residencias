@@ -15,8 +15,7 @@ class AlumnosSocioeconomicos extends Component
     public $tipo_sangre,$alergias,$medicamentos_alergicos,$complicaciones_medicas;
     public $nom_madre,$direccion_madre,$tel_madre,$colonia_madre,$nom_padre,$direccion_padre,$tel_padre,$colonia_padre;
     public $contacto,$telefono_contacto,$parentesco_contacto,$contacto2,$telefono_contacto2,$parentesco_contacto2; 
-    public $empresa,$domicilio_empresa,$colonia_empresa,$ciudad_empresa;
-    public $puesto,$antiguedad,$nombre_jefe,$turno, $message;
+    public $message;
     
     protected $rules = [
         'lugNac' => 'required|string',
@@ -49,16 +48,7 @@ class AlumnosSocioeconomicos extends Component
         'parentesco_contacto' => 'required|string',
         'contacto2' => 'required|string',
         'telefono_contacto2' => 'required|string',
-        'parentesco_contacto2' => 'required|string',
-
-        'empresa'=> 'required|string',
-        'domicilio_empresa' => 'required|string',
-        'colonia_empresa' => 'required|string',
-        'ciudad_empresa' => 'required|string',
-        'puesto' => 'required|string',
-        'antiguedad' => 'required|string',
-        'nombre_jefe' => 'required|string',
-        'turno' => 'required|string'
+        'parentesco_contacto2' => 'required|string'
     ];
 
     public function render()
@@ -102,16 +92,7 @@ class AlumnosSocioeconomicos extends Component
             'parentesco' => $this->parentesco_contacto,
             'contacto_emergencia2' => $this->contacto2,
             'tel_contacto2' => $this->telefono_contacto2,
-            'parentesco2' => $this->parentesco_contacto2,
-
-            'empresa' => $this->empresa,
-            'domicilio_empresa' => $this->domicilio_empresa,
-            'colonia_empresa' => $this->colonia_empresa,
-            'ciudad_empresa' => $this->ciudad_empresa,
-            'puesto' => $this->puesto,
-            'antiguedad' => $this->antiguedad,
-            'nombre_jefe' => $this->nombre_jefe,
-            'turno' => $this->turno
+            'parentesco2' => $this->parentesco_contacto2
         ]);
     
         return $this->message = 'Guardado';  
@@ -154,14 +135,6 @@ class AlumnosSocioeconomicos extends Component
             $this->telefono_contacto2 = $item->tel_contacto2; 
             $this->parentesco_contacto2 = $item->parentesco2;
 
-            $this->empresa = $item->empresa;
-            $this->domicilio_empresa = $item->domicilio_empresa;
-            $this->colonia_empresa = $item->colonia_empresa;
-            $this->ciudad_empresa= $item->ciudad_empresa;
-            $this->puesto = $item->puesto;
-            $this->antiguedad = $item->antiguedad;
-            $this->nombre_jefe = $item->nombre_jefe;
-            $this->turno = $item->turno;     
         }
 
    

@@ -44,14 +44,6 @@ class DatosAlumnos extends Migration
             $table->string('contacto_emergencia2');
             $table->string('tel_contacto2');
             $table->string('parentesco2');
-            $table->string('empresa',100);
-            $table->string('domicilio_empresa',70);
-            $table->string('colonia_empresa',50);
-            $table->string('ciudad_empresa',50);
-            $table->string('puesto',50);
-            $table->string('antiguedad',50);
-            $table->string('nombre_jefe',50);
-            $table->string('turno',50);
             $table->foreign('alumno_id')->references('idAlumno')->on('alumnos');  
             $table->timestamps();
         });

@@ -113,14 +113,6 @@ class DatosAlumnosController extends Controller
         $datos->contacto_emergencia2 = $request->nombre_contacto2;
         $datos->tel_contacto2 = $request->telefono_contacto2;
         $datos->parentesco2 = $request->parentesco_contacto2;
-        $datos->empresa = $request->empresa;
-        $datos->domicilio_empresa = $request->domicilio_empresa;
-        $datos->colonia_empresa = $request->colonia_empresa;
-        $datos->ciudad_empresa = $request->ciudad_empresa;
-        $datos->puesto = $request->puesto_empresa;
-        $datos->antiguedad = $request->antiguedad;
-        $datos->nombre_jefe = $request->jefe_inmediato;
-        $datos->turno = $request->turno;
         $datos->save();
 
         $actualizauser = User::where('id', $idUser )
