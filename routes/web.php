@@ -59,7 +59,7 @@ Route::resource('cursos_docentes', CursosController::class)->only([
 ])->middleware('auth');
 
 Route::resource('cursos_alumnos', CursosAlumnosController::class)->only([
-    'index'
+    'index','create'
 ])->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
