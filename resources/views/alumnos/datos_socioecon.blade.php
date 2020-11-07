@@ -10,7 +10,7 @@
     <x-jet-validation-errors class="mb-4" />
 
     <div class="">
-      <form action="{{ route('datos_alumno.store') }}" method="post" class="">
+      <form action="{{ route('datos_alumnos.store') }}" method="post" class="">
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">

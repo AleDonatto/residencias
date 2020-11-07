@@ -9,7 +9,7 @@
     <div class="container mx-auto px-4 py-10 max-w-6xl">
       <x-jet-validation-errors class="mb-4" />
       <div class="">
-        <form action="{{ route('datos_docente.store') }}" method="post" class="">
+        <form action="{{ route('datos_docentes.store') }}" method="post" class="">
           @csrf
 
           <div class="flex flex-wrap -mx-3 mb-6">
