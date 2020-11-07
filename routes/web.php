@@ -55,7 +55,7 @@ Route::resource('datos_docentes', DatosDocentesController::class)->only([
 ])->middleware('auth');
 
 Route::resource('cursos_docentes', CursosController::class)->only([
-    'index', 'store', 'show'
+    'index', 'store', 'show','create'
 ])->middleware('auth');
 
 Route::resource('cursos_alumnos', CursosAlumnosController::class)->only([
