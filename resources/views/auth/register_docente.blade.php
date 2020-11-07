@@ -40,11 +40,6 @@
                 required />
             </div>
 
-            <div class="mt-4">
-                <x-jet-label value="{{ __('Fecha de Nacimiento') }}" />
-                <x-jet-input class="block mt-1 w-full" type="date" name="fecha_nacimiento" required />
-            </div>
-
             <div class="flex flex-wrap -mx-3 mt-4">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <x-jet-label value="{{ __('Password') }}" />

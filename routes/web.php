@@ -6,6 +6,7 @@ use App\Http\Controllers\PrivateController;
 use App\Http\Controllers\DatosAlumnosController;
 use App\Http\Controllers\DatosDocentesController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\CursosAlumnosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::resource('datos_docentes', DatosDocentesController::class)->only([
 
 Route::resource('cursos_docentes', CursosController::class)->only([
     'index', 'store', 'show'
+])->middleware('auth');
+
+Route::resource('cursos_alumnos', CursosAlumnosController::class)->only([
+    'index'
 ])->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

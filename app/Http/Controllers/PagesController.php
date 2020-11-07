@@ -97,7 +97,6 @@ class PagesController extends Controller
             'email' => 'required|email',
             'password' => 'required|string',
             'password_confirmation' => 'required|string',
-            'fecha_nacimiento' => 'required|string',
             'rfc' => 'required|string'
         ]);
 
@@ -137,7 +136,6 @@ class PagesController extends Controller
 
             $docente = new Docente;
             $docente->matricula = $request->matricula;
-            $docente->fecha_nac = $request->fecha_nacimiento;
             $docente->RFC = $request->rfc;
             $docente->user_id = $iduser->id;
             $docente->save();

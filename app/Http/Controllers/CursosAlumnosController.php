@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cursos;
-use App\Models\Asignatura;
 
-class CursosController extends Controller
+class CursosAlumnosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class CursosController extends Controller
     public function index()
     {
         //
-        return view('docente.misCursos');
+        return view('alumnos.misCursos');
     }
 
     /**
@@ -49,9 +47,6 @@ class CursosController extends Controller
     public function show($id)
     {
         //
-        $curso = Cursos::where('idCurso', $id)->first();
-        $materia = Asignatura::where('idMateria', $curso->materia_id)->get();
-        return view('docente.showCurso')->with(compact('curso','materia'));
     }
 
     /**

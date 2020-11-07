@@ -1,6 +1,4 @@
 <div>
-    <h4 class="font-sans text-gray-600 font-bold text-2xl my-2">Cursos Recientes</h4>
-
     <div class="grid grid-cols-4 gap-4">
         @foreach ($cursos as $item)
         <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
