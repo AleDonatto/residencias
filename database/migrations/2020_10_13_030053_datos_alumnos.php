@@ -43,7 +43,7 @@ class DatosAlumnos extends Migration
             $table->string('parentesco');
             $table->string('contacto_emergencia2');
             $table->string('tel_contacto2');
-            $table->string('parentesco2');
+            $table->string('parentesco2');    
             $table->foreign('alumno_id')->references('idAlumno')->on('alumnos');  
             $table->timestamps();
         });

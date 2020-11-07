@@ -68,15 +68,7 @@ class DatosAlumnosController extends Controller
             'parentesco_contacto' => 'required|string',
             'nombre_contacto2' => 'required|string',
             'telefono_contacto2' => 'required|string',
-            'parentesco_contacto2' => 'required|string',
-            'empresa' => 'required|string',
-            'domicilio_empresa' => 'required|string',
-            'colonia_empresa' => 'required|string',
-            'ciudad_empresa' => 'required|string',
-            'puesto_empresa' => 'required|string',
-            'antiguedad' => 'required|string',
-            'jefe_inmediato' => 'required|string',
-            'turno' => 'required|string'
+            'parentesco_contacto2' => 'required|string'
         ]);
 
         $idUser = Auth::id();
