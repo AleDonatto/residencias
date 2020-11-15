@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Alumnos_datos;
 use App\Models\Alumnos;
 use App\Models\User;
+use App\Rules\CURP;
 
 class DatosAlumnosController extends Controller
 {
@@ -39,7 +41,12 @@ class DatosAlumnosController extends Controller
     public function store(Request $request)
     {
         //
-        $validation = $request->validate([
+        $messages = [
+            'required' => 'El campo :attribute es requerido.',
+            'email' => 'el campo :attribute debe ser un e-mail valido.'
+        ];
+
+        $rules = [
             'direccion' => 'required|string',
             'lugar_nacimiento' => 'required',
             'fecha_nacimiento' => 'required',
@@ -69,7 +76,46 @@ class DatosAlumnosController extends Controller
             'nombre_contacto2' => 'required|string',
             'telefono_contacto2' => 'required|string',
             'parentesco_contacto2' => 'required|string'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages)->validate();
+
+        $request->validate([
+            'curp' => [new CURP],
         ]);
+
+        /*$validation = $request->validate([
+            'direccion' => 'required|string',
+            'lugar_nacimiento' => 'required',
+            'fecha_nacimiento' => 'required',
+            'genero' => 'required|string',
+            'estado_civil' => 'required|string',
+            'colonia' => 'required|string',
+            'ciudad'=> 'required|string',
+            'telefono' => 'required|string',
+            'codigo_postal' => 'required|string',
+            'curp' => 'required|string',
+            'ssn' => 'required|string',
+            'tipo_sangre' => 'required|string',
+            'alergias' => 'required|string',
+            'alergias_medicamento' => 'required|string',
+            'complicaciones_medicas' => 'required|string',
+            'nombre_madre' => 'required|string',
+            'domicilio_madre' => 'required|string',
+            'colonia_madre' => 'required|string',
+            'telefono_madre' => 'required|string',
+            'nombre_padre' => 'required|string',
+            'domicilio_padre' => 'required|string',
+            'colonia_padre' => 'required|string',
+            'telefono_padre' => 'required|string',
+            'nombre_contacto' => 'required|string',
+            'telefono_contacto' => 'required|string',
+            'parentesco_contacto' => 'required|string',
+            'nombre_contacto2' => 'required|string',
+            'telefono_contacto2' => 'required|string',
+            'parentesco_contacto2' => 'required|string'
+        ]);*/
+
 
         $idUser = Auth::id();
         $idAlumno = Alumnos::where('user_id', $idUser )->first();

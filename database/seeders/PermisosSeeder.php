@@ -16,8 +16,25 @@ class PermisosSeeder extends Seeder
     {
         //
         $permisos = [
-            'datos.store',
-            'datos.update',
+            //docentes
+            'datos_docentes.index',
+            'datos_docentes.store',
+            'datos_docentes.update',
+            'cursos_docente.index',
+            'cursos_docente.show',
+            'cursos_docente.create',
+            //alumnos
+            'datos_alumnos.index',
+            'datos_alumnos.store',
+            'datos_alumnos.update',
+            'cursos_alumnos.show',
+            'cursos_alumnos.index',
+            'cursos_alumnos.create',
+            'tareas_alumnos.index',
+            'tareas_alumnos.show',
+            'tareas_alumnos.store',
+            'tereas_alumnos.update',
+            //todavia no se
             'user.update',
             'materia.update',
             'curso.update'

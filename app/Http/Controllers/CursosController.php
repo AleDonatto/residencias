@@ -27,7 +27,6 @@ class CursosController extends Controller
     public function create()
     {
         //
-        return view('docente.miHorario');
     }
 
     /**

@@ -8,28 +8,9 @@ use App\Http\Controllers\DatosDocentesController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\CursosAlumnosController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('alumnos', function () {
-    return view('alumnos.prueba');
-})->name('alumnos');
-
-Route::get('register_docente', function(){
-    return view('auth.register_docente');
-})->name('register_docente');
 
 Route::post('app_login', [PagesController::class, 'app_login'])->name('app_login');
 
@@ -39,31 +20,38 @@ Route::post('app_register_docente', [PagesController::class, 'app_register_docen
 
 Route::get('invitados', [PagesController::class, 'invitado'])->name('invitado');
 
-Route::get('datos_socioeconomicos_alumnos', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')
-->middleware('auth','permission:datos.store');
-
-Route::get('datos_socioeconomicos_docentes', [PrivateController::class, 'perfil_completo_docente'])->name('dsoceco_docente')->middleware('auth');
-
-Route::get('descripcion_cursos/{id}', [PrivateController::class, 'descripcionCursoAlumno'])->name('descripcionCurso')->middleware('auth');
-
-Route::resource('datos_alumnos', DatosAlumnosController::class)->only([
-    'index', 'store'
-])->middleware('auth');
-
-Route::resource('datos_docentes', DatosDocentesController::class)->only([
-    'index', 'store'
-])->middleware('auth');
-
-Route::resource('cursos_docentes', CursosController::class)->only([
-    'index', 'store', 'show','create'
-])->middleware('auth');
-
-Route::resource('cursos_alumnos', CursosAlumnosController::class)->only([
-    'index','create'
-])->middleware('auth');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
 
+//rutas docentes
+Route::get('register_docente', function(){
+    return view('auth.register_docente');
+})->name('register_docente');
+
+Route::get('datos_socioeconomicos_docentes', [PrivateController::class, 'perfil_completo_docente'])->name('dsoceco_docente')->middleware('auth','permission:datos_docentes.index');
+
+Route::resource('datos_docentes', DatosDocentesController::class)->only([
+    'store'
+])->middleware('auth','role:Docente');
+
+Route::get('cursos_docentes',[ CursosController::class,'index'])->name('cursos_docentes.index')->middleware('auth','role:Docente');
+Route::get('cursos_docentes/{id}',[ CursosController::class,'show'])->name('cursos_docentes.show')->middleware('auth','role:Docente');
+Route::get('horarios_docentes',[PrivateController::class, 'horario_docente'])->name('horario_docente')->middleware('auth','role:Docente');
+/* * */
+
+//rutas alumnos
+Route::get('datos_socioeconomicos_alumnos', [PrivateController::class, 'perfil_completo_alumno'])->name('dsoceco_alumno')
+->middleware('auth','permission:datos_alumnos.index');
+
+Route::resource('datos_alumnos', DatosAlumnosController::class)->only([
+    'store'
+])->middleware('auth','role:Alumno','permission:datos_alumnos.store');
+
+Route::get('descripcion_cursos/{id}', [PrivateController::class, 'descripcionCursoAlumno'])->name('descripcionCurso')->middleware('auth','role:Alumno');
+Route::get('cursos_alumnos',[CursosAlumnosController::class, 'index'])->name('cursos_alumnos.index')
+->middleware('auth','role:Alumno');
+Route::get('cursos_alumnos/{id}',[CursosAlumnosController::class, 'show'])->name('cursos_alumnos.show')->middleware('auth','role:Alumno');
+Route::get('horarios_alumnos',[PrivateController::class, 'horario_alumno'])->name('horarios_alumnos')->middleware('auth','role:Alumno');
+/* * */

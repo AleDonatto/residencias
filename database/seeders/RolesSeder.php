@@ -18,19 +18,23 @@ class RolesSeder extends Seeder
         $docente = Role::create(['name' => 'Docente']);
 
         $docente->givePermissionTo([
-            'datos.store',
-            'datos.update',
-            'user.update',
-            'curso.update',
-            'materia.update'
+            'datos_docentes.index',
+            'datos_docentes.store',
+            'datos_docentes.update'
         ]);
 
         $alumno = Role::create(['name' => 'Alumno']);
 
         $alumno->givePermissionTo([
-            'datos.store',
-            'datos.update',
-            'user.update',
+            'datos_alumnos.index',
+            'datos_alumnos.store',
+            'datos_alumnos.update',
+            'cursos_alumnos.show',
+            'cursos_alumnos.insc',
+            'tareas_alumnos.index',
+            'tareas_alumnos.show',
+            'tareas_alumnos.store',
+            'tereas_alumnos.update'
         ]);
     }
 }

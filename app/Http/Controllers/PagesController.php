@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Alumnos;
 use App\Models\Docente;
+use App\Rules\RFCRule;
 
 class PagesController extends Controller
 {
@@ -90,7 +92,7 @@ class PagesController extends Controller
 
     public function app_register_docente(Request $request){
 
-        $validation = $request->validate([
+        $rules = [
             'name' => 'required|string',
             'lastname' => 'required|string',
             'matricula' => 'required|string',
@@ -98,6 +100,22 @@ class PagesController extends Controller
             'password' => 'required|string',
             'password_confirmation' => 'required|string',
             'rfc' => 'required|string'
+        ];
+
+        /*$validation = $request->validate([
+            'name' => 'required|string',
+            'lastname' => 'required|string',
+            'matricula' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|string',
+            'password_confirmation' => 'required|string',
+            'rfc' => 'required|rfc'
+        ]);*/
+
+        $validator = Validator::make($request->all(),$rules)->validate();
+
+        $request->validate([
+            'rfc' => [new RFCRule],
         ]);
 
         if($request->password != $request->password_confirmation){

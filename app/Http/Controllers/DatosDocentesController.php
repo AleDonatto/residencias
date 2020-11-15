@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Docente;
 use App\Models\Docente_datos;
 use App\Models\User;
+use App\Rules\CURP;
 
 class DatosDocentesController extends Controller
 {
@@ -39,7 +41,42 @@ class DatosDocentesController extends Controller
     public function store(Request $request)
     {
         //
-        $validation = $request->validate([
+        $rules = [
+            'lugar_nacimiento' => 'required|string',
+            'fecha_nacimiento' => 'required|string',
+            'estado_civil' => 'required|string',
+            'genero' => 'required|string', 
+            'direccion' => 'required|string',
+            'colonia' => 'required|string',
+            'ciudad' => 'required|string',
+            'telefono' => 'required|string',
+            'codigo_postal' => 'required|string',
+            'curp' => 'required|string',
+            'ssn' => 'required|string',
+            'tipo_sangre' => 'required|string',
+            'alergias' => 'required|string',
+            'alergias_medicamento' => 'required|string',
+            'complicaciones_medicas' => 'required|string',
+            'contacto_Emergencia' => 'required|string',
+            'telefono_contacto' => 'required|string',
+            'parentesco' => 'required|string',
+            'contacto_Emergencia2' => 'required|string',
+            'telefono_contacto2' => 'required|string',
+            'parentesco2' => 'required|string'
+        ];
+
+        $messages = [
+            'required' => 'El campo :attribute es requerido.',
+            'email' => 'el campo :attribute debe ser un e-mail valido.'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages)->validate();
+
+        $request->validate([
+            'curp' => [new CURP],
+        ]);
+
+        /*$validation = $request->validate([
             'lugar_nacimiento' => 'required|string',
             'fecha_nacimiento' => 'required|string',
             'estado_civil' => 'required|string',
@@ -61,7 +98,7 @@ class DatosDocentesController extends Controller
             'contacto_Emergencia2' => 'required|string',
             'telefono_contacto2' => 'required|string',
             'parentesco2' => 'required|string',
-        ]);
+        ]);*/
 
         $idUser = Auth::id();
         $idDocente = Docente::where('user_id', $idUser )->first();
