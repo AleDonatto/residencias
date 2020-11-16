@@ -30,7 +30,7 @@ class RolesSeder extends Seeder
             'datos_alumnos.store',
             'datos_alumnos.update',
             'cursos_alumnos.show',
-            'cursos_alumnos.insc',
+            'cursos_alumnos.index',
             'tareas_alumnos.index',
             'tareas_alumnos.show',
             'tareas_alumnos.store',
