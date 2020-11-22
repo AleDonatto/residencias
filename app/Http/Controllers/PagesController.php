@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Alumnos;
 use App\Models\Docente;
 use App\Rules\RFCRule;
+use App\Rules\EmailInstitucion;
+
 
 class PagesController extends Controller
 {
@@ -27,7 +29,12 @@ class PagesController extends Controller
     //registro de alumnos 
     public function app_register(Request $request){
 
-        $validation = $request->validate([
+        $messages = [
+            'required' => 'El campo :attribute es requerido.',
+            'email' => 'el campo :attribute debe ser un e-mail valido.'
+        ];
+
+        $rules = [
             'name' => 'required|string',
             'lastname' => 'required|string',
             'matricula' => 'required|integer',
@@ -36,6 +43,12 @@ class PagesController extends Controller
             'password_confirmation' => 'required|string',
             'carrera' => 'required|string',
             'semestre' => 'required|string'
+        ];
+
+        $validator = Validator::make($request->all(),$rules,$messages)->validate();
+
+        $request->validate([
+            'email' => [new EmailInstitucion],
         ]);
 
         if($request->password != $request->password_confirmation){
@@ -102,20 +115,16 @@ class PagesController extends Controller
             'rfc' => 'required|string'
         ];
 
-        /*$validation = $request->validate([
-            'name' => 'required|string',
-            'lastname' => 'required|string',
-            'matricula' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required|string',
-            'password_confirmation' => 'required|string',
-            'rfc' => 'required|rfc'
-        ]);*/
+        $messages = [
+            'required' => 'El campo :attribute es requerido.',
+            'email' => 'el campo :attribute debe ser un e-mail valido.'
+        ];
 
         $validator = Validator::make($request->all(),$rules)->validate();
 
         $request->validate([
             'rfc' => [new RFCRule],
+            'email' => [new EmailInstitucion]
         ]);
 
         if($request->password != $request->password_confirmation){

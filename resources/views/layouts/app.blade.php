@@ -65,6 +65,7 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('js/invitado.js') }}"></script>
     </body>
 </html>

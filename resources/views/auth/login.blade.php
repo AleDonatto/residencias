@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/logo.jpeg') }}" alt="Logo Tecnologico" class="" width="100px" height="100px">
+            <img src="{{ asset('img/logo-ita.png') }}" alt="Logo Tecnologico" class="" width="100px" height="100px">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -16,8 +16,8 @@
             @csrf
 
             <div>
-                <x-jet-label value="{{ __('Email') }}" />
-                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <label for="email" class="text-sm">Email</label> <small class="text-sm text-gray-400"> (Institucional)</small>
+                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="Lxxxxxxxx@acapulco.t" />
             </div>
 
             <div class="mt-4">

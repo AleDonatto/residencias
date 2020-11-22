@@ -18,7 +18,7 @@
               Lugar de Nacimiento
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            type="text" name="lugar_nacimiento" id="lugar_nacimiento" placeholder="Lugar Nacimiento">
+            type="text" name="lugar_nacimiento" id="lugar_nacimiento" placeholder="Lugar Nacimiento" onkeypress="return soloLetras(event)" maxlength="50">
           </div>
 
           <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
@@ -65,7 +65,7 @@
               Direccion
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-              id="direccion" name="direccion" type="text" placeholder="Direccion">
+              id="direccion" name="direccion" type="text" placeholder="Direccion" maxlength="50">
           </div>
 
           <div class="w-full md:w-1/3 px-3">
@@ -73,13 +73,13 @@
               Colonia
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="colonia" name="colonia" type="text" placeholder="Colonia">
+            id="colonia" name="colonia" type="text" placeholder="Colonia" maxlength="50">
           </div>
 
           <div class="w-full md:w-1/3 px-3">
             <label for="ciudad" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Ciudad</label>
             <input type="text" name="ciudad" id="ciudad" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="ciudad" placeholder="Ciudad">
+            id="ciudad" placeholder="Ciudad" onkeypress="return soloLetras(event)">
           </div>
 
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -87,7 +87,7 @@
               Telefono
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="telefono" name="telefono" type="text" placeholder="Telefono">
+            id="telefono" name="telefono" type="text" placeholder="Telefono" onkeypress="soloNumeros()" maxlength="10">
           </div>
 
           <div class="w-full md:w-1/2 px-3">
@@ -95,18 +95,18 @@
               Codigo Postal
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="codigo_postal" name="codigo_postal" type="text" placeholder="Codigo Postal">
+            id="codigo_postal" name="codigo_postal" type="text" placeholder="Codigo Postal" onkeypress="soloNumeros()" maxlength="5">
           </div>
         </div>
 
         <hr class="divide-y divide-blue-300">
         <div class="divide-y divide-blue-300">
-          <div class="text-center py-2">Nombre de los datos medicos</div>
+          <div class="text-center py-2">Datos Medicos</div>
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="curp">CURP</label>
+            <label class="uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="curp">CURP</label> <small class="text-sm text-gray-400"> (Letras en Mayusculas)</small>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             id="curp" name="curp" type="text" placeholder="CURP">
           </div>
@@ -114,7 +114,7 @@
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label for="ssn" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">SSN</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text" name="ssn" id="ssn" placeholder="SSN">
+            type="text" name="ssn" id="ssn" placeholder="SSN" maxlength="11" onkeypress="soloNumeros()">
           </div>
 
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -138,19 +138,19 @@
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="alergias">Alergias</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="alergias" name="alergias" type="text" placeholder="Alergias">
+            id="alergias" name="alergias" type="text" placeholder="Alergias" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
 
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label for="alergias_medicamento" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Alergias a Medicamentos</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text" name="alergias_medicamento" id="alergias_medicamento" placeholder="Alergias a Medicamentos">
+            type="text" name="alergias_medicamento" id="alergias_medicamento" placeholder="Alergias a Medicamentos" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
 
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label for="complicaciones_medicas" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Complicaciones Medicas</label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text" name="complicaciones_medicas" id="complicaciones_medicas" placeholder="Complicaciones Medicas">    
+            type="text" name="complicaciones_medicas" id="complicaciones_medicas" placeholder="Complicaciones Medicas" maxlength="50" onkeypress="return soloLetras(event)">    
           </div>
         </div>
 
@@ -165,28 +165,28 @@
               Nombre Completo Madre
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="nombre_madre" name="nombre_madre" type="text" placeholder="Nombre Madre">
+            id="nombre_madre" name="nombre_madre" type="text" placeholder="Nombre Madre" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="domicilio_madre">
               Domicilio
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="domicilio_madre" name="domicilio_madre" type="text" placeholder="Domicilio">
+            id="domicilio_madre" name="domicilio_madre" type="text" placeholder="Domicilio" maxlength="50">
           </div>
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="colonia_madre">
               Colonia
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="colonia_madre" name="colonia_madre" type="text" placeholder="Colonia">
+            id="colonia_madre" name="colonia_madre" type="text" placeholder="Colonia" maxlength="50">
           </div>
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_madre">
               Telefono
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="telefono_madre" name="telefono_madre" type="text" placeholder="Telefono">
+            id="telefono_madre" name="telefono_madre" type="text" placeholder="Telefono" maxlength="10" onkeypress="soloNumeros()">
           </div>
 
           <div class="w-full md:w-1/4 px-3">
@@ -194,28 +194,28 @@
               Nombre Completo Padre
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="nombre_padre" name="nombre_padre" type="text" placeholder="Nombre Padre">
+            id="nombre_padre" name="nombre_padre" type="text" placeholder="Nombre Padre" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="domicilio_padre">
               Domicilio
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="domicilio_padre" name="domicilio_padre" type="text" placeholder="Domicilio">
+            id="domicilio_padre" name="domicilio_padre" type="text" placeholder="Domicilio" maxlength="50">
           </div>
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="colonia_padre">
               Colonia
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="colonia_padre" name="colonia_padre" type="text" placeholder="Colonia">
+            id="colonia_padre" name="colonia_padre" type="text" placeholder="Colonia" maxlength="50">
           </div>
           <div class="w-full md:w-1/4 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_padre">
               Telefono
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="telefono_padre" name="telefono_padre" type="text" placeholder="Telefono">
+            id="telefono_padre" name="telefono_padre" type="text" placeholder="Telefono" maxlength="10" onkeypress="soloNumeros()">
           </div>
         </div>
 
@@ -225,21 +225,21 @@
               Contacto de Emergencia
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="nombre_contacto" name="nombre_contacto" type="text" placeholder="Contacto de Emergencia">
+            id="nombre_contacto" name="nombre_contacto" type="text" placeholder="Contacto de Emergencia" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
           <div class="w-full md:w-1/3 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_contacto">
               Telefono
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="telefono_contacto" name="telefono_contacto" type="text" placeholder="Telefono del Contacto">
+            id="telefono_contacto" name="telefono_contacto" type="text" placeholder="Telefono del Contacto" maxlength="10" onkeypress="soloNumeros()">
           </div>
           <div class="w-full md:w-1/3 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="parentesco_contacto">
               Parentesco
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="parentesco_contacto" name="parentesco_contacto" type="text" placeholder="Parentesco">
+            id="parentesco_contacto" name="parentesco_contacto" type="text" placeholder="Parentesco" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
 
           <div class="w-full md:w-1/3 px-3">
@@ -247,21 +247,21 @@
               Contacto de Emergencia 2
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="nombre_contacto2" name="nombre_contacto2" type="text" placeholder="Contacto de Emergencia 2">
+            id="nombre_contacto2" name="nombre_contacto2" type="text" placeholder="Contacto de Emergencia 2" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
           <div class="w-full md:w-1/3 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="telefono_contacto2">
               Telefono
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="telefono_contacto2" name="telefono_contacto2" type="text" placeholder="Telefono contacto">
+            id="telefono_contacto2" name="telefono_contacto2" type="text" placeholder="Telefono contacto" maxlength="10" onkeypress="soloNumeros()">
           </div>
           <div class="w-full md:w-1/3 px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="parentesco_contacto2">
               Parentesco
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            id="parentesco_contacto2" name="parentesco_contacto2" type="text" placeholder="Parentesco">
+            id="parentesco_contacto2" name="parentesco_contacto2" type="text" placeholder="Parentesco" maxlength="50" onkeypress="return soloLetras(event)">
           </div>
         </div>
 

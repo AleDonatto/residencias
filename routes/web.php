@@ -54,4 +54,6 @@ Route::get('cursos_alumnos',[CursosAlumnosController::class, 'index'])->name('cu
 ->middleware('auth','role:Alumno');
 Route::get('cursos_alumnos/{id}',[CursosAlumnosController::class, 'show'])->name('cursos_alumnos.show')->middleware('auth','role:Alumno');
 Route::get('horarios_alumnos',[PrivateController::class, 'horario_alumno'])->name('horarios_alumnos')->middleware('auth','role:Alumno');
+
+Route::post('sendSolicitud', [PrivateController::class, 'sendSolicitud'])->name('sendSolicitud')->middleware('auth','role:Alumno');
 /* * */

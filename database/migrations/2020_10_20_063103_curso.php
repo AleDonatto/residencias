@@ -15,9 +15,9 @@ class Curso extends Migration
     {
         Schema::create('curso', function (Blueprint $table) {
             $table->id('idCurso');
-            $table->string('nombreCurso');
-            $table->string('descripcion');
-            $table->string('codigoIns');
+            $table->string('nombreCurso', 50);
+            $table->string('descripcion', 50);
+            $table->string('codigoIns', 10);
             $table->unsignedBigInteger('docente_id');
             $table->unsignedBigInteger('materia_id');
             $table->unsignedBigInteger('periodo_id');

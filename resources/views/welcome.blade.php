@@ -44,7 +44,7 @@
                             <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                                 <div class="flex items-center justify-between w-full md:w-auto">
                                     <a href="#" aria-label="Home">
-                                        <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo.jpeg') }}" alt="Logo tecnologico ITA">
+                                        <img class="h-8 w-auto sm:h-10" src="{{ asset('img/logo-ita.png') }}" alt="Logo tecnologico ITA">
                                     </a>
                                     <div class="-mr-2 flex items-center md:hidden">
                                         <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" id="main-menu" aria-label="Main menu" aria-haspopup="true">
@@ -59,17 +59,17 @@
                                
                                 @if(Route::has('login'))
                                     @auth
-                                    <a href="{{ url('/dashboard') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Dashboard</a>
+                                    <a href="{{ url('/dashboard') }}" class="ml-4 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Dashboard</a>
                                     @else
                                         <a href="{{ route('invitado') }}" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Invitado</a>
                                         @if(Route::has('register'))
-                                        <a href="{{ route('register') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Alumno</a>
+                                        <a href="{{ route('register') }}" class="ml-4 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Alumno</a>
                                         @endif
 
                                         @if(Route::has('register_docente'))
-                                        <a href="{{ route('register_docente') }}" class="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Docente</a>
+                                        <a href="{{ route('register_docente') }}" class="ml-4 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Docente</a>
                                         @endif
-                                        <a href="{{ url('/login') }}" class="ml-8 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Iniciar Sesion</a>
+                                        <a href="{{ url('/login') }}" class="ml-4 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Iniciar Sesion</a>
                                     @endif
                                 @endif
                             </div>
@@ -144,7 +144,8 @@
                                 <span class="text-indigo-600"> ITA Works-Online</span>
                             </h2>
                             <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+                                Fortalecer el conocimiento de las y los alumnos en el aprovechamiento de las multiplataformas digitales con el 
+                                uso de tecnologias de la informacion.
                             </p>
                             <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                                 <div class="rounded-md shadow">

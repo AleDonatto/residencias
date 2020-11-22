@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <!--<x-jet-authentication-card-logo />-->
-            <img src="{{ asset('img/logo.jpeg') }}" alt="logo tecnologico" width="100px" height="100px">
+            <img src="{{ asset('img/logo-ita.png') }}" alt="logo tecnologico" width="100px" height="100px">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -12,13 +12,13 @@
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <x-jet-label value="{{ __('Nombre') }}" />
-                    <x-jet-input class="block mt-1 w-full" type="text" name="name" :value="old('name')" 
-                    required autofocus autocomplete="name" />
+                    <x-jet-input class="block mt-1 w-full capitalize" type="text" name="name" :value="old('name')" 
+                    required autofocus autocomplete="name" placeholder="Escribe tu Nombre" onkeypress="return soloLetras(event)"/>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <x-jet-label value="{{ __('Apellidos') }}"></x-jet-label>
-                    <x-jet-input class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" 
-                    required autocomplete="lastname"></x-jet-input>
+                    <x-jet-input class="block mt-1 w-full capitalize" type="text" name="lastname" :value="old('lastname')" 
+                    required autocomplete="lastname" placeholder="Escribe tus Apellidos" onkeypress="return soloLetras(event)"></x-jet-input>
                 </div>
             </div>
 
@@ -26,18 +26,18 @@
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <x-jet-label value="{{ __('Clave del Docente') }}"></x-jet-label>
                     <x-jet-input class="block mt-1 w-full" type="text" name="matricula" :value="old('matricula')" 
-                    required ></x-jet-input>
+                    required placeholder="Clave de Docente" maxlength="8" onkeypress="soloNumeros()" ></x-jet-input>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
-                    <x-jet-label value="{{ __('RFC') }}"></x-jet-label>
-                    <x-jet-input class="block mt-1 w-full" type="text" name="rfc" required ></x-jet-input>
+                    <label for="RFC" class="text-sm">RFC</label><small class="text-xs text-gray-400"> (Letras en Mayusculas) </small>
+                    <x-jet-input class="block mt-1 w-full" type="text" name="rfc" required placeholder="Escribe RFC" ></x-jet-input>
                 </div>
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Email') }}" />
+                <label for="email" class="text-sm">Email</label><small class="text-sm text-gray-400"> (Institucional)</small>
                 <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" 
-                required />
+                required placeholder="Lxxxxxxxx@acapulco.t" />
             </div>
 
             <div class="flex flex-wrap -mx-3 mt-4">

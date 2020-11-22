@@ -18,6 +18,7 @@ module.exports = {
     variants: {
         opacity: ['responsive', 'hover', 'focus', 'disabled'],
         animation: ['responsive', 'motion-safe', 'motion-reduce'],
+        transitionProperty: ['responsive', 'motion-safe', 'motion-reduce']
     },
 
     plugins: [require('@tailwindcss/ui')],
