@@ -6,17 +6,17 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('img/logo.jpeg') }}" alt="logo tecnologico" width="50px" height="50px">
+                        <img src="{{ asset('img/logo-ita.png') }}" alt="logo tecnologico" width="50px" height="50px">
                         <!--<x-jet-application-mark class="block h-9 w-auto" />-->
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <!--<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                </div>
+                </div>-->
             </div>
 
             <!-- Settings Dropdown -->
