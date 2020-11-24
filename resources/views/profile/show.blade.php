@@ -28,13 +28,13 @@
             </div>
             @endif
 
-            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+            <!--@if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                 <x-jet-section-border />
 
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.two-factor-authentication-form')
                 </div>
-            @endif
+            @endif-->
 
             <x-jet-section-border />
 
@@ -50,3 +50,8 @@
         </div>
     </div>
 </x-app-layout>
+
+@push('scripts')
+<script src="{{ asset('js/datos.js') }}"></script>
+@endpush
+

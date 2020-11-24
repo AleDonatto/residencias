@@ -37,17 +37,6 @@ buttonCloseMobiel.addEventListener('click', () => {
     menuMobile.classList.toggle('hidden')
 })*/
 
-const mensajeSave = document.querySelector('#mensajeSave')
-const buttonSave = document.querySelector('#save')
-
-buttonSave.addEventListener('click', () => {
-    setTimeout(() => {
-       mensajeSave.classList.toggle('hidden'); 
-    }, 4000);
-
-} );
-
-
 
 function soloNumeros(){
     if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;
@@ -70,5 +59,3 @@ function soloLetras(e){
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
 }
-
-

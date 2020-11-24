@@ -21,6 +21,10 @@ class PrivateController extends Controller
     }
     
     //vista de descripcion del curso para el alumno
+    public function allCursos(){
+        return view('alumnos.allCursos');
+    }
+
     public function descripcionCursoAlumno($id){
         $curso = DB::table('curso')
         ->join('docente', 'curso.docente_id', '=' , 'docente.idDocente')

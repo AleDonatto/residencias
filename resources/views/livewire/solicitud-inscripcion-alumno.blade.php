@@ -45,8 +45,11 @@
           
           <div class="col-end-7 col-span-3">
             <h3 class="text-3xl text-blue-700">Contenido del Curso</h3>
+
+            
   
             <div class="card mx-5">
+              
               <h4 class="text-xl mx-3 text-blue-800">1.- The quick brown fox jumped over the lazy dog.</h4>
               <p class="mx-5 text-sm text-gray-500">1.1- The quick brown fox jumped over the lazy dog.</p>
               <p class="mx-5 text-sm text-gray-500">1.2- The quick brown fox jumped over the lazy dog.</p>

@@ -194,21 +194,21 @@
                     </div>
 
                     <div class="w-full md:w-1/3 px-3">
-                        <x-jet-label for="contacto" value="{{ __('Contacto de Emergencia') }}" />
-                        <x-jet-input id="contacto" type="text" class="mt-1 block w-full" wire:model.defer="contacto2" />
-                        <x-jet-input-error for="contacto" class="mt-2" />
+                        <x-jet-label for="contacto2" value="{{ __('Contacto de Emergencia') }}" />
+                        <x-jet-input id="contacto2" type="text" class="mt-1 block w-full" wire:model.defer="contacto2" />
+                        <x-jet-input-error for="contacto2" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/3 px-3">
-                        <x-jet-label for="telefono_contacto" value="{{ __('Telefono') }}" />
-                        <x-jet-input id="telefono_contacto" class="mt-1 block w-full" type="text" wire:model.defer="telefono_contacto2" />
-                        <x-jet-input-error for="telefono_contacto" class="mt-2" />
+                        <x-jet-label for="telefono_contacto2" value="{{ __('Telefono') }}" />
+                        <x-jet-input id="telefono_contacto2" class="mt-1 block w-full" type="text" wire:model.defer="telefono_contacto2" />
+                        <x-jet-input-error for="telefono_contacto2" class="mt-2" />
                     </div>
 
                     <div class="w-full md:w-1/3 px-3">
-                        <x-jet-label for="parentesco_contacto" value="{{ __('Parentesco') }}" />
-                        <x-jet-input id="parentesco_contacto" name="parentesco_contacto" type="text" class="mt-1 block w-full" wire:model.defer="parentesco_contacto2" />
-                        <x-jet-input-error for="parentesco_contacto" class="mt-2" />
+                        <x-jet-label for="parentesco_contacto2" value="{{ __('Parentesco') }}" />
+                        <x-jet-input id="parentesco_contacto2" name="parentesco_contacto2" type="text" class="mt-1 block w-full" wire:model.defer="parentesco_contacto2" />
+                        <x-jet-input-error for="parentesco_contacto2" class="mt-2" />
                     </div>
                 </div>
 

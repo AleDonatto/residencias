@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             PeridoSeeder::class,
             PermisosSeeder::class,
             RolesSeder::class,
+            Temas::class,
+            Subtemas::class,
         ]);
     }
 }
