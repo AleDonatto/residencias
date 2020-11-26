@@ -21,10 +21,6 @@
                 </div>
                 <div>
                     <dl>
-                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm leading-5 font-medium text-gray-500">Codigo de Inscripcion al Curso</dt>
-                            <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{{ $curso->codigoIns }}</dd>
-                        </div>
                         @foreach($materia as $item)
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm leading-5 font-medium text-gray-500">Nombre de la Materia</dt>
@@ -88,30 +84,88 @@
         </div>
 
         <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
-            {{ __('Agregar Alumnos al Curso') }}
+            {{ __('Contenido del curso') }}
         </h2>
 
         <div class="form-task">
-            <form action="" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post">
-                <div class="mb-4 max-w-lg">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nControl">
-                      Numero de Control
-                    </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Numero de Control">
-                </div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                    Agregar Alumno
-                </button>
-            </form>
+            <livewire:temas-materia :idMateria="$curso->materia_id"></livewire:temas-materia>
         </div>
 
         <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
-            {{ __('Agregar Tareas') }}
+            {{ __('Alumnos Inscritos al Curso') }}
         </h2>
 
         <div class="form-task">
-
+            <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="form-task">
+<div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Name
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Title
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Role
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        Jane Cooper
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        jane.cooper@example.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
+                  <div class="text-sm text-gray-500">Optimization</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    Active
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  Admin
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                </td>
+              </tr>
+  
+              <!-- More rows... -->
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
+  </div>
+  
+        </div>
+
 
     </div>
 

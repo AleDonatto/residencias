@@ -15,8 +15,8 @@ class Docente extends Migration
     {
         Schema::create('docente', function (Blueprint $table) {
             $table->id('idDocente');
-            $table->string('matricula');
-            $table->string('RFC');
+            $table->string('matricula',20);
+            $table->string('RFC',15);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -15,8 +15,8 @@ class Alumnos extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id('idAlumno');
-            $table->string('nControl');
-            $table->string('carrera');
+            $table->string('nControl',10);
+            $table->string('carrera',10);
             $table->integer('semestre');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 

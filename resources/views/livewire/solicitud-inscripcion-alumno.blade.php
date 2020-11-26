@@ -35,9 +35,9 @@
             <h4 class="text-3xl text-blue-700">Descripcion</h4>
             <div class="">
                 @foreach($curso as $item)
-                <p class="text-sm text-gray-600">
-                "{{ $item->descripcion }}"
-                </p>
+                  <p class="text-sm text-gray-600">
+                    "{{ $item->descripcion }}"
+                  </p>
                 @endforeach
 
             </div>
@@ -45,38 +45,10 @@
           
           <div class="col-end-7 col-span-3">
             <h3 class="text-3xl text-blue-700">Contenido del Curso</h3>
-
-            
-  
             <div class="card mx-5">
-              
-              <h4 class="text-xl mx-3 text-blue-800">1.- The quick brown fox jumped over the lazy dog.</h4>
-              <p class="mx-5 text-sm text-gray-500">1.1- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">1.2- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">1.3- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">1.4- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">1.5- The quick brown fox jumped over the lazy dog.</p>
-  
-              <h4 class="text-xl text-blue-800">2.- The quick brown fox jumped over the lazy dog.</h4>
-              <p class="mx-5 text-sm text-gray-500">2.1- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">2.2- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">2.3- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">2.4- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">2.5- The quick brown fox jumped over the lazy dog.</p>
-              
-              <h4 class="text-xl text-blue-800">3.- The quick brown fox jumped over the lazy dog.</h4>
-              <p class="mx-5 text-sm text-gray-500">3.1- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">3.2- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">3.3- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">3.4- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">3.5- The quick brown fox jumped over the lazy dog.</p>
-  
-              <h4 class="text-xl text-blue-800">4.- The quick brown fox jumped over the lazy dog.</h4>
-              <p class="mx-5 text-sm text-gray-500">4.1- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">4.2- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">4.3- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">4.4- The quick brown fox jumped over the lazy dog.</p>
-              <p class="mx-5 text-sm text-gray-500">4.5- The quick brown fox jumped over the lazy dog.</p>
+              @foreach($curso as $item)
+                <livewire:temas-materia :idMateria="$item->materia_id" ></livewire:temas-materia>
+              @endforeach
             </div>
           </div>
         </div>

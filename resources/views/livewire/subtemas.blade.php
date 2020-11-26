@@ -1,3 +1,5 @@
 <div>
-    {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
+    @foreach($subtemas as $item)
+        <p class="mx-5 text-sm text-gray-500">{{ $item->subindice.' .- '.$item->nombre_subindice }}</p>
+    @endforeach
 </div>

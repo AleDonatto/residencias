@@ -31,7 +31,9 @@ class PagesController extends Controller
 
         $messages = [
             'required' => 'El campo :attribute es requerido.',
-            'email' => 'el campo :attribute debe ser un e-mail valido.'
+            'email' => 'El campo :attribute debe ser un e-mail valido.',
+            'min' => 'El campo :attribute debe tener minimo de 5 caracteres',
+            'max' => 'El campo :attribute debe tener maximo de 15 caracteres'
         ];
 
         $rules = [
@@ -39,7 +41,7 @@ class PagesController extends Controller
             'lastname' => 'required|string',
             'matricula' => 'required|integer',
             'email' => 'required|email',
-            'password' => 'required|string',
+            'password' => 'required|string|min:5|max:15',
             'password_confirmation' => 'required|string',
             'carrera' => 'required|string',
             'semestre' => 'required|string'
@@ -110,14 +112,16 @@ class PagesController extends Controller
             'lastname' => 'required|string',
             'matricula' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|string',
+            'password' => 'required|string|min:5|max:15',
             'password_confirmation' => 'required|string',
             'rfc' => 'required|string'
         ];
 
         $messages = [
             'required' => 'El campo :attribute es requerido.',
-            'email' => 'el campo :attribute debe ser un e-mail valido.'
+            'email' => 'el campo :attribute debe ser un e-mail valido.',
+            'min' => 'El campo :attribute debe tener minimo de 5 caracteres',
+            'max' => 'El campo :attribute debe tener maximo de 15 caracteres'
         ];
 
         $validator = Validator::make($request->all(),$rules)->validate();

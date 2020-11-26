@@ -38,12 +38,12 @@ class DatosAlumnos extends Migration
             $table->string('direccion_padre',50);
             $table->string('colonia_padre',50);
             $table->string('tel_padre',10);
-            $table->string('contacto_emergencia');
-            $table->string('tel_contacto');
-            $table->string('parentesco');
-            $table->string('contacto_emergencia2');
-            $table->string('tel_contacto2');
-            $table->string('parentesco2');    
+            $table->string('contacto_emergencia',50);
+            $table->string('tel_contacto',15);
+            $table->string('parentesco',50);
+            $table->string('contacto_emergencia2',50);
+            $table->string('tel_contacto2',15);
+            $table->string('parentesco2',50);    
             $table->foreign('alumno_id')->references('idAlumno')->on('alumnos');  
             $table->timestamps();
         });

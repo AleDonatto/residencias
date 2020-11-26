@@ -17,9 +17,7 @@ class Subtemas extends Component
     }
 
     public function getSubtemas(){
-
-        $this->subtemas = Subtemas_model::where('tema_id', $this->idTema)
-        ->get();
+        $this->subtemas = Subtemas_model::where('tema_id', $this->idTema)->get();
     }
 
 

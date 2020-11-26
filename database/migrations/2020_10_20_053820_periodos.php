@@ -15,7 +15,7 @@ class Periodos extends Migration
     {
         Schema::create('periodo', function (Blueprint $table) {
             $table->id('idPeriodo');
-            $table->string('periodo');
+            $table->string('periodo',50);
             $table->year('year');
             $table->timestamps();
         });

@@ -17,7 +17,6 @@ class TemasMateria extends Component
     }
 
     public function getTemas(){
-        $this->temas = Temas::where('materia_id', $this->idMateria)
-        ->get();
+        $this->temas = Temas::where('materia_id', $this->idMateria)->get();
     }
 }

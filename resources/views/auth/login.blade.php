@@ -17,7 +17,7 @@
 
             <div>
                 <label for="email" class="text-sm">Email</label> <small class="text-sm text-gray-400"> (Institucional)</small>
-                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="Lxxxxxxxx@acapulco.t" />
+                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="Lxxxxxxxx@acapulco.tecnm.mx" />
             </div>
 
             <div class="mt-4">
