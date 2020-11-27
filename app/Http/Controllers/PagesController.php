@@ -62,16 +62,16 @@ class PagesController extends Controller
             $email = $this->verificarEmail($request->email);
             
             if($email == 1 && $ncontrol == 1){
-                $erroremail = "Email alredy exist";
-                $errorNControl = "N. Control alredy exist";
+                $erroremail = "El Email ya a sido registrado";
+                $errorNControl = "N. Control ya a sido registrado";
                 return back()->withErrors(compact('erroremail','errorNControl'));
             }
             else if($email == 1 && $ncontrol == 0){
-                $erroremail = "Email alredy exist";
+                $erroremail = "El Email ya a sido registrado";
                 return back()->withErrors(compact('erroremail'));
             }
             else if($email == 0 && $ncontrol == 1){
-                $errorNControl = "N. Control alredy exist";
+                $errorNControl = "N. Control ya a sido registrado";
                 return back()->withErrors(compact('errorNControl'));
             } 
 
@@ -140,16 +140,16 @@ class PagesController extends Controller
             $email = $this->verificarEmail($request->email);
             
             if($email == 1 && $matricula == 1){
-                $erroremail = "Email alredy exist";
-                $errorNControl = "Matricula alredy exist";
+                $erroremail = "El email ya a sido resgistado";
+                $errorNControl = "La matricula ya a sido registrada";
                 return back()->withErrors(compact('erroremail','errorNControl'));
             }
             else if($email == 1 && $matricula == 0){
-                $erroremail = "Email alredy exist";
+                $erroremail = "El Email ya a sido registrado";
                 return back()->withErrors(compact('erroremail'));
             }
             else if($email == 0 && $matricula == 1){
-                $errorNControl = "Matricula alredy exist";
+                $errorNControl = "La Matricula ya a sido registrada";
                 return back()->withErrors(compact('errorNControl'));
             }
 

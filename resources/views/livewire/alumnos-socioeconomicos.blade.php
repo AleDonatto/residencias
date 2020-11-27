@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update the socioeconomic data information for your account.') }}
+        {{ __('Actulize la informacion de sus datos Socioeconomicos de su perfil.') }}
     </x-slot>
 
     <x-slot name="content">
@@ -224,13 +224,15 @@
                     </div>
                 </div>
 
-                <div class="flex justify-end">
-                    <p class="animate-pulse text-gray-400 mx-8" id="mensajeSave">
-                        {{ $message }}
-                    </p>
-                    <x-jet-button id="save">
-                        {{ __('Save') }}
-                    </x-jet-button>  
+                <div class="flex justify-end mb-1">
+                    <div class="mt-3">
+                        <p class="animate-pulse text-gray-400 mx-8" id="mensajeSave">
+                            {{ $message }}
+                        </p>
+                        <x-jet-button id="save">
+                            {{ __('Guardar') }}
+                        </x-jet-button>  
+                    </div>
                 </div>
             </form>
         </div>
@@ -243,7 +245,7 @@
     </x-slot>
   
     <x-slot name="description">
-        {{ __('Update the socioeconomic data information for your account.') }}
+        {{ __('Actulize la informacion de sus datos Socioeconomicos de su perfil.') }}
     </x-slot>
   
     <x-slot name="content">

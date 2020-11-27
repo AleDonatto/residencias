@@ -22,7 +22,7 @@
 
             <div class="mt-4">
                 <x-jet-label value="{{ __('Contraseña') }}" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" minlength="5" maxlength="15" />
             </div>
 
             <div class="block mt-4">
