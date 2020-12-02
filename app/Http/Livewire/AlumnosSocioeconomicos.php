@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Models\Alumnos;
 use App\Models\Alumnos_datos;
 
@@ -13,6 +14,7 @@ class AlumnosSocioeconomicos extends Component
 
     public $alumno_id,$lugNac,$fechaNac,$genero,$estado_civil,$direccion,$colonia,$cp,$ciudad,$telefono,$curp,$num_seguro;
     public $tipo_sangre,$alergias,$medicamentos_alergicos,$complicaciones_medicas;
+    public $dia, $mes, $year;
     public $nom_madre,$direccion_madre,$tel_madre,$colonia_madre,$nom_padre,$direccion_padre,$tel_padre,$colonia_padre;
     public $contacto,$telefono_contacto,$parentesco_contacto,$contacto2,$telefono_contacto2,$parentesco_contacto2; 
     public $message;
@@ -63,7 +65,7 @@ class AlumnosSocioeconomicos extends Component
         Alumnos_datos::where('alumno_id', $this->alumno_id)
         ->update([
             'lugarNac' => $this->lugNac,
-            'fechaNac' => $this->fechaNac,
+            'fechaNac' => $this->year.'/'.$this->mes.'/'.$this->dia,
             'genero' => $this->genero,
             'estado_civil' => $this->estado_civil,
             'direccion' => $this->direccion,
@@ -137,6 +139,10 @@ class AlumnosSocioeconomicos extends Component
 
         }
 
+        $date = Carbon::parse($this->fechaNac);
+        $this->mes = $date->month;
+        $this->dia = $date->day;
+        $this->year = $date->year;
    
     }
 

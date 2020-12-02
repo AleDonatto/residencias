@@ -43,7 +43,9 @@ class DatosDocentesController extends Controller
         //
         $rules = [
             'lugar_nacimiento' => 'required|string',
-            'fecha_nacimiento' => 'required|string',
+            'year' => 'required',
+            'dia' => 'required',
+            'mes' => 'required', 
             'estado_civil' => 'required|string',
             'genero' => 'required|string', 
             'direccion' => 'required|string',
@@ -76,6 +78,13 @@ class DatosDocentesController extends Controller
             'curp' => [new CURP],
         ]);
 
+        $cheack = checkdate($request->mes, $request->dia, $request->year);
+
+        if(!$cheack){
+            $error = 'La fecha que ingreso no es una fecha valida';
+            return back()->withErrors($error);
+        }
+
         /*$validation = $request->validate([
             'lugar_nacimiento' => 'required|string',
             'fecha_nacimiento' => 'required|string',
@@ -106,7 +115,7 @@ class DatosDocentesController extends Controller
         $datos = new Docente_datos;
         $datos->docente_id = $idDocente->idDocente;
         $datos->lugarNac = $request->lugar_nacimiento;
-        $datos->fechaNac = $request->fecha_nacimiento;
+        $datos->fechaNac = $request->year.'/'.$request->mes.'/'.$request->dia;
         $datos->estado_civil = $request->estado_civil;
         $datos->genero = $request->genero;
         $datos->direccion = $request->direccion;

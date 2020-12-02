@@ -39,7 +39,7 @@ buttonCloseMobiel.addEventListener('click', () => {
 
 
 function soloNumeros(){
-    if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;
+    if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;
 }
 
 function soloLetras(e){

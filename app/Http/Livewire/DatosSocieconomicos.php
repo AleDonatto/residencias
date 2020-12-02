@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Docente;
+use Carbon\Carbon;
 use App\Models\Docente_datos;
 
 class DatosSocieconomicos extends Component
 {
     public $lugarNac, $fechaNac, $estado_civil, $genero;
+    public $dia, $mes, $year;
     public $idDatos, $direccion, $colonia, $ciudad, $telefono, $cp, $curp, $numSeguro, $tipo_sangre;
     public $alergias, $medAlergias, $compliMedicas, $contacto, $tel1, $parentesco1, $contacto2, $tel2, $parentesco2, $message;
 
@@ -51,7 +53,7 @@ class DatosSocieconomicos extends Component
         Docente_datos::where('docente_id', $this->idDatos)
         ->update([
             'lugarNac' => $this->lugarNac,
-            'fechaNac' => $this->fechaNac,
+            'fechaNac' => $this->year.'/'.$this->mes.'/'.$this->dia,
             'estado_civil' => $this->estado_civil,
             'genero' => $this->genero,
             'direccion' => $this->direccion,
@@ -106,6 +108,10 @@ class DatosSocieconomicos extends Component
             $this->tel2 = $item->tel_contacto2;
             $this->parentesco2 = $item->parentesco2;   
         }
+        $date = Carbon::parse($this->fechaNac);
+        $this->mes = $date->month;
+        $this->dia = $date->day;
+        $this->year = $date->year;
     }
 
 }

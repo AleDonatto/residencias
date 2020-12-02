@@ -25,8 +25,29 @@
               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="fecha_nacimiento">
                 Fecha Nacimiento
               </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-              type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Lugar Nacimiento">
+              @php
+                $date = \Carbon\Carbon::now();
+                $yearmax = $date->year - 18;
+                $yearmin = $date->year - 70;
+              @endphp
+              <select name="dia" id="dia" title="Dia" class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="1" selected>1</option>
+                @for($i=2; $i<=31; $i++)
+                <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+              </select>
+              <select name="mes" id="mes" title="Mes" class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="1" selected>1</option>
+                @for($i=2; $i<=12; $i++)
+                <option value="{{ $i }}">{{$i}}</option>
+                @endfor
+              </select>
+              <select name="year" id="year" title="Año" class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="{{ $yearmin }}">{{ $yearmin }}</option>
+                @for($i=$yearmin+1; $i<=$yearmax; $i++)
+                <option value="{{$i}}">{{ $i }}</option>
+                @endfor
+              </select>
             </div>
   
             <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
