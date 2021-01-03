@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\CargaAcademica;
+use App\Models\Alumnos;
 
 class SolicitudInscripcionAlumno extends Component
 {
@@ -19,7 +20,8 @@ class SolicitudInscripcionAlumno extends Component
     }
 
     public function getsId(){
-        $this->alumnoId = Auth::id(); 
+        $alumno = Alumnos::where('user_id',Auth::id() )->first();
+        $this->alumnoId = $alumno->idAlumno; 
     }
 
     public function sentSolicitud(){

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cursos;
 use App\Models\CargaAcademica;
+use App\Models\Alumnos;
 
 class PrivateController extends Controller
 {
@@ -34,9 +35,11 @@ class PrivateController extends Controller
         ->where('curso.idCurso',$id)
         ->get();
 
+        $alumnos = Alumnos::where('user_id', Auth::id())->first();
+
         $solicitud = DB::table('carga_academica')
         ->where('curso_id', $id)
-        ->where('alumno_id', Auth::id())
+        ->where('alumno_id', $alumnos->idAlumno)
         ->count();
 
         $cursoId = $id;

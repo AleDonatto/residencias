@@ -7,7 +7,7 @@
 
     <div class="container mx-auto px-4">
         <h4 class="font-sans text-gray-600 font-bold text-2xl my-2">Todos los Cursos</h4>
-        @livewire('alumnos-cursos')
+        <livewire:alumnos.alumnos-all-cursos />
     </div>
 
 </x-app-layout>

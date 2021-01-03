@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cursos;
+use Illuminate\Support\Facades\DB;
 
 class CursosAlumnosController extends Controller
 {
@@ -47,6 +49,14 @@ class CursosAlumnosController extends Controller
     public function show($id)
     {
         //
+        $idCurso = $id;
+        $curso = DB::table('curso')
+        ->join('periodo','curso.periodo_id','=','periodo.idPeriodo')
+        ->where('idCurso', $id)
+        ->select('curso.*','periodo.periodo','periodo.year')
+        ->get();
+
+        return view('alumnos.tareasCursos')->with(compact('idCurso','curso'));
     }
 
     /**

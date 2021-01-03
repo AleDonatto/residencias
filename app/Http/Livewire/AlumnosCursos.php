@@ -10,6 +10,8 @@ use App\Models\Alumnos;
 
 class AlumnosCursos extends Component
 {
+    public $cursosInscritos;
+
     public function render()
     {
         $idAlumno = Alumnos::where('user_id', Auth::user()->id )->first();
@@ -35,10 +37,12 @@ class AlumnosCursos extends Component
         ->select('curso.*','periodo.*')
         ->get();
 
+        $this->getCursosInscritos(); 
+
         return view('livewire.alumnos-cursos')->with(compact('cursos'));
     }
 
-    public function getCursos(){
+    public function getCursosInscritos(){
         $idAlumno = Alumnos::where('user_id', Auth::user()->id )->first();
 
         $year = date('Y');
@@ -52,14 +56,16 @@ class AlumnosCursos extends Component
             $periodo = 'Verano';
         }
 
-        $cursos = DB::table('curso')
-        ->join('materias', 'curso.materia_id', '=', 'materias.idMateria')
+        $this->cursosInscritos = DB::table('carga_academica')
+        ->join('curso', 'carga_academica.curso_id', '=', 'curso.idCurso')
+        ->join('periodo','curso.periodo_id','=','periodo.idPeriodo')
         ->join('docente', 'curso.docente_id', '=', 'docente.idDocente')
-        ->join('periodo', 'curso.periodo_id', '=', 'periodo.idPeriodo')
-        ->where('materias.academia', $idAlumno->carrera)
         ->where('periodo.periodo', $periodo)
         ->where('periodo.year', $year)
-        ->select('curso.*','periodo.*')
+        ->where('carga_academica.alumno_id', $idAlumno->idAlumno)
+        ->where('carga_academica.status', 1)
+        //->select('curso.nombreCurso','curso.descripcion','periodo.periodo','periodo.year')
+        ->select('curso.nombreCurso','curso.descripcion','curso.*')       
         ->get();
 
     }
