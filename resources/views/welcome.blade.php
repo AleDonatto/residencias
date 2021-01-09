@@ -295,7 +295,7 @@
             </div>
         </div>
 
-        <div class="footer mt-5 bg-blue-900 h-64">
+        <div class="footer mt-5 bg-blue-900 h-96">
             <div class="divide-y divide-y-reverse divide-gray-400">
                 <div class="py-2">
                     <div class="container mx-auto px-4">
@@ -320,14 +320,16 @@
                                     <p>1</p>
                                 </div>
                             </div>
-                            <div class=""></div>
+                            <div class="">
+                                <iframe class="w-5/6 h-64" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15273.324433852627!2d-99.8111116!3d16.8595076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2162d17e99742acb!2sTecnol%C3%B3gico%20Nacional%20de%20M%C3%A9xico%20Campus%20Acapulco!5e0!3m2!1ses-419!2smx!4v1610131578684!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
                         </div>
                     </div>        
                 </div>
 
                 <div class="py-2">
                     <div class="container mx-auto px-4 absolute mt-5">
-                        <p class="text-center text-white">© Copyright 2020 TecNM Campus Acapulco - Todos los Derechos Reservados</p>
+                        <p class="text-center text-white">© Copyright @php echo date('Y') @endphp TecNM Campus Acapulco - Todos los Derechos Reservados</p>
                         <p class="text-center"></p>
                     </div>
                 </div>

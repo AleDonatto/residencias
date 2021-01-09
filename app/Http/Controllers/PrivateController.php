@@ -62,6 +62,13 @@ class PrivateController extends Controller
         return redirect()->route('dashboard')->with($alerta);
     }
 
+    public function viewActividadAlumno($id){
+
+        return view('alumnos.viewActividad')->with(compact('id'));
+    }
+
+    /* fin metodos de alumnos */
+
     //docentes
     public function perfil_completo_docente(){
         return view('docente.datos_socioecon');
@@ -70,6 +77,15 @@ class PrivateController extends Controller
     public function horario_docente(){
         return view('docente.miHorario');
     }
+
+    public function formActividadesTemaCurso($curso, $tema){
+        return view('docente.addActividadTema')->with(compact('curso', 'tema'));
+    }
+
+    public function viewActividadDocente($idactividad){
+        return view('docente.viewActividad')->with(compact('idactividad'));
+    }
+    /** fin metodos docentes **/
 
     
 }

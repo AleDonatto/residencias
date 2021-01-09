@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class ActividadTema extends Component
 {
-    public $activdadTema, $cursoid;
+    public $actividadTema, $cursoid;
+
     public function render()
     {
         $this->getActividadTema();
@@ -18,7 +19,8 @@ class ActividadTema extends Component
         $this->actividadTema = DB::table('temas')
         ->join('actividadtemas', 'temas.idTema','=','actividadtemas.temas_id')
         ->where('actividadtemas.curso_id', $this->cursoid)
-        ->select('actividadtemas.*','temas.*')
+        ->select('temas.*', 'actividadtemas.*')
         ->get();
+
     }
 }

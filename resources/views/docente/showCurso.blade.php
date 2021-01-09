@@ -1,15 +1,23 @@
 <x-app-layout>
+  <x-slot name="header">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Datos Socioeconomicos') }}</h2>
+  </x-slot>
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Datos Socioeconomicos') }}
-        </h2>
-    </x-slot>
+  <div class="container mx-auto px-4">
 
-    <div class="container mx-auto px-4">
-        <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
-            {{ __('Curso: ') }} {{ $curso->nombreCurso }}
-        </h2>
+    @if (session()->has('message'))
+      <div class="w-full mt-5 h-12 flex justify-center bg-green-300 text-base rounded-lg border-green-200 shadow-2xl">
+        <div class="space-y-1 text-center">
+          <p></p>
+          <p></p>
+          <p class="align-middle">{{ session('message') }}</p>
+        </div>
+      </div>
+    @endif
+    
+    <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
+      {{ __('Curso: ') }} {{ $curso->nombreCurso }}
+    </h2>
 
         <div class="max-w-4xl mx-auto">
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -87,7 +95,7 @@
 
         <div class="form-task">
           @foreach($materia as $item)
-            <livewire:temas-materia :idMateria="$item->idMateria"></livewire:temas-materia>
+            <livewire:docentes.temas-curso :idMateria="$item->idMateria" :idCurso="$curso->idCurso" />
           @endforeach
         </div>
 

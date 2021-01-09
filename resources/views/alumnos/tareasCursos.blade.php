@@ -26,9 +26,6 @@
   <div class="container mx-auto px-4 mt-5">
     <div class="flex flex-col">
       <livewire:alumnos.actividad-tema :cursoid="$idCurso" />
-      <!--<div class="md:container md:mx-auto bg-gray-50 rounded-lg border-dashed shadow-md">1</div>
-      <div>2</div>
-      <div>3</div>-->
     </div>
   </div>
 </x-app-layout>

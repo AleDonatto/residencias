@@ -16,7 +16,7 @@ class Actividadtemas extends Migration
         Schema::create('actividadtemas', function (Blueprint $table) {
             $table->id('idActividadTemas');
             $table->string('nombreActividad',50);
-            $table->string('descripcionActiviad', 100); 
+            $table->string('descripcionActividad', 100); 
             $table->string('recursos', 100);
             $table->date('fechainicio');
             $table->date('fechalimite');
