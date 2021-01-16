@@ -13,14 +13,14 @@ class Subtemas extends Migration
      */
     public function up()
     {
-        Schema::create('subtemas', function (Blueprint $table) {
+        /*Schema::create('subtemas', function (Blueprint $table) {
             $table->id('idSubtema');
             $table->string('subindice', 10);
             $table->string('nombre_subindice',100);
             $table->unsignedBigInteger('tema_id');
             $table->foreign('tema_id')->references('idTema')->on('temas');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -30,6 +30,6 @@ class Subtemas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subtemas');
+        //Schema::dropIfExists('subtemas');
     }
 }

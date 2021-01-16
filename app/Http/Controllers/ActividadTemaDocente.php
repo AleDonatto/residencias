@@ -47,6 +47,8 @@ class ActividadTemaDocente extends Controller
     public function show($id)
     {
         //
+        $idactividad = $id;
+        return view('docente.viewActividad')->with(compact('idactividad'));
     }
 
     /**

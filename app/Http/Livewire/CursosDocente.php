@@ -27,16 +27,15 @@ class CursosDocente extends Component
         }else{
             $periodo = 'Verano';
         }
-
-
         
         $cursos = DB::table('curso')
         ->join('periodo','curso.periodo_id','=','idPeriodo')
+        ->join('materias', 'curso.materia_id', '=', 'idMateria')
         ->where('docente_id',$idDocente->idDocente)
         ->where('periodo.year', $year)
         ->where('periodo.periodo', $periodo)
-        ->select('curso.*', 'periodo.periodo')
-        ->get();
+        ->select('curso.*', 'materias.academia')
+        ->paginate(8);
 
         return view('livewire.cursos-docente')->with(compact('cursos'));
     }

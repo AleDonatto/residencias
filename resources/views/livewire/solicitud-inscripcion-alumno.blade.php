@@ -58,7 +58,7 @@
     <div class="container mx-auto px-4 text-center my-5">
         @if($solicitudes == 1)
         <p class="animate-pulse"><small class="text-sm text-gray-600">Ya has realizado una solicitud espera a ser aceptado</small></p>
-        <button type="button" disabled class="disabled:opacity-50 bg-blue-500 text-white font-bold py-2 px-4 rounded" disabled>
+        <button type="button" disabled class="cursor-wait disabled:opacity-50 bg-blue-500 text-white font-bold py-2 px-4 rounded" disabled>
             Enviar Solicitud de Inscrpcion
         </button>
         @else

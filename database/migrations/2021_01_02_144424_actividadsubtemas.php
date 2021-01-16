@@ -13,7 +13,7 @@ class Actividadsubtemas extends Migration
      */
     public function up()
     {
-        Schema::create('actividadsubtemas', function (Blueprint $table) {
+        /*Schema::create('actividadsubtemas', function (Blueprint $table) {
             $table->id('idActividadSubtemas');
             $table->string('nombreActividad',50);
             $table->string('descripcionActividad', 100);
@@ -25,7 +25,7 @@ class Actividadsubtemas extends Migration
             $table->foreign('subtemas_id')->references('idSubtema')->on('subtemas');
             $table->foreign('curso_id')->references('idCurso')->on('curso');
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -35,6 +35,6 @@ class Actividadsubtemas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividadsubtemas');
+        //Schema::dropIfExists('actividadsubtemas');
     }
 }

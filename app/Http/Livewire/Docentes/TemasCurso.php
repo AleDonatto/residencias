@@ -19,7 +19,7 @@ class TemasCurso extends Component
     }
 
     public function getTemas(){
-        $this->temas = Temas::where('materia_id', $this->idMateria)->get();
+        //$this->temas = Temas::where('materia_id', $this->idMateria)->get();
 
         //$select = 'SELECT temas.idTema,actividadtemas.idActividadTemas, CASE WHEN actividadtemas.temas_id IS NULL THEN 0 ELSE 1 END AS cantAct  FROM temas LEFT JOIN actividadtemas ON temas.idTema = actividadtemas.idActividadTemas WHERE temas.materia_id = ?';
 
@@ -28,6 +28,7 @@ class TemasCurso extends Component
         ->leftJoin('actividadtemas', 'temas.idTema', '=', 'actividadtemas.temas_id')
         ->where('temas.materia_id', $this->idMateria)
         ->select('temas.*','actividadtemas.idActividadTemas',DB::raw('case when actividadtemas.temas_id IS NULL then 0 ELSE 1 END AS cantAct'))
+        ->orderBy('temas.indice', 'asc')
         ->get();
     }
 }

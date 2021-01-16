@@ -17,7 +17,8 @@ class Curso extends Migration
             $table->id('idCurso');
             $table->string('nombreCurso', 50);
             $table->string('descripcion', 50);
-            $table->string('codigoIns', 10);
+            $table->string('horario', 50);
+            $table->string('aula', 10); 
             $table->unsignedBigInteger('docente_id');
             $table->unsignedBigInteger('materia_id');
             $table->unsignedBigInteger('periodo_id');

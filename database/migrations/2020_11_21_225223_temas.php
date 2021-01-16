@@ -15,8 +15,9 @@ class Temas extends Migration
     {
         Schema::create('temas', function (Blueprint $table) {
             $table->id('idTema');
+            $table->enum('tipo', ['1', '2']); 
             $table->string('indice', 10);
-            $table->string('nombreTema', 50);
+            $table->string('nombreTema', 120);
             $table->unsignedBigInteger('materia_id');
             $table->foreign('materia_id')->references('idMateria')->on('materias');
             $table->timestamps();

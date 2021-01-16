@@ -39,7 +39,7 @@ class AlumnosAllCursos extends Component
         ->where('materias.academia', $idAlumno->carrera)
         ->where('periodo.periodo', $periodo)
         ->where('periodo.year', $year)
-        ->select('curso.*','periodo.*')
+        ->select('curso.*','periodo.*','materias.academia')
         ->get();
     }
 }

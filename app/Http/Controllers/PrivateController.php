@@ -79,11 +79,8 @@ class PrivateController extends Controller
     }
 
     public function formActividadesTemaCurso($curso, $tema){
-        return view('docente.addActividadTema')->with(compact('curso', 'tema'));
-    }
-
-    public function viewActividadDocente($idactividad){
-        return view('docente.viewActividad')->with(compact('idactividad'));
+        //return view('docente.addActividadTema')->with(compact('curso', 'tema'));
+        return view('docente.addActividadTema', ['curso' => $curso, 'tema' => $tema ]);
     }
     /** fin metodos docentes **/
 

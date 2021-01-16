@@ -34,8 +34,8 @@ class AlumnosCursos extends Component
         ->where('materias.academia', $idAlumno->carrera)
         ->where('periodo.periodo', $periodo)
         ->where('periodo.year', $year)
-        ->select('curso.*','periodo.*')
-        ->get();
+        ->select('curso.*','periodo.*','materias.academia')
+        ->paginate(9);
 
         $this->getCursosInscritos(); 
 
@@ -58,6 +58,7 @@ class AlumnosCursos extends Component
 
         $this->cursosInscritos = DB::table('carga_academica')
         ->join('curso', 'carga_academica.curso_id', '=', 'curso.idCurso')
+        ->join('materias', 'curso.materia_id', '=', 'materias.idMateria')
         ->join('periodo','curso.periodo_id','=','periodo.idPeriodo')
         ->join('docente', 'curso.docente_id', '=', 'docente.idDocente')
         ->where('periodo.periodo', $periodo)
@@ -65,7 +66,7 @@ class AlumnosCursos extends Component
         ->where('carga_academica.alumno_id', $idAlumno->idAlumno)
         ->where('carga_academica.status', 1)
         //->select('curso.nombreCurso','curso.descripcion','periodo.periodo','periodo.year')
-        ->select('curso.nombreCurso','curso.descripcion','curso.*')       
+        ->select('curso.*','periodo.*','materias.academia')     
         ->get();
 
     }

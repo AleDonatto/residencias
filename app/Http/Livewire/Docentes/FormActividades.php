@@ -11,6 +11,7 @@ class FormActividades extends Component
     use WithFileUploads;
     public $curso, $tema;
     public $nombreActividad, $descripcionActividad, $fechaInicio, $fechaLimite, $recurso;
+    public $showfile = true;
 
     protected $rules = [
         'nombreActividad' => 'required|string',
@@ -60,7 +61,7 @@ class FormActividades extends Component
         $actividad = new Actividades;
         $actividad->nombreActividad = $this->nombreActividad;
         $actividad->descripcionActividad = $this->descripcionActividad;
-        $actividad->rescursos = ''; 
+        $actividad->recursos = $this->recurso->store('public'); 
         $actividad->fechainicio = $this->fechaInicio;
         $actividad->fechalimite = $this->fechaLimite;
         $actividad->temas_id = $this->tema;
@@ -71,4 +72,5 @@ class FormActividades extends Component
 
         return redirect()->route('cursos_docentes.show',$this->curso);
     }
+
 }
