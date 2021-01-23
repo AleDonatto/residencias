@@ -18,7 +18,6 @@ class MateriasSeeder extends Seeder
         DB::table('materias')->insert([
             'nombreMateria' => 'Fundamentos de Programacion',
             'semestre' => '1',
-            'planEstudio' => '',
             'claveMateria' => 'FUNDAMENTOS',
             'academia' => 'ISC'
         ]);
@@ -26,7 +25,6 @@ class MateriasSeeder extends Seeder
         DB::table('materias')->insert([
             'nombreMateria' => 'Programacion Orientada a Objetos',
             'semestre' => '2',
-            'planEstudio' => '',
             'claveMateria' => 'POO',
             'academia' => 'ISC'
         ]);
@@ -34,7 +32,6 @@ class MateriasSeeder extends Seeder
         DB::table('materias')->insert([
             'nombreMateria' => 'Estructura de datos',
             'semestre' => '3',
-            'planEstudio' => '',
             'claveMateria' => 'EST',
             'academia' => 'ISC'
         ]);
@@ -42,7 +39,6 @@ class MateriasSeeder extends Seeder
         DB::table('materias')->insert([
             'nombreMateria' => 'Topicos Avanzados de Programacion',
             'semestre' => '4',
-            'planEstudio' => '',
             'claveMateria' => 'TAP',
             'academia' => 'ISC'
         ]);
