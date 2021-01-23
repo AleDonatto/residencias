@@ -2,9 +2,9 @@
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     
     <div>
-        <div class="mt-10">
+        <div class="mt-5">
             <div class="my-5 mx-10 md:mt-0 md:col-span-2">
-                <p>{{$recurso}}</p>
+                <p>{{$nombreActividad}}</p>
                 <form action="" wire:submit.prevent="actividadStore" enctype="multipart/form-data">
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -31,6 +31,16 @@
                                     <input type="date" name="fechalimite" id="fechalimite" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('fechaLimite') border-red-600 @enderror"
                                     wire:model="fechaLimite">
                                     @error('fechaLimite')
+                                        <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="flex-auto">
+                                    <label for="puntuacion" class="block font-medium text-gray-700">Puntuacion</label>
+                                    <input type="number" name="" id="" wire:model="puntuacion" min="0" max="100" step="1" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('puntuacion') border-red-600 @enderror">
+                                    @error('puntuacion')
                                         <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -66,6 +76,12 @@
                                         </button>
                                     </div>
                                 </div>-->
+                                <div wire:loading wire:target="recurso" >
+                                    <div class="flex flex-auto">
+                                        <svg class="animate-spin w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                        <p class="">Cargando... Espere mientras se termina de cargar el archivo</p> 
+                                    </div> 
+                                </div>
                                 <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                     <div class="space-y-1 text-center">
                                         <!--<input type="file" name="" id="" wire:model="recurso">-->
@@ -94,5 +110,12 @@
             </div>
         </div>
     </div>
-    
 </div>
+
+@push('styles')
+<!--<link rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}">-->
+@endpush
+
+@push('scripts')
+<!--<script src="{{ asset('js/dropzone.min.js') }}"></script>-->
+@endpush

@@ -17,7 +17,6 @@ class Asignatura extends Migration
             $table->id('idMateria');
             $table->string('nombreMateria',70);
             $table->string('semestre',10);
-            $table->string('planEstudio');
             $table->string('claveMateria',15);
             $table->enum('academia',['ISC','LA','IBQ','IGE','IEM','CP','ARQ','CB']);
             $table->timestamps();

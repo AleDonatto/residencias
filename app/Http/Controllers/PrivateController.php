@@ -82,6 +82,14 @@ class PrivateController extends Controller
         //return view('docente.addActividadTema')->with(compact('curso', 'tema'));
         return view('docente.addActividadTema', ['curso' => $curso, 'tema' => $tema ]);
     }
+
+    public function descripcionAlumno($curso, $alumno){
+        return view('docente.descripcionAlumno', ['curso' => $curso,'idalumno' => $alumno ]);
+    } 
+
+    public function calActividades(){
+        return view('docente.calActividades');
+    }
     /** fin metodos docentes **/
 
     

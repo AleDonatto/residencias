@@ -43,6 +43,8 @@ Route::get('docente/cursos_docente/{id}',[ CursosController::class,'show'])->nam
 Route::get('horarios_docentes',[PrivateController::class, 'horario_docente'])->name('horario_docente')->middleware('auth','role:Docente');
 Route::get('docente/actividad/create/{curso}/{tema}',[PrivateController::class, 'formActividadesTemaCurso'])->name('docenteaddActividad')->middleware('auth');
 Route::get('docente/viewActividad/{id}', [ActividadTemaDocente::class, 'show'])->name('viewActividadDocente')->middleware('auth');
+Route::get('docente/curso/{curso}/descripcion_alumno/{alumno}', [PrivateController:: class, 'descripcionAlumno'])->name('descripcionAlumno')->middleware('auth');
+Route::get('docente/cal_actividades', [PrivateController::class, 'calActividades'])->name('calActividades')->middleware('auth');
 /* * */
 
 //rutas alumnos

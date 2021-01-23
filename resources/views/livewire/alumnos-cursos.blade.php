@@ -65,13 +65,16 @@
                                 <div class="category-badge flex-1 h-4 w-4 m rounded-full m-1 bg-green-100">
                                     <div class="h-2 w-2 rounded-full m-1 bg-green-500" ></div>
                                 </div>
-                                <div class="category-title flex-1 text-sm"> PHP</div>
+                                <div class="category-title flex-1 text-sm"> {{ $item->academia }}</div>
                             </div>
                             <a href="{{ route('cursos_alumnos.show',$item->idCurso) }}">
                                 <div class="title-post font-medium font-bold">{{ $item->nombreCurso }}</div>
                                 
                                 <div class="summary-post text-base">
                                     {{ $item->descripcion }} 
+                                </div>
+                                <div class="summary-post text-base text-justify" >
+                                    ({{ $item->horario  }}) - {{ $item->aula }}
                                 </div>
                             </a>
                         </div>

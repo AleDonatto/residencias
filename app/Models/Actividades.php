@@ -17,6 +17,7 @@ class Actividades extends Model
         'nombreActividad',
         'descripcionActividad',
         'recursos',
+        'puntuacion',
         'fechainicio',
         'fechalimite',
         'temas_id',

@@ -4,7 +4,6 @@
     @if(empty($temas))
         <h4 class="text-xl mx-3 text-blue-800">No hay temas agregados</h4>
     @else
-        <p>{{ $temas }}</p>
         @foreach($temas as $item)
             <div class="flex justify-start content-center">
                 @if($item->tipo == 1 )

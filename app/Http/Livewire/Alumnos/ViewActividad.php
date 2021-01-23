@@ -5,20 +5,37 @@ namespace App\Http\Livewire\Alumnos;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use App\Models\ActividadAlumnos;
 
 class ViewActividad extends Component
 {
     use WithFileUploads;
 
-    public $idactividad, $actividad;
-    public $archivoActividad, $path;
+    public $idactividad, $actividad, $verificacionActividad, $fechaLimite, $fechaNow;
+    public $archivoactividad, $path;
+    public $response;
 
     public function render()
     {
         $this->getActividad(); 
+        $this->verificarActividad();
         return view('livewire.alumnos.view-actividad');
+    }
+
+    protected $rules = [
+        'archivoactividad' => 'required|max:25600',
+    ];
+
+    protected $messages = [
+        'archivoactividad.required' => 'Es ncesario agregar un documento.',
+    ];
+
+    public function mount()
+    {
+        //$this->getActividad();
     }
 
     public function getActividad(){
@@ -27,16 +44,59 @@ class ViewActividad extends Component
         ->get();
 
         foreach($this->actividad as $item){
-            $this->path = $item->recursos;  
+            $this->fechaLimite = $item->fechalimite;  
         }
+
+
+        $this->fechaNow = date('Y-m-d');
     }
 
-    public function storeActividad(Request $request){
-        //$this->archivoActividad = $request->archivo; 
-        $this->validate([
-            'archivoActividad' => 'max:25600', // 25MB Max
-            'archivoActividad.max' => 'Tamaño maximo de archivo es de 25MB.'
-        ]);
+    public function verificarActividad(){
+        $idAlumno = DB::table('alumnos')->where('user_id', Auth::id())->first();
+
+        $this->verificacionActividad = DB::table('actividades_alumnos')
+        ->where('alumno_id', $idAlumno->idAlumno)
+        ->where('actividad_id', $this->idactividad)
+        ->count();
+    }
+
+    public function storeActividad(){
+        //$validatedData = $this->validate();
+        $validatedData = $this->validate(
+            ['archivoactividad' => 'required|max:25600'],
+            [
+                'archivoactividad.required' => 'Es necesario agregar un archivo.',
+                'archivoactividad.max' => 'Tamaño maximo de documento 25MB.',
+            ]
+        );
+
+        $actividadValidation = DB::table('actividadtemas')
+        ->where('idActividadTemas', $this->idactividad)
+        ->first();
+
+        $idAlumno = DB::table('alumnos')->where('user_id', Auth::id())->first();
+
+        $date = date('Y-m-d');
+        $dateLimite = date($actividadValidation->fechalimite);
+        $time = date('H:i:s');
+
+        if($date < $dateLimite){
+            
+            $alumnos = new ActividadAlumnos;
+            $alumnos->archivo = $this->archivoactividad->store('public'); 
+            $alumnos->fechaEntrega = $date;
+            $alumnos->hora = $time;
+            $alumnos->actividad_id = $this->idactividad;
+            $alumnos->alumno_id = $idAlumno->idAlumno;
+            $alumnos->save();
+
+            $this->response = 'ok';
+
+        }else{
+            $this->response = 'se te va el tren araña'; 
+        }  
+        //session()->flash('message', 'Post successfully updated.');
+
     }
 
     public function downloadRecurso($recursos){

@@ -10,21 +10,25 @@ class FormActividades extends Component
 {
     use WithFileUploads;
     public $curso, $tema;
-    public $nombreActividad, $descripcionActividad, $fechaInicio, $fechaLimite, $recurso;
+    public $nombreActividad, $descripcionActividad, $fechaInicio, $fechaLimite, $recurso, $puntuacion=0;
     public $showfile = true;
 
     protected $rules = [
         'nombreActividad' => 'required|string',
         'descripcionActividad' => 'required|string',
         'fechaInicio' => 'required|date',
-        'fechaLimite' => 'required|date'
+        'fechaLimite' => 'required|date',
+        'puntuacion' => 'required|integer|min:0|max:100'
     ]; 
 
     protected $messages = [
         'nombreActividad.required' => 'Este campo es requerido.',
         'descripcionActividad.required' => 'Este campo es requerido.',
         'fechaInicio.required' => 'Este campo es requerido.',
-        'fechaLimite.required' => 'Este campo es requerido.'
+        'fechaLimite.required' => 'Este campo es requerido.',
+        'puntuacion.required' => 'Este campo es requerido',
+        'puntuacion.min' => 'El valor minimo es 0',
+        'puntuacion.max' => 'El valor maximo es 100'
     ];
 
     public function render()
