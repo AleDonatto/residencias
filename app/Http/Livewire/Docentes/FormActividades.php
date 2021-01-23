@@ -46,6 +46,7 @@ class FormActividades extends Component
             $actividad->nombreActividad = $this->nombreActividad;
             $actividad->descripcionActividad = $this->descripcionActividad;
             $actividad->recursos = ''; 
+            $actividad->puntuacion = $this->puntuacion;
             $actividad->fechainicio = $this->fechaInicio;
             $actividad->fechalimite = $this->fechaLimite;
             $actividad->temas_id = $this->tema;
@@ -66,6 +67,7 @@ class FormActividades extends Component
         $actividad->nombreActividad = $this->nombreActividad;
         $actividad->descripcionActividad = $this->descripcionActividad;
         $actividad->recursos = $this->recurso->store('public'); 
+        $actividad->puntuacion = $this->puntuacion;
         $actividad->fechainicio = $this->fechaInicio;
         $actividad->fechalimite = $this->fechaLimite;
         $actividad->temas_id = $this->tema;

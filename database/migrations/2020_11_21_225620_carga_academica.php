@@ -17,7 +17,7 @@ class CargaAcademica extends Migration
             $table->id('idCA');
             $table->unsignedBigInteger('alumno_id');
             $table->unsignedBigInteger('curso_id');
-            $table->integer('status');
+            $table->integer('status'); 
             $table->foreign('alumno_id')->references('idAlumno')->on('alumnos');
             $table->foreign('curso_id')->references('idCurso')->on('curso');
             $table->timestamps();

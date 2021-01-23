@@ -18,7 +18,7 @@ class Actividadtemas extends Migration
             $table->string('nombreActividad',50);
             $table->string('descripcionActividad', 200); 
             $table->string('recursos', 100);
-            $table->integer('puntucacion');
+            $table->integer('puntuacion');
             $table->date('fechainicio');
             $table->date('fechalimite');
             $table->unsignedBigInteger('temas_id');
