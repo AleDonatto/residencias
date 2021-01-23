@@ -5,11 +5,16 @@ namespace App\Http\Livewire\Docentes;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use App\Models\CalActividad;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class DescripcionAlumno extends Component
 {
+    use WithFileUploads;
+
     public $idalumno, $idcurso, $datosAlumno,$actividadesAlumno, $confirmingUserDeletion, $pathImage, $response, $isOpen=0;
     public $calificacion=0, $comentarios, $idactividad;
+    public $recurso;
 
     protected $rules = [
         'calificacion' => 'required|integer|min:0|max:100',
@@ -75,6 +80,7 @@ class DescripcionAlumno extends Component
     }
 
     public function descargarActividad($actividad){
+        //$this->recurso = $actividad;
         return Storage::download($actividad);
     } 
 
