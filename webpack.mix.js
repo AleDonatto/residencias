@@ -1,5 +1,8 @@
 const mix = require('laravel-mix');
 
+
+const Chartjs =  require('chart.js');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -16,3 +19,4 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('tailwindcss'),
     ]);
+

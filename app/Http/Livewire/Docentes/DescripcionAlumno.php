@@ -14,7 +14,7 @@ class DescripcionAlumno extends Component
 
     public $idalumno, $idcurso, $datosAlumno,$actividadesAlumno, $confirmingUserDeletion, $pathImage, $response, $isOpen=0;
     public $calificacion=0, $comentarios, $idactividad;
-    public $recurso;
+    public $recurso, $calificaciones, $canActAlumno=0, $canActividades=0, $faltantes=0;
 
     protected $rules = [
         'calificacion' => 'required|integer|min:0|max:100',
@@ -32,6 +32,8 @@ class DescripcionAlumno extends Component
     {
         $this->getActividadesAlumno(); 
         $this->getDatosAlumno();
+        $this->consActCal();
+        $this->datosGrafica();
         return view('livewire.docentes.descripcion-alumno');
     }
 
@@ -57,7 +59,7 @@ class DescripcionAlumno extends Component
         ->leftJoin('cal_actividades', 'actividades_alumnos.idActividadAlumno','=','cal_actividades.tarea_id')
         ->select('actividadTemas.nombreActividad', 'temas.indice', 'temas.nombreTema', 'actividades_alumnos.*',DB::raw('case when cal_actividades.tarea_id IS NULL then 0 ELSE 1 END AS actCal'))
         ->where('actividadTemas.curso_id', $this->idcurso)
-        ->get();   
+        ->get(); 
     }
 
     public function showModal($idactividadalumno){
@@ -98,5 +100,27 @@ class DescripcionAlumno extends Component
         $this->comentarios = '';
         $this->idactividad = 0;
         $this->closeShowModal(); 
+    }
+
+    public function consActCal(){
+        $this->calificaciones = DB::table('actividades_alumnos')
+        ->join('actividadtemas', 'actividades_alumnos.actividad_id', '=', 'actividadtemas.idActividadTemas')
+        ->join('cal_actividades', 'actividades_alumnos.idActividadAlumno','=','cal_actividades.tarea_id')
+        ->where('actividadtemas.curso_id', $this->idcurso)
+        ->where('actividades_alumnos.alumno_id', $this->idalumno)
+        ->select('actividadtemas.nombreActividad','cal_actividades.calificacion')
+        ->get();
+        
+        $this->canActAlumno = count($this->calificaciones);
+    }
+
+    public function datosGrafica(){
+        $actividades = DB::table('actividadtemas')
+        ->where('actividadtemas.curso_id', $this->idcurso )
+        ->get();
+
+        $this->canActividades = count($actividades);
+        
+        $this->faltantes = $this->canActividades - $this->canActAlumno; 
     }
 }

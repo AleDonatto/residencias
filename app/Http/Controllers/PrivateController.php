@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cursos;
 use App\Models\CargaAcademica;
-use App\Models\Alumnos;
+use App\Models\Alumnos; 
+use PDF;
 
 class PrivateController extends Controller
 {
@@ -67,6 +68,56 @@ class PrivateController extends Controller
         return view('alumnos.viewActividad')->with(compact('id'));
     }
 
+    public function getHorario(){
+
+        $idAlumno = Alumnos::where('user_id', Auth::user()->id )->first();
+
+        $nControl = $idAlumno->nControl;
+        $datos = DB::table('users')->select('users.name', 'users.lastname')->where('id', $idAlumno->user_id)->first();
+        $nameAlumno = $datos->name.' '.$datos->lastname;
+        $carrera = $idAlumno->carrera;
+        $semestre = $idAlumno->semestre;
+
+        $year = date('Y');
+        $mes = date('m');
+
+        if($mes < 6){
+            $periodo = 'Enero-Junio';
+        }else if($mes > 6){
+            $periodo = 'Agosto-Diciembre';
+        }else{
+            $periodo = 'Verano';
+        }
+
+        $cursos = DB::table('carga_academica')
+        ->join('curso', 'carga_academica.curso_id', '=', 'curso.idCurso')
+        ->join('materias', 'curso.materia_id', '=', 'materias.idMateria')
+        ->join('periodo','curso.periodo_id','=','periodo.idPeriodo')
+        ->join('docente', 'curso.docente_id', '=', 'docente.idDocente')
+        ->join('users', 'docente.user_id', '=', 'users.id')
+        ->where('periodo.periodo', $periodo)
+        ->where('periodo.year', $year)
+        ->where('carga_academica.alumno_id', $idAlumno->idAlumno)
+        ->where('carga_academica.status', 1)
+        //->select('curso.nombreCurso','curso.descripcion','periodo.periodo','periodo.year')
+        ->select('curso.nombreCurso','curso.horario','curso.aula', 'materias.academia','users.name','users.lastname')       
+        ->get();
+
+        
+        /*return view('alumnos.formatoHorario',[
+            'cursos'=> $cursos, 
+            'periodo'=>$periodo, 
+            'year'=>$year, 
+            'nControl'=>$nControl, 
+            'nameAlumno'=> $nameAlumno,
+            'carrera' => $carrera,
+            'semestre' => $semestre,
+        ]);*/
+
+        $pdf = PDF::loadView('alumnos.formatoHorario', compact('cursos','periodo','year','nControl','nameAlumno','carrera','semestre'));
+        return $pdf->stream();
+    }
+
     /* fin metodos de alumnos */
 
     //docentes
@@ -88,6 +139,7 @@ class PrivateController extends Controller
     } 
 
     public function calActividades(){
+        
         return view('docente.calActividades');
     }
     /** fin metodos docentes **/

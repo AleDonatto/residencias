@@ -36,7 +36,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex">
+                            <!--<div class="flex">
                                 <div class="flex-auto">
                                     <label for="puntuacion" class="block font-medium text-gray-700">Puntuacion</label>
                                     <input type="number" name="" id="" wire:model="puntuacion" min="0" max="100" step="1" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('puntuacion') border-red-600 @enderror">
@@ -44,7 +44,7 @@
                                         <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div>-->
 
                             <div>
                                 <label for="recurso" class="block font-medium text-gray-700">Descripcion Actividad</label>

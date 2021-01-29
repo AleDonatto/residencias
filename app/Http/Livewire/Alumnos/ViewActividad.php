@@ -15,13 +15,14 @@ class ViewActividad extends Component
     use WithFileUploads;
 
     public $idactividad, $actividad, $verificacionActividad, $fechaLimite, $fechaNow;
-    public $archivoactividad, $path;
+    public $archivoactividad, $path, $calificacion;
     public $response;
 
     public function render()
     {
         $this->getActividad(); 
         $this->verificarActividad();
+        $this->getCalificacion();
         return view('livewire.alumnos.view-actividad');
     }
 
@@ -104,5 +105,16 @@ class ViewActividad extends Component
         //return response()->download(storage_path($recursos));
         //return Storage::download($recursos);
         return Storage::download($recursos);
+    }
+
+    public function getCalificacion(){
+        $idAlumno = DB::table('alumnos')->where('user_id', Auth::id())->first();
+
+        $this->calificacion = DB::table('actividades_alumnos')
+        ->join('cal_actividades', 'actividades_alumnos.idActividadAlumno','=','cal_actividades.tarea_id')
+        ->select('cal_actividades.calificacion','cal_actividades.comentarios')
+        ->where('actividades_alumnos.actividad_id', $this->idactividad)
+        ->where('actividades_alumnos.alumno_id', $idAlumno->idAlumno)
+        ->get();
     }
 }

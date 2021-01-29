@@ -80,15 +80,29 @@
             @endif
         </div>
 
+        @if($calificacion == null)
         <div class="mt-11">
             <h4 class="font-sans text-xl text-gray-600">Califiacion de la actividad</h4>
-            <p class="font-sans text-base text-gray-500">sin calificacion agregada</p>
+            <p class="font-sans text-base text-gray-500">Sin calificacion agregada</p>
         </div>
  
         <div class="mt-11">
             <h4 class="font-sans text-xl text-gray-600">Comentarios</h4>
             <p class="font-sans text-base text-gray-500">Sin comentarios </p>
         </div>
+        @else
+            @foreach($calificacion as $item)
+                <div class="mt-11">
+                    <h4 class="font-sans text-xl text-gray-600">Califiacion de la actividad</h4>
+                    <p class="font-sans text-base text-gray-500">Su calificacion es de: {{ $item->calificacion }}</p>
+                </div>
+        
+                <div class="mt-11">
+                    <h4 class="font-sans text-xl text-gray-600">Comentarios</h4>
+                    <p class="font-sans text-base text-gray-500">{{ $item->comentarios }} </p>
+                </div>
+            @endforeach
+        @endif
     </div>
 </div>
 
