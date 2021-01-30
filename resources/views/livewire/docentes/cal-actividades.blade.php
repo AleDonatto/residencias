@@ -166,7 +166,7 @@
                         <div>
                             <label for="name" class="block font-medium text-gray-700">Comentarios de la actividad</label>
                             <textarea rows="3" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                            maxlength="200" wire:model.defer="comentarios"></textarea>
+                            maxlength="200" wire:model.defer="comentario"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Agregar Calificacion</button>

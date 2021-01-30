@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Docente;
 use App\Models\CalActividad;
+use Illuminate\Support\Facades\Storage;
 
 class CalActividades extends Component
 {
@@ -100,7 +101,7 @@ class CalActividades extends Component
     }
 
     public function descargarActividad($path){
-        return Storage::download($actividad);
+        return Storage::download($path);
     }
 
     public function cancelarCalificacion(){   
