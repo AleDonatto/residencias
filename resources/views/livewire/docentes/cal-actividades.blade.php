@@ -52,9 +52,9 @@
             </option>
             @endforeach
         </select>
-        <button type="button" wire:click="getAlumnos()" class="inline-block mx-4 px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded-full shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none">
+        <!--<button type="button" wire:click="getAlumnos()" class="inline-block mx-4 px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-blue-700 rounded-full shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none">
             Consultar
-        </button>
+        </button>-->
         <button type="button" wire:click="cancelarCalificacion()" class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-red-700 rounded-full shadow ripple hover:shadow-lg hover:bg-red-800 focus:outline-none">
             Cancelar
         </button>
@@ -64,8 +64,9 @@
         @if($idactividad == null)
             <p class="">Seleccione un actividad</p>
         @else
+            
             @if(count($listAlumnos) == 0)
-                <p>Las actividades ya han sido calificadas</p>
+                <p>No hay actividades enviadas o las actividades ya han sido calificadas</p>
             @else
             <div class="shadow rounded-lg bg-white mx-8">
                 <div class="form-task">
