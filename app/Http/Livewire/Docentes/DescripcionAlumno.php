@@ -13,7 +13,7 @@ class DescripcionAlumno extends Component
     use WithFileUploads;
 
     public $idalumno, $idcurso, $datosAlumno,$actividadesAlumno, $confirmingUserDeletion, $pathImage, $response, $isOpen=0;
-    public $calificacion=0, $comentarios, $idactividad;
+    public $calificacion=0, $comentarios, $idactividad, $sumCal=0;
     public $recurso, $calificaciones, $canActAlumno=0, $canActividades=0, $faltantes=0;
 
     protected $rules = [

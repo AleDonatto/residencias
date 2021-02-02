@@ -27,7 +27,9 @@ class ActividadTema extends Component
         ->join('temas','actividadtemas.temas_id','=','temas.idTema')
         ->leftJoin('actividades_alumnos', 'actividadtemas.idActividadTemas','=','actividades_alumnos.actividad_id')
         ->where('actividadtemas.curso_id', $this->cursoid)
-        ->select('temas.*', 'actividadtemas.*',DB::raw('case when actividades_alumnos.actividad_id IS NULL then 0 ELSE 1 END AS actEntregada'))
+        ->select('actividadtemas.*','temas.nombreTema','temas.tipo','temas.indice',DB::raw('case when actividades_alumnos.actividad_id IS NULL then 0 ELSE 1 END AS actEntregada'))
+        ->orderBy('actividadtemas.fechainicio')
+        //->having('actividadtemas.fechainicio', '=', '2021-01-18')
         ->get();
     }
 

@@ -53,10 +53,6 @@
                     <p>Editar Actividad</p>
                 </button>
 
-                <p>{{ $recursoOld }}</p>
-                <p>{{ $recursoNew }}</p>
-
-
                 <div class="mt-5" x-show="open" @click.away="open = false">
                     <form action="" method="post" wire:submit.prevent="updatedActividad" enctype="multipart/form-data">
                         <div class="shadow sm:rounded-md sm:overflow-hidden">

@@ -94,21 +94,9 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                                     </svg>
                                                 </button>
-                                                <!--<button type="button" wire:click="openModal()">
-                                                    <svg class="ml-2 w-6 h-6 transform duration-700 ease-in-out hover:scale-150" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                                    </svg>
-                                                </button>-->
                                                 @endif
                                             </div>
                                         </td>
-                                        <!--<td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                                </svg>
-                                            </div>
-                                        </td>-->
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -119,12 +107,7 @@
             </div>
         </div>
     </div>
-
-    <div class="shadow rounded-lg bg-white">
-        <p>grafica mamalona de alumno del total de tareas y las tareas que entrego el alumno</p>
-        <p>el poncetanje de actividades entregadas</p>
-    </div>
-
+    
     <div class="grid grid-cols-2 gap-4 mt-5 mb-5">
         <div class="shadow rounded-lg bg-white justify-center h-96 md:h-96">
             <!--<canvas id="myChart" width="300" height="300"></canvas>-->
@@ -153,6 +136,9 @@
                                                 <div>{{ $item->calificacion }}</div>
                                             </td>
                                         </tr>
+                                        @php
+                                            $sumCal = $sumCal + $item->calificacion; 
+                                        @endphp
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -162,7 +148,14 @@
 
                 </div>
                 <div class="w-1/2">
-                    <p>texto pruebas</p>
+                    <div class="text-center font-sans text-xl mt-5">
+                        <p class="text-blue-700">Promedio Alcanzado de actividades</p>
+                        @if($sumCal == 0)
+                        <p class="text-9xl">0</p>
+                        @else
+                        <p class="text-6xl">{{ $sumCal/$canActividades }}</p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,55 +196,7 @@
             <!-- End of Modal Content-->   
         </div>
     </dialog>
-
-    @if($isOpen)
-    <!--<div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400">
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>-->
-            <!-- This element is to trick the browser into centering the modal contents. -->
-            <!--<span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="false" aria-labelledby="modal-headline">
-                <form>
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div class="">
-                            <div class="mb-4">
-                                <label for="calificacion" class="block text-gray-700 text-sm font-bold mb-2">Puntuacion:</label>
-                                <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="calificacion"
-                                min="0" max="100" step="1" wire:model="calificacion">
-                            </div>
-            
-                            <div class="mb-4">
-                                <label for="comentarios" class="block text-gray-700 text-sm font-bold mb-2">Comentarios:</label>
-                                <textarea rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comentarios"
-                                wire:model="comentarios" maxlength="200"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                            <button wire:click.prevent="store()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
-                                Save
-                            </button>
-                        </span>
-                        <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
-                            <button wire:click="closeModal()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
-                                Cancel
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
-    @endif
-
-    
 </div>
-
-
 
 <style>
 dialog[open] {

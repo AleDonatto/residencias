@@ -4,7 +4,27 @@
     @if(count($actividadTema) == 0)
         <p class="font-sans text-xl text-black text-center">No hay actividades Agregadas</p>
     @else
+    <div class="mb-5">
+        @php 
+            $fechaAnterior = '';
+        @endphp
         @foreach($actividadTema as $item)
+
+        @if($fechaAnterior != $item->fechainicio )
+            @php
+                $formato = $item->fechainicio;
+                $date = strtotime($formato);
+                    
+                setlocale(LC_ALL,"spanish");
+                $fechaespanol = strftime("%A %d de %B del %Y", $date);
+            @endphp
+            <p class="font-sans text-lg mt-2 capitalize">Fecha: {{ $fechaespanol }}</p>
+        @endif
+
+        @php
+            $fechaAnterior = $item->fechainicio;
+        @endphp
+
         @if($item->tipo == 1 )       
         <div class="md:container md:mx-auto bg-gray-50 rounded-lg border-dashed shadow-md mt-2 px-15">
             <div class="flex">
@@ -54,8 +74,8 @@
             </div>
         </div>
         @endif
-
         @endforeach
+    </div>
     @endif
     
       

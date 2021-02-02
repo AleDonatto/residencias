@@ -41,10 +41,10 @@ Route::get('docente/cursos_docente',[ CursosController::class,'index'])->name('c
 Route::get('docente/cursos_docente/{id}',[ CursosController::class,'show'])->name('cursos_docentes.show')->middleware('auth','role:Docente');
 
 Route::get('horarios_docentes',[PrivateController::class, 'horario_docente'])->name('horario_docente')->middleware('auth','role:Docente');
-Route::get('docente/actividad/create/{curso}/{tema}',[PrivateController::class, 'formActividadesTemaCurso'])->name('docenteaddActividad')->middleware('auth');
+Route::get('docente/actividad/create/{curso}/{tema}',[PrivateController::class, 'formActividadesTemaCurso'])->name('docenteaddActividad')->middleware('auth','role:Docente');
 Route::get('docente/viewActividad/{id}', [ActividadTemaDocente::class, 'show'])->name('viewActividadDocente')->middleware('auth');
-Route::get('docente/curso/{curso}/descripcion_alumno/{alumno}', [PrivateController:: class, 'descripcionAlumno'])->name('descripcionAlumno')->middleware('auth');
-Route::get('docente/cal_actividades', [PrivateController::class, 'calActividades'])->name('calActividades')->middleware('auth');
+Route::get('docente/curso/{curso}/descripcion_alumno/{alumno}', [PrivateController:: class, 'descripcionAlumno'])->name('descripcionAlumno')->middleware('auth', 'role:Docente');
+Route::get('docente/cal_actividades', [PrivateController::class, 'calActividades'])->name('calActividades')->middleware('auth','role:Docente');
 /* * */
 
 //rutas alumnos
@@ -63,6 +63,6 @@ Route::get('horarios_alumnos',[PrivateController::class, 'horario_alumno'])->nam
 
 Route::post('sendSolicitud', [PrivateController::class, 'sendSolicitud'])->name('sendSolicitud')->middleware('auth','role:Alumno');
 Route::get('alumnos/all_cursos', [PrivateController::class, 'allCursos'])->name('allCursos')->middleware('auth','role:Alumno');
-Route::get('alumnos/view_actividad/{id}', [PrivateController::class, 'viewActividadAlumno'])->name('viewActividadAlumno')->middleware('auth');
-Route::get('alumnos/horario', [PrivateController::class, 'getHorario'])->name('horario')->middleware('auth');
+Route::get('alumnos/view_actividad/{id}', [PrivateController::class, 'viewActividadAlumno'])->name('viewActividadAlumno')->middleware('auth','role:Alumno');
+Route::get('alumnos/horario', [PrivateController::class, 'getHorario'])->name('horario')->middleware('auth', 'role:Alumno');
 /* * */
