@@ -4,6 +4,13 @@
   </x-slot>
 
   <div class="container mx-auto px-4 mt-4">
+    
+    <a href="{{ url()->previous() }}" class="flex flex-items-start w-24 text-blue-600 hover:text-blue-800">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      <p class="mx-2">Volver</p>
+    </a>
 
     @if (session()->has('message'))
       <div class="w-full mt-5 h-12 flex justify-center bg-green-300 text-base rounded-lg border-green-200 shadow-2xl">
@@ -18,56 +25,37 @@
     <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
       {{ __('Curso: ') }} {{ $curso->nombreCurso }}
     </h2>
-    
-    <div class="max-w-4xl mx-auto">
-      <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">Informacion de la Materia </h3>
-          <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500"></p>
+
+    <div class="shadow rounded-lg bg-white">
+      <div class="grid col-span-1 md:flex items-center mt-5 justify-center py-5">
+        <div class="md:mr-4">
+          <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Sunset in the mountains" 
+              class="rounded-md p-5 max-w-xs">
         </div>
-        <div>
-          <dl>
-            @foreach($materia as $item)
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm leading-5 font-medium text-gray-500">Nombre de la Materia</dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{{ $item->nombreMateria }}</dd>
-            </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm leading-5 font-medium text-gray-500">Semestre</dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{{ $item->semestre }}</dd>
-            </div>
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm leading-5 font-medium text-gray-500">Carrera</dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{{ $item->academia }}</dd>
-            </div>
-            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm leading-5 font-medium text-gray-500">Clave de Materia</dt>
-              <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{{ $item->claveMateria }}</dd>
-            </div>
-            
-            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm leading-5 font-medium text-gray-500">Plan de Estudio</dt>
-                <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                <ul class="border border-gray-200 rounded-md">
-                  <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm leading-5">
-                    <div class="w-0 flex-1 flex items-center">
-                      <!-- Heroicon name: paper-clip -->
-                      <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                      </svg>
-                      <span class="ml-2 flex-1 w-0 truncate">plan_de_estudio.pdf </span>
-                    </div>
-                    <div class="ml-4 flex-shrink-0">
-                      <a href="https://acapulco.tecnm.mx/" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">Descargar</a>
-                    </div>
-                  </li>
-                </ul>
-              </dd>
-            </div>
-            @endforeach
-          </dl>
+        <div class="md:border-l-2 pl-4 p-2 col-span-2 text-justify md:w-1/2 mt-10 md:mt-0">
+          <h1 class="font-sans text-2xl font-bold text-blue-700">Curso: {{ $curso->nombreCurso }} </h1>
+          <h2 class="font-sans text-xl font-bold">Descripcion:</h2>
+          <p class="font-sans text-base">{{ $curso->descripcion }}</p>
+          <h2 class="font-sans text-xl font-bold">Periodo: </h2>
+          <p class="font-sans text-base">Periodo: {{ $periodo->periodo.' '.$periodo->year }}</p>
         </div>
       </div>
+    </div>
+
+    <h2 class="font-sans text-2xl text-gray-800 mx-4 my-2">
+      {{ __('Acciones') }}
+    </h2>
+
+    <div class="flex justify-center rounded shadow p-2 bg-white">
+      <a href="{{ route('calificarActividades', $curso->idCurso) }}" class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold text-white rounded transition-all hover:border-blue-500 hover:bg-transparent hover:text-blue-500">
+        Calificar Actividades
+      </a>
+      <a href="{{ route('calificarUnidades', $curso->idCurso) }}" class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold text-white rounded transition-all hover:border-purple-500 hover:bg-transparent hover:text-purple-500">
+        Calificar Unidiad
+      </a>
+      <a href="{{ route('calificarCurso', $curso->idCurso) }}" class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold text-white rounded transition-all hover:border-green-500 hover:bg-transparent hover:text-green-500">
+        Evaluacion Final
+      </a>
     </div>
 
     <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
@@ -86,6 +74,14 @@
 
     <div class="">
       <livewire:docentes.alumnos-inscritos :idCurso="$curso->idCurso" />
+    </div>
+
+    <h2 class="font-sans text-2xl text-gray-800 mx-4 my-4">
+      {{ __('Estadisticas del curso') }}
+    </h2>
+
+    <div class="">
+      <livewire:docentes.estadisticas-grupo />
     </div>
 
   </div>

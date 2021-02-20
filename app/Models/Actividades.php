@@ -17,10 +17,13 @@ class Actividades extends Model
         'nombreActividad',
         'descripcionActividad',
         'recursos',
+        'tipoActividad',
+        'porcentajeCurso',
         //'puntuacion',
         'fechainicio',
         'fechalimite',
         'temas_id',
-        'curso_id'
+        'curso_id',
+        'semana_id',
     ];
 }

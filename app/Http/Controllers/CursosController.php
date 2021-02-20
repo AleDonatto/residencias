@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Cursos;
 use App\Models\Asignatura;
+
 
 class CursosController extends Controller
 {
@@ -51,7 +53,8 @@ class CursosController extends Controller
         //
         $curso = Cursos::where('idCurso', $id)->first();
         $materia = Asignatura::where('idMateria', $curso->materia_id)->get();
-        return view('docente.showCurso')->with(compact('curso','materia'));
+        $periodo = DB::table('periodo')->where('idPeriodo', $curso->periodo_id)->first();
+        return view('docente.showCurso')->with(compact('curso','materia','periodo'));
     }
 
     /**

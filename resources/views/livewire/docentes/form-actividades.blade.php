@@ -8,6 +8,44 @@
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div>
+                                <label for="semana" class="block font-medium text-gray-700">Seleccione Semana</label>
+                                <div class="inline-block relative w-full">
+                                    <select name="genero" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('semanaAct') border-red-600 @enderror"
+                                    wire:model="semanaAct">
+                                      <option value="" selected>Seleccione</option>
+                                      @foreach($semanas as $item)
+                                      <option value="{{ $item->idSemanas }}">{{ 'Del '.$item->finicio.' - '.$item->ffinal  }}</option>
+                                      @endforeach
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                                @error('semanaAct')
+                                <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="tipoactividad" class="block font-medium text-gray-700">Tipo de Actividad</label>
+                                <div class="inline-block relative w-full">
+                                    <select name="tipoactividad" id="tipoactividad" 
+                                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('tipoActividad') border-red-600 @enderror"
+                                    wire:model="tipoActividad">
+                                        <option selected value="">Seleccione</option>
+                                        <option value="1">Actividad</option>
+                                        <option value="2">Practica</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                                @error('tipoActividad')
+                                <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            
+                            <div>
                                 <label for="name" class="block font-medium text-gray-700">Nombre/Titulo Actividad</label>
                                 <input type="text" name="name" id="name" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('nombreActividad') border-red-600 @enderror"
                                 wire:model="nombreActividad" maxlength="50">
@@ -35,15 +73,14 @@
                                 </div>
                             </div>
 
-                            <!--<div class="flex">
-                                <div class="flex-auto">
-                                    <label for="puntuacion" class="block font-medium text-gray-700">Puntuacion</label>
-                                    <input type="number" name="" id="" wire:model="puntuacion" min="0" max="100" step="1" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('puntuacion') border-red-600 @enderror">
-                                    @error('puntuacion')
-                                        <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>-->
+                            <div>
+                                <label for="porcentaje" class="block font-medium text-gray-700">Porcentaje de Actividad (%)</label>
+                                <input type="number" name="porcentaje" id="porcentaje" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('porcentaje') border-red-600 @enderror"
+                                min="1" max="100" step="1" wire:model="porcentaje">
+                                @error('porcentaje')
+                                    <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                @enderror
+                            </div>
 
                             <div>
                                 <label for="recurso" class="block font-medium text-gray-700">Descripcion Actividad</label>

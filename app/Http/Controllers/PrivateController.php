@@ -120,7 +120,7 @@ class PrivateController extends Controller
 
     /* fin metodos de alumnos */
 
-    //docentes
+    // TODO: docentes
     public function perfil_completo_docente(){
         return view('docente.datos_socioecon');
     }
@@ -130,7 +130,6 @@ class PrivateController extends Controller
     }
 
     public function formActividadesTemaCurso($curso, $tema){
-        //return view('docente.addActividadTema')->with(compact('curso', 'tema'));
         return view('docente.addActividadTema', ['curso' => $curso, 'tema' => $tema ]);
     }
 
@@ -141,6 +140,18 @@ class PrivateController extends Controller
     public function calActividades(){
         
         return view('docente.calActividades');
+    }
+
+    public function calificarActividades($curso){
+        return view('docente.calificarActividades', ['curso' => $curso ]);
+    }
+
+    public function calificarUnidad($curso){
+        return view('docente.calificarUnidades', ['curso' => $curso]);   
+    }
+
+    public function calificarCurso($curso){
+        return view('docente.calificarCurso', ['curso' => $curso]);
     }
     /** fin metodos docentes **/
 

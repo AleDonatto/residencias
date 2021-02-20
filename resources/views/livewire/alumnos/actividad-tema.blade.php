@@ -6,23 +6,26 @@
     @else
     <div class="mb-5">
         @php 
-            $fechaAnterior = '';
+            $idSemana = '';
         @endphp
         @foreach($actividadTema as $item)
 
-        @if($fechaAnterior != $item->fechainicio )
+        @if($idSemana != $item->semana_id )
             @php
-                $formato = $item->fechainicio;
+                $formato = $item->finicio;
+                $formato2 = $item->ffinal; 
                 $date = strtotime($formato);
+                $date2 = strtotime($formato2);
                     
                 setlocale(LC_ALL,"spanish");
                 $fechaespanol = strftime("%A %d de %B del %Y", $date);
+                $fechaespanol2 = strftime("%A %d de %B del %Y", $date2);
             @endphp
-            <p class="font-sans text-lg mt-2 capitalize">Fecha: {{ $fechaespanol }}</p>
+            <p class="font-sans text-lg mt-2 capitalize">Semana: {{ $fechaespanol }} al {{ $fechaespanol2 }} </p>
         @endif
 
         @php
-            $fechaAnterior = $item->fechainicio;
+            $idSemana = $item->semana_id;
         @endphp
 
         @if($item->tipo == 1 )       
@@ -44,7 +47,13 @@
                 <div class="flex-grow h-18">
                     <a href="{{ route('viewActividadAlumno', $item->idActividadTemas ) }}">
                         <h1 class="font-sans text-xl text-black text-left">{{ $item->indice.'.- '.$item->nombreTema }}</h1>
-                        <h3 class="font-sans text-base text-gray-800 text-right">Actividad: {{ $item->nombreActividad }}</h3>
+                        <h3 class="font-sans text-base text-gray-800 text-right">
+                            @if($item->tipoActividad == 1)
+                            <p> <span class="font-bold">Actividad:</span>  {{ $item->nombreActividad }}</p> 
+                            @else
+                            <p> <span class="font-bold">Practica:</span> {{ $item->nombreActividad }} </p> 
+                            @endif
+                        </h3>
                         <h4 class="font-sans text-base text-gray-800 text-right">Fecha de inicio: {{ $item->fechainicio }} Fecha final: {{ $item->fechalimite }}</h4>
                     </a>
                 </div>
@@ -67,7 +76,13 @@
                 <div class="flex-grow h-16">
                     <a href="{{ route('viewActividadAlumno', $item->idActividadTemas ) }}">
                         <h1 class="font-sans text-base text-black text-left">{{ $item->indice.'.- '.$item->nombreTema }}</h1>
-                        <h3 class="font-sans text-sm text-gray-800 text-right">Actividad: {{ $item->nombreActividad }}</h3>
+                        <h3 class="font-sans text-sm text-gray-800 text-right">
+                            @if($item->tipoActividad == 1)
+                            <p> <span class="font-bold">Actividad:</span>  {{ $item->nombreActividad }}</p> 
+                            @else
+                            <p> <span class="font-bold">Practica:</span> {{ $item->nombreActividad }} </p> 
+                            @endif
+                        </h3>
                         <h4 class="font-sans text-sm text-gray-800 text-right">Fecha de Inicio: {{ $item->fechainicio }} Fecha Limite: {{$item->fechalimite}}</h4>
                     </a>
                 </div>

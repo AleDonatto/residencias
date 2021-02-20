@@ -23,7 +23,9 @@
             </div>
         </div>
     </div>
-
+    
+    @if(count($actividadesAlumno) == 0)
+    @else
     <div class="shadow rounded-lg bg-white my-4">
         <div class="form-task">
             <div class="flex flex-col">
@@ -107,14 +109,15 @@
             </div>
         </div>
     </div>
-    
+    @endif
+
     <div class="grid grid-cols-2 gap-4 mt-5 mb-5">
         <div class="shadow rounded-lg bg-white justify-center h-96 md:h-96">
-            <!--<canvas id="myChart" width="300" height="300"></canvas>-->
-            <canvas id="myChart2" width="300" height="195"></canvas>
+            <div id="container" style="height: 24rem;"></div>
         </div>
         <div class="shadow rounded-lg bg-white">
-            <div class="flex">
+            <div id="containerPracticas" style="height: 24rem;"></div>
+            <!--<div class="flex">
                 <div class="w-1/2">
 
                     <div class="container mx-auto flex justify-center h-96">
@@ -126,20 +129,6 @@
                             <div class="w-full h-full overflow-auto shadow bg-white" id="journal-scroll">
                                 <table class="w-full">
                                     <tbody class="">
-                                        @foreach($calificaciones as $item)
-                                        <tr class="relative transform scale-100 text-xs py-1 border-b-2 cursor-default">
-                                            <td class="px-2 py-2 whitespace-no-wrap">
-                                                <div class="leading-5 text-gray-900">{{ $item->nombreActividad }}</div>
-                                            </td>
-                                            <td class="pl-5 pr-3 whitespace-no-wrap">
-                                                <div class="text-gray-400">Calif.</div>
-                                                <div>{{ $item->calificacion }}</div>
-                                            </td>
-                                        </tr>
-                                        @php
-                                            $sumCal = $sumCal + $item->calificacion; 
-                                        @endphp
-                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -150,14 +139,10 @@
                 <div class="w-1/2">
                     <div class="text-center font-sans text-xl mt-5">
                         <p class="text-blue-700">Promedio Alcanzado de actividades</p>
-                        @if($sumCal == 0)
-                        <p class="text-9xl">0</p>
-                        @else
-                        <p class="text-6xl">{{ $sumCal/$canActividades }}</p>
-                        @endif
+                        
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 
@@ -238,7 +223,11 @@ dialog::backdrop {
 </style>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script src="{{ asset('highcharts/code/highcharts.js') }}"></script>
+<script src="{{ asset('highcharts/code/modules/exporting.js') }} "></script>
+<script src="{{ asset('highcharts/code/modules/export-data.js') }}"></script>
+
 <script>
 window.addEventListener('modalCalificacion', event => {
     //alert('Name updated to: ' + event.detail.idAlumnoActividad);
@@ -252,43 +241,95 @@ window.addEventListener('closeModalCalficaciones',event => {
 })
 
 document.addEventListener("DOMContentLoaded", () => {
-    segundo(@this.faltantes, @this.canActAlumno, @this.canActividades);
+    grafica(@this.faltantes, @this.canActAlumno, @this.canActividades);
+    practicas(@this.pracFaltantes, @this.canPracAlumnos, @this.canPracticas);
 });
 
-function segundo( faltantes, canActAlumno, canActividades){
-    const ctx = document.getElementById('myChart2').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: [faltantes, canActAlumno, canActividades],
-                backgroundColor: [
-                    'rgba(247, 74, 74, 0.81)',
-                    'rgba(74, 91, 247, 0.81)',
-                    'rgba(74, 247, 85, 0.81)',
-                ],
-                label: 'Tareas Entregadas',
-            }],
-            labels: ['Faltantes','Entregadas','Total Actividades'],
+function grafica(faltantes, canActAlumno, canActividades){
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
         },
-        options: {
-            responsive: true,
-				plugins: {
-					legend: {
-						position: 'top',
-					},
-					title: {
-						display: true,
-						text: 'Chart.js Doughnut Chart'
-					},
-				},
-				animation: {
-					animateScale: true,
-					animateRotate: true
+        title: {
+            text: 'Actividades del Alumno'
+        },
+        tooltip: {
+            pointFormat: '{series.name} - {point.y}:' //<b>{point.percentage:.1f}%</b>
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
                 }
             }
-        }
-    );
+        },
+        series: [{
+            name: 'Actividades',
+            colorByPoint: true,
+            data: [{
+                name: 'Total Actividades',
+                y: canActividades,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Entregadas',
+                y: canActAlumno
+            }, {
+                name: 'Faltantes',
+                y: faltantes
+            },]
+        }]
+    });
 }
+
+function practicas(faltantes, canActAlumno, canActividades){
+    Highcharts.chart('containerPracticas', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Practicas del Alumno'
+        },
+        tooltip: {
+            pointFormat: '{series.name} - {point.y}:' //<b>{point.percentage:.1f}%</b>
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            name: 'Practicas',
+            colorByPoint: true,
+            data: [{
+                name: 'Total Practicas',
+                y: canActividades,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Entregadas',
+                y: canActAlumno
+            }, {
+                name: 'Faltantes',
+                y: faltantes
+            },]
+        }]
+    });
+}
+
 </script>
 @endpush

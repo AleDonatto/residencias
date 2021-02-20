@@ -15,7 +15,9 @@ class Cursos extends Model
     protected $fillable = [
         'nombreCurso',
         'descripcion',
-        'codigoIns',
+        'acercadelcuro',
+        'horario',
+        'aula',
         'docente_id',
         'materia_id',
         'periodo_id'

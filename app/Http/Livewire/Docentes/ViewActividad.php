@@ -13,12 +13,13 @@ class ViewActividad extends Component
 {
     use WithFileUploads;
     public $idactividad, $actividad;
-    public $recursoOld;
-    public $nombreActividad, $descripcion, $fechainicio, $fechafin, $tema_id, $curso_id, $recursoNew; 
+    public $recursoOld, $listSemanas;
+    public $nombreActividad, $descripcion, $fechainicio, $fechafin, $tema_id, $curso_id, $recursoNew, $semanaEdt; 
 
     public function render()
     {
         $this->getActividad(); 
+        $this->cargarSemanas();
         return view('livewire.docentes.view-actividad');
     }
 
@@ -35,8 +36,31 @@ class ViewActividad extends Component
             $this->fechainicio = $item->fechainicio;
             $this->fechafin = $item->fechalimite;
             $this->tema_id = $item->temas_id;
-            $this->curso_id = $item->curso_id;  
+            $this->curso_id = $item->curso_id;
+            $this->semanaEdt = $item->semana_id;  
         }
+    }
+
+    public function cargarSemanas(){
+        $year = date('Y');
+        $mes = date('m');
+
+        if($mes < 6){
+            $periodo = 'Enero-Junio';
+        }else if($mes > 6){
+            $periodo = 'Agosto-Diciembre';
+        }else{
+            $periodo = 'Verano';
+        }
+        $periodoId = DB::table('periodo')
+        ->where('periodo', $periodo)
+        ->where('year', $year)
+        ->first();
+
+        $this->listSemanas = DB::table('semanas')
+        ->select('semanas.fechainicio','semanas.fechafinal', 'semanas.idSemanas')
+        ->where('semanas.periodo_id', $periodoId->idPeriodo)
+        ->get();
     }
 
     public function getURLRecurso($recurso){

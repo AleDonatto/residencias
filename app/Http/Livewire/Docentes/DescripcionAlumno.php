@@ -14,7 +14,8 @@ class DescripcionAlumno extends Component
 
     public $idalumno, $idcurso, $datosAlumno,$actividadesAlumno, $confirmingUserDeletion, $pathImage, $response, $isOpen=0;
     public $calificacion=0, $comentarios, $idactividad, $sumCal=0;
-    public $recurso, $calificaciones, $canActAlumno=0, $canActividades=0, $faltantes=0;
+    public $recurso, $canActAlumno=0, $canActividades=0, $faltantes=0;
+    public $pracFaltantes=0, $canPracticas=0, $canPracAlumnos=0;
 
     protected $rules = [
         'calificacion' => 'required|integer|min:0|max:100',
@@ -33,7 +34,9 @@ class DescripcionAlumno extends Component
         $this->getActividadesAlumno(); 
         $this->getDatosAlumno();
         $this->consActCal();
+        $this->consPracticasCalificadas();
         $this->datosGrafica();
+        $this->datosGraficaPracticas(); 
         return view('livewire.docentes.descripcion-alumno');
     }
 
@@ -103,24 +106,50 @@ class DescripcionAlumno extends Component
     }
 
     public function consActCal(){
-        $this->calificaciones = DB::table('actividades_alumnos')
+        $calificaciones = DB::table('actividades_alumnos')
         ->join('actividadtemas', 'actividades_alumnos.actividad_id', '=', 'actividadtemas.idActividadTemas')
         ->join('cal_actividades', 'actividades_alumnos.idActividadAlumno','=','cal_actividades.tarea_id')
         ->where('actividadtemas.curso_id', $this->idcurso)
         ->where('actividades_alumnos.alumno_id', $this->idalumno)
+        ->where('actividadtemas.tipoActividad', 1)
         ->select('actividadtemas.nombreActividad','cal_actividades.calificacion')
         ->get();
         
-        $this->canActAlumno = count($this->calificaciones);
+        $this->canActAlumno = count($calificaciones);
+    }
+
+    public function consPracticasCalificadas(){
+        $practicas = DB::table('actividades_alumnos')
+        ->join('actividadtemas', 'actividades_alumnos.actividad_id', '=', 'actividadtemas.idActividadTemas')
+        ->join('cal_actividades', 'actividades_alumnos.idActividadAlumno','=','cal_actividades.tarea_id')
+        ->where('actividadtemas.curso_id', $this->idcurso)
+        ->where('actividades_alumnos.alumno_id', $this->idalumno)
+        ->where('actividadtemas.tipoActividad', 2)
+        ->select('actividadtemas.nombreActividad','cal_actividades.calificacion')
+        ->get();
+        
+        $this->canPracAlumnos = count($practicas);
     }
 
     public function datosGrafica(){
         $actividades = DB::table('actividadtemas')
         ->where('actividadtemas.curso_id', $this->idcurso )
+        ->where('actividadtemas.tipoActividad', 1)
         ->get();
 
         $this->canActividades = count($actividades);
         
         $this->faltantes = $this->canActividades - $this->canActAlumno; 
+    }
+
+    public function datosGraficaPracticas(){
+        $practicas = DB::table('actividadtemas')
+        ->where('actividadtemas.curso_id', $this->idcurso )
+        ->where('actividadtemas.tipoActividad', 2)
+        ->get();
+
+        $this->canPracticas = count($practicas);
+        
+        $this->pracFaltantes = $this->canPracticas - $this->canPracAlumnos; 
     }
 }
