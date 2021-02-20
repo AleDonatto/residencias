@@ -104,7 +104,7 @@ class FormActividades extends Component
         $actividad->nombreActividad = $this->nombreActividad;
         $actividad->descripcionActividad = $this->descripcionActividad;
         $actividad->recursos = $this->recurso->store('public'); 
-        $activadad->tipoActividad = $this->tipoActividad;  
+        $actividad->tipoActividad = $this->tipoActividad;  
         $actividad->porcentajeCurso = $this->porcentaje;
         //$actividad->puntuacion = $this->puntuacion;
         $actividad->fechainicio = $this->fechaInicio;
