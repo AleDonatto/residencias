@@ -14,7 +14,7 @@ class ViewActividad extends Component
     use WithFileUploads;
     public $idactividad, $actividad;
     public $recursoOld, $listSemanas;
-    public $nombreActividad, $descripcion, $fechainicio, $fechafin, $tema_id, $curso_id, $recursoNew, $semanaEdt; 
+    public $nombreActividad, $descripcion, $fechainicio, $fechafin, $tema_id, $curso_id, $recursoNew, $semanaEdt, $porcentaje; 
 
     public function render()
     {
@@ -38,6 +38,7 @@ class ViewActividad extends Component
             $this->tema_id = $item->temas_id;
             $this->curso_id = $item->curso_id;
             $this->semanaEdt = $item->semana_id;  
+            $this->porcentaje = $item->porcentajeCurso;
         }
     }
 
@@ -58,7 +59,7 @@ class ViewActividad extends Component
         ->first();
 
         $this->listSemanas = DB::table('semanas')
-        ->select('semanas.fechainicio','semanas.fechafinal', 'semanas.idSemanas')
+        ->select('semanas.finicio','semanas.ffinal', 'semanas.idSemanas')
         ->where('semanas.periodo_id', $periodoId->idPeriodo)
         ->get();
     }
@@ -78,7 +79,8 @@ class ViewActividad extends Component
                 'nombreActividad' => $this->nombreActividad,
                 'descripcionActividad' => $this->descripcion, 
                 'fechainicio' => $this->fechainicio,
-                'fechalimite' => $this->fechafin
+                'fechalimite' => $this->fechafin,
+                'porcentajeCurso' => $this->porcentaje,
             ]);
 
             session()->flash('message', 'Actividad modificada con exito!.');
@@ -100,7 +102,8 @@ class ViewActividad extends Component
                 'descripcionActividad' => $this->descripcion, 
                 'recursos' => $this->recursoNew->store('public'),
                 'fechainicio' => $this->fechainicio,
-                'fechalimite' => $this->fechafin
+                'fechalimite' => $this->fechafin,
+                'porcentajeCurso' => $this->porcentaje,
             ]);
             $this->recursoNew = null;
             session()->flash('message', 'Actividad modificada con exito!.');

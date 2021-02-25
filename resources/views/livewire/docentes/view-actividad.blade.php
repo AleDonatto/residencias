@@ -64,7 +64,7 @@
                                         wire:model="semanaEdt">
                                           <option value="" selected>Seleccione</option>
                                           @foreach($listSemanas as $item)
-                                          <option value="{{ $item->idSemanas }}">{{ 'Del '.$item->fechainicio.' - '.$item->fechafinal  }}</option>
+                                          <option value="{{ $item->idSemanas }}">{{ 'Del '.$item->finicio.' - '.$item->ffinal  }}</option>
                                           @endforeach
                                         </select>
                                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -99,6 +99,15 @@
                                             <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                </div>
+
+                                <div>
+                                    <label for="porcentaje" class="block font-medium text-gray-700">Porcentaje de Actividad (%)</label>
+                                    <input type="number" name="porcentaje" id="porcentaje" class="shadow focus:outline-none focus:shadow-outline appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight @error('porcentaje') border-red-600 @enderror"
+                                    min="1" max="100" step="1" wire:model.defer="porcentaje">
+                                    @error('porcentaje')
+                                        <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                                    @enderror
                                 </div>
             
                                 <div>

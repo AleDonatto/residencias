@@ -41,9 +41,7 @@
                                             </div>
                                         </a>                        
                                         <div class="w-full">
-                                            <div class="shadow w-full bg-gray-300">
-                                                <div class="bg-blue-600 text-xs leading-none py-1 text-center text-white" style="width: 45%">45%</div>
-                                            </div>
+                                            <livewire:alumnos.procetanje-curso :cursoId="$item->idCurso" />
                                         </div>
                                     </div>
                                 </div>
@@ -80,9 +78,7 @@
                                             </div>
                                         </a>
                                         <div class="w-full">
-                                            <div class="shadow w-full bg-gray-300">
-                                                <div class="bg-blue-600 text-xs leading-none py-1 text-center text-white" style="width: 45%">45%</div>
-                                            </div>
+                                            <livewire:alumnos.procetanje-curso :cursoId="$item->idCurso" />
                                         </div>
                                     </div>
                                 </div>
