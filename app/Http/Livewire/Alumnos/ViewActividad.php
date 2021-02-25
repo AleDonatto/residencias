@@ -81,7 +81,7 @@ class ViewActividad extends Component
         $dateLimite = date($actividadValidation->fechalimite);
         $time = date('H:i:s');
 
-        if($date < $dateLimite){
+        if($date <= $dateLimite){
             
             $alumnos = new ActividadAlumnos;
             $alumnos->archivo = $this->archivoactividad->store('public'); 
@@ -92,12 +92,9 @@ class ViewActividad extends Component
             $alumnos->save();
 
             $this->response = 'ok';
-
         }else{
             $this->response = 'se te va el tren araña'; 
         }  
-        //session()->flash('message', 'Post successfully updated.');
-
     }
 
     public function downloadRecurso($recursos){

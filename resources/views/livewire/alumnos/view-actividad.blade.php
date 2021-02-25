@@ -39,7 +39,7 @@
             <div class="flex flex-wrap content-center justify-center shadow bg-green-400 h-12 rounded-lg">
                 <p>Ya has enviado una actividad </p>
             </div>
-            @elseif( date($fechaNow) < date($fechaLimite) )
+            @elseif( date($fechaNow) <= date($fechaLimite) )
             <form action="" method="post" wire:submit.prevent="storeActividad">
                 
                 <div wire:loading wire:target="archivoactividad" >
