@@ -14,7 +14,7 @@
     <div class="shadow bg-white p-4 my-5 rounded-lg">
         @foreach($actividad as $item)
             <h4 class="font-sans text-2xl text-gray-600">{{ $item->nombreActividad }}</h4>
-            <p class="font-sans text-sm text-gray-400">Fecha de inicio: {{ $item->fechainicio}} Fecha Limite: {{ $item->fechalimite }}</p>
+            <p class="font-sans text-sm text-gray-400">Fecha de inicio: {{ $item->fechainicio }} Fecha Limite: {{ $item->fechalimite }}</p>
 
 
             <div class="mt-11">
@@ -26,7 +26,7 @@
 
             @if($item->recursos == '' )
             <div class="">
-                No se agrego ningun recurso a esta activdad
+                No se agrego ningun recurso a esta actividad
             </div>
             @else
             <div class="mt-11">
@@ -165,4 +165,168 @@
         </div>
     </div>
 
+    <div class="shadow bg-white p-4 my-5 rounded-lg">
+        <h4 class="font-sans text-2xl text-gray-600">Agregar Rubrica</h4>
+
+        <form action="" method="post" class="mt-5" wire:submit.prevent="storeRubrica">
+            <div class="mb-3 -mx-2 flex items-end">
+                <div class="px-2 w-1/3">
+                    <label class="font-bold text-sm mb-2 ml-1">Criterio</label>
+                    <input type="text" wire:model="criterio" name="" id="" class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                    maxlength="50">
+                    @error('criterio')
+                        <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="px-2 w-1/3">
+                    <label class="font-bold text-sm mb-2 ml-1">Descripcion</label>
+                    <input type="text" wire:model="desCriterio" name="" id="" class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                    maxlength="200">
+                    @error('desCriterio')
+                        <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="px-2 w-1/3">
+                    <label class="font-bold text-sm mb-2 ml-1">Puntuacion</label>
+                    <input type="number" wire:model="puntRubrica" name="" id="" class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                    min="0" max="100" step="1">
+                    @error('puntRubrica')
+                        <span class="text-red-500 font-sans text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>    
+            <div>
+                <button type="submit" class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                    Agregar
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-5">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200 px-4">
+                    <thead>
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Descripcion</th>
+                            <th>Puntuacion</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($listRubrica as $item)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">{{ $item->criterio }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">{{ $item->descripcion }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">{{ $item->puntuacion }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <button type="button" class="text-indigo-600 hover:text-indigo-900" wire:click="showModal( {{ $item->idRubricaActividad }}, '{{$item->criterio}}' , '{{ $item->descripcion }}' , {{ $item->puntuacion }} )">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    <dialog id="myModal" class="w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+        
+        <div class="flex flex-col w-full h-auto ">
+            <div class="flex w-full h-auto justify-center items-center">
+               <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+                    Calificar Actividad
+               </div>
+               <div onclick="document.getElementById('myModal').close()" class="flex w-1/12 h-auto justify-center cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+               </div>
+            </div>
+            
+            <!-- Modal Content-->
+            <div class="w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
+                <form action="" method="post" wire:submit.prevent="updatedRubrica">
+                    <div>
+                        <div>
+                            <label for="name" class="block font-medium text-gray-700">Criterio</label>
+                            <input type="text" name="" id="" class="shadow focus:outline-none focus:shadow-outline apperance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                            wire:model.defer="editCriterio">
+                        </div>
+                        <div>
+                            <label for="name" class="block font-medium text-gray-700">Descripcion</label>
+                            <input type="text" name="" id="" class="shadow focus:outline-none focus:shadow-outline apperance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                            wire:model.defer="editDesCriterio">
+                        </div>
+                        <div>
+                            <label for="name" class="block font-medium text-gray-700">Puntuacion</label>
+                            <input type="number" name="" id="" class="shadow focus:outline-none focus:shadow-outline apperance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                            wire:model.defer="editPuntRubrica">
+                        </div>
+                    </div>
+                    <button type="submit" class="mt-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Guardar Cambios</button>
+                </form>
+            </div>
+            <!-- End of Modal Content-->   
+        </div>
+    </dialog>
+
 </div>
+
+<style>
+    dialog[open] {
+        animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
+    }
+    
+    dialog::backdrop {
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+        backdrop-filter: blur(3px);
+    }
+           
+    @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateX(-3rem);
+        }
+      
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+    }
+    
+    #journal-scroll::-webkit-scrollbar {
+        width: 4px;
+        cursor: pointer;
+        /*background-color: rgba(229, 231, 235, var(--bg-opacity));*/
+    }
+    #journal-scroll::-webkit-scrollbar-track {
+        background-color: rgba(229, 231, 235, var(--bg-opacity));
+        cursor: pointer;
+        /*background: red;*/
+    }
+    #journal-scroll::-webkit-scrollbar-thumb {
+        cursor: pointer;
+        background-color: #a0aec0;
+        /*outline: 1px solid slategrey;*/
+    }
+</style>
+
+<script>
+    window.addEventListener('modalRubrica', event => {
+        document.getElementById('myModal').showModal()
+    })
+    
+    // evento dispara en el navegador genera problemas 
+    window.addEventListener('closeModalRubrica',event => {
+        document.getElementById('myModal').close();
+        swal("Good job!", "Se modifico informacion de la rubrica!", "success");
+    })
+    
+    window.addEventListener('cancelarModalRubrica', event => {
+        document.getElementById('myModal').close();
+    });
+        
+</script>
+    

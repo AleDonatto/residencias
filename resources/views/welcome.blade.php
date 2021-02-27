@@ -14,8 +14,6 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
 
-        <!--<title>Laravel</title>-->
-
         <!-- Fonts -->
         <!--<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">-->
 
@@ -61,7 +59,7 @@
                                     @auth
                                     <a href="{{ url('/dashboard') }}" class="ml-4 font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out">Dashboard</a>
                                     @else
-                                        <a href="{{ route('invitado') }}" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Invitado</a>
+                                        <!--<a href="" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Invitado</a>-->
                                         @if(Route::has('register'))
                                         <a href="{{ route('register') }}" class="ml-4 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Registro Alumno</a>
                                         @endif
@@ -84,19 +82,19 @@
                         From: "opacity-100 scale-100"
                         To: "opacity-0 scale-95"-->
                         <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-                            <div class="rounded-lg shadow-md">
-                                <div class="rounded-lg bg-white shadow-xs overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
+                            <div class="rounded-lg">
+                                <div class="rounded-lg bg-white overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
                                     <div class="px-5 pt-4 flex items-center justify-between">
                                         <div>
-                                            <img class="h-8 w-auto" src="{{ asset('img/logo.jpeg') }}" alt="">
+                                            <img class="h-8 w-auto" src="{{ asset('img/logo-ita.png') }}" alt="">
                                         </div>
                                         
                                         <div class="-mr-2">
-                                            <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Close menu">
+                                            <!--<button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Close menu">
                                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                                 </svg>
-                                            </button>
+                                            </button>-->
                                         </div>
                                     </div>
                                     <div class="px-2 pt-2 pb-3">
@@ -105,7 +103,7 @@
                                                 @auth
                                                     <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline"></a>
                                                 @else
-                                                    <a href="{{ route('invitado') }}" class="text-sm text-gray-700 underline">Invitado</a>
+                                                    <!--<a href="" class="text-sm text-gray-700 underline">Invitado</a>-->
                                                     <a href="{{ route('login') }}" class="ml-4 text-sm text-gray-700 underline">Login</a>
 
                                                     @if (Route::has('register'))
@@ -119,10 +117,6 @@
                                                 @endif
                                             </div>
                                         @endif
-                                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Product</a>
-                                        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Features</a>
-                                        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Marketplace</a>
-                                        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out" role="menuitem">Company</a>
                                     </div>
                                 <div>
                                     @auth
@@ -154,7 +148,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-3 sm:mt-0 sm:ml-3">
-                                    <a href="{{ route('invitado') }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                                    <a href="" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                                         Vista Rapida
                                     </a>
                                 </div>
@@ -174,7 +168,7 @@
 
         <div class="bg-gray-200 p-2">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-3 grap-4">
+                <div class="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1">
                     <div class="mt-3 px-8">
                         <div class="fons-sans text-2xl text-gray-900 mt-5">
                             <h4 class="">Ingenieria en Sistemas Computacionales</h4>
@@ -219,7 +213,7 @@
 
         <div class="p-2">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-3 grap-4">
+                <div class="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1">
                     <div class="mt-3 px-8">
                         <div class="fons-sans text-2xl text-gray-900 mt-5">
                             <h4 class=""></h4>
@@ -253,7 +247,7 @@
 
         <div class="bg-gray-200 p-2">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-3 grap-4">
+                <div class="grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1">
                     <div class="mt-3 px-8">
                         <div class="fons-sans text-2xl text-gray-900 mt-5">
                             <h4 class="">Licenciatura en Administracion</h4>
@@ -295,11 +289,11 @@
             </div>
         </div>
 
-        <div class="footer mt-5 bg-blue-900 h-96">
+        <div class="footer mt-5 bg-blue-900 2xl:h-96 xl:h-96 lg:h-96 md:h-auto sm:h-auto">
             <div class="divide-y divide-y-reverse divide-gray-400">
                 <div class="py-2">
                     <div class="container mx-auto px-4">
-                        <div class="grid grid-cols-2 grap-4">
+                        <div class="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 ">
                             <div class="grid grid-rows-2 grid-flow-col grap-4">
                                 <div class="text-white mt-2">
                                     <h4 class="font-bold">Direccion</h4>
@@ -324,14 +318,13 @@
                                 <iframe class="w-5/6 h-64" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15273.324433852627!2d-99.8111116!3d16.8595076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2162d17e99742acb!2sTecnol%C3%B3gico%20Nacional%20de%20M%C3%A9xico%20Campus%20Acapulco!5e0!3m2!1ses-419!2smx!4v1610131578684!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                             </div>
                         </div>
-                    </div>        
-                </div>
-
-                <div class="py-2">
-                    <div class="container mx-auto px-4 absolute mt-5">
-                        <p class="text-center text-white">© Copyright @php echo date('Y') @endphp TecNM Campus Acapulco - Todos los Derechos Reservados</p>
-                        <p class="text-center"></p>
-                    </div>
+                        
+                        <div class="py-2 bg-blue-900">
+                            <div class="container mx-auto px-4 absolute mt-5">
+                                <p class="text-center xl:text-white lg:text-white md:text-black sm:text-black">© Copyright @php echo date('Y') @endphp TecNM Campus Acapulco - Todos los Derechos Reservados</p>
+                            </div>
+                        </div>    
+                    </div>    
                 </div>
             </div>
             
@@ -344,7 +337,7 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                     @else
-                        <a href="{{ route('invitado') }}" class="text-sm text-gray-700 underline">Invitado</a>
+                        <a href="" class="text-sm text-gray-700 underline">Invitado</a>
                         <a href="{{ route('login') }}" class="ml-4 text-sm text-gray-700 underline">Login</a>
 
                         @if (Route::has('register'))

@@ -17,7 +17,7 @@ class CalificacionParcial extends Migration
             $table->id('idCalparcial');
             $table->integer('calificacion');
             $table->unsignedBigInteger('unidad_id'); 
-            $table->unsignedBigINteger('alumno_ins_id');
+            $table->unsignedBigInteger('alumno_ins_id');
             $table->foreign('unidad_id')->references('idTema')->on('temas');
             $table->foreign('alumno_ins_id')->references('idCA')->on('carga_academica');
             $table->timestamps();

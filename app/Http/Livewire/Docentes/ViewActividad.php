@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Actividades;
-
+Use App\Models\Rubrica;
 
 class ViewActividad extends Component
 {
@@ -15,11 +15,14 @@ class ViewActividad extends Component
     public $idactividad, $actividad;
     public $recursoOld, $listSemanas;
     public $nombreActividad, $descripcion, $fechainicio, $fechafin, $tema_id, $curso_id, $recursoNew, $semanaEdt, $porcentaje; 
+    public $listRubrica, $criterio, $desCriterio, $puntRubrica, $idRubrica;
+    public $editCriterio, $editDesCriterio, $editPuntRubrica;
 
     public function render()
     {
         $this->getActividad(); 
         $this->cargarSemanas();
+        $this->getRubrica();
         return view('livewire.docentes.view-actividad');
     }
 
@@ -109,6 +112,95 @@ class ViewActividad extends Component
             session()->flash('message', 'Actividad modificada con exito!.');
         }
         $this->getActividad();
+    }
+
+    //TODO: metodos para la rubrica
+    public function storeRubrica(){
+
+        $validatedData = $this->validate(
+            [
+                'criterio' => 'required|string',
+                'puntRubrica' => 'required|integer',
+                'desCriterio' => 'required|string',
+            ],
+            [
+                'criterio.required' => 'Este campo es necesario.',
+                'desCriterio.required' => 'Este campo es necesario.',
+                'puntRubrica.required' => 'Este campo es necesario.',
+                'puntRubrica.integer' => 'Debe ser un numero entero.'
+            ]
+        );
+
+        $rubrica = new Rubrica();
+        $rubrica->criterio = $this->criterio;
+        $rubrica->descripcion = $this->desCriterio;
+        $rubrica->puntuacion = $this->puntRubrica;
+        $rubrica->actividad_id = $this->idactividad;
+        $rubrica->save();  
+
+        $this->criterio = '';
+        $this->desCriterio = '';
+        $this->puntRubrica = 0;
+    }
+
+    public function showModal($idrub, $cri, $des, $punt){
+        $this->idRubrica = $idrub;
+        $this->editCriterio = $cri;
+        $this->editDesCriterio = $des;
+        $this->editPuntRubrica = $punt;
+
+        $this->dispatchBrowserEvent('modalRubrica');
+        
+    }
+
+    public function cancelRubrica(){
+        $this->clear();
+        $this->dispatchBrowserEvent('cancelarModalRubrica');
+    }
+
+    public function closeRubrica(){
+        $this->clear();
+        $this->dispatchBrowserEvent('closeModalRubrica');
+    }
+
+    public function clear(){
+        $this->idRubrica = 0;
+        $this->editCriterio = '';
+        $this->editDesCriterio = '';
+        $this->editPuntRubrica = 0;
+    }
+
+    public function updatedRubrica(){
+        $validatedData = $this->validate(
+            [
+                'editCriterio' => 'required|string',
+                'editPuntRubrica' => 'required|integer',
+                'editDesCriterio' => 'required|string',
+            ],
+            [
+                'editCriterio.required' => 'Este campo es necesario.',
+                'editDesCriterio.required' => 'Este campo es necesario.',
+                'editPuntRubrica.required' => 'Este campo es necesario.',
+                'editPuntRubrica.integer' => 'Debe ser un numero entero.'
+            ]
+        );
+
+        Rubrica::where('idRubricaActividad', $this->idRubrica)
+        ->where('actividad_id', $this->idactividad)
+        ->update([
+            'criterio' => $this->editCriterio,
+            'descripcion' => $this->editDesCriterio,
+            'puntuacion' => $this->editPuntRubrica,
+        ]);
+
+        $this->closeRubrica();
+    }
+
+    public function getRubrica(){
+        $this->listRubrica = DB::table('rubricaActividad')
+        ->select('rubricaActividad.*')
+        ->where('rubricaActividad.actividad_id', $this->idactividad)
+        ->get();
     }
 
 }
