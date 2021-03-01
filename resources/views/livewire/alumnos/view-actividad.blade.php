@@ -1,6 +1,32 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 
+    @if( count($listRubrica) == 0)
+    @else
+    <div class="shadow bg-white p-4 my-5 rounded-lg">
+        <h4 class="font-sans text-2xl text-gray-600">Rubrica de Actividad</h4>
+
+        <table class="min-w-full divide-y divide-gray-200 px-4 mt-5 table-auto border-collapse">
+            <thead>
+                <tr>
+                    <th class="border ">Criterio</th>
+                    <th class="border ">Descripcion</th>
+                    <th class="border ">Puntuacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($listRubrica as $item)
+                <tr>
+                    <td class="border px-6 py-4 whitespace-nowrap text-center font-sans text-lg text-gray-500">{{ $item->criterio }}</td>
+                    <td class="border px-6 py-4 whitespace-nowrap text-center font-sans text-lg text-gray-500">{{ $item->descripcion }}</td>
+                    <td class="border px-6 py-4 whitespace-nowrap text-center font-sans text-lg text-gray-500">{{ $item->puntuacion }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    @endif
+
     <div class="shadow bg-white p-4 my-5 rounded-lg">
         @foreach($actividad as $item)
             <h4 class="font-sans text-2xl text-gray-600">{{ $item->nombreActividad }}</h4>
@@ -80,7 +106,7 @@
             @endif
         </div>
 
-        @if($calificacion == null)
+        @if( count($calificacion)==0 )
         <div class="mt-11">
             <h4 class="font-sans text-xl text-gray-600">Califiacion de la actividad</h4>
             <p class="font-sans text-base text-gray-500">Sin calificacion agregada</p>
@@ -103,6 +129,7 @@
                 </div>
             @endforeach
         @endif
+
     </div>
 </div>
 

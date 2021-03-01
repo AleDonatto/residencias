@@ -15,7 +15,7 @@ class ViewActividad extends Component
     use WithFileUploads;
 
     public $idactividad, $actividad, $verificacionActividad, $fechaLimite, $fechaNow;
-    public $archivoactividad, $path, $calificacion;
+    public $archivoactividad, $path, $calificacion, $listRubrica;
     public $response;
 
     public function render()
@@ -23,6 +23,7 @@ class ViewActividad extends Component
         $this->getActividad(); 
         $this->verificarActividad();
         $this->getCalificacion();
+        $this->getRubrica();
         return view('livewire.alumnos.view-actividad');
     }
 
@@ -112,6 +113,13 @@ class ViewActividad extends Component
         ->select('cal_actividades.calificacion','cal_actividades.comentarios')
         ->where('actividades_alumnos.actividad_id', $this->idactividad)
         ->where('actividades_alumnos.alumno_id', $idAlumno->idAlumno)
+        ->get();
+    }
+
+    public function getRubrica(){
+        $this->listRubrica = DB::table('rubricaactividad')
+        ->select('rubricaactividad.*')
+        ->where('rubricaactividad.actividad_id', $this->idactividad )
         ->get();
     }
 }
