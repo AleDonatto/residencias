@@ -153,6 +153,14 @@ class PrivateController extends Controller
     public function calificarCurso($curso){
         return view('docente.calificarCurso', ['curso' => $curso]);
     }
+
+    public function createExamen($curso) {
+        return view('docente.createExamen', ['curso' => $curso ]);
+    }
+
+    public function createPreguntasExamen($examen) {
+        return view('docente.createPreguntasExamen', ['examen' => $examen ]);
+    }
     /** fin metodos docentes **/
 
     

@@ -12,24 +12,6 @@
       <p class="mx-2">Volver</p>  
     </a>
 
-    <!--<div class="md:container md:mx-auto bg-indigo-200 bg-opacity-50 rounded-lg border-dashed shadow-2xl mt-5">
-      <div class="flex">
-        <div class="w-1/3">
-          <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" alt="Sunset in the mountains" 
-          class="p-5 max-w-xs">
-        </div>
-        <div class="w-2/3 text-left mt-5">
-          @foreach($curso as $item)
-            <h1 class="font-sans text-2xl font-bold text-blue-700">Curso: {{ $item->nombreCurso }} </h1>
-            <h2 class="font-sans text-xl font-bold">Descripcion:</h2>
-            <p class="font-sans text-base">{{ $item->descripcion }}</p>
-            <h2 class="font-sans text-xl font-bold">Periodo: </h2>
-            <p class="font-sans text-base">{{ $item->periodo.' - '.$item->year  }}</p>
-          @endforeach
-        </div>
-      </div>
-    </div>-->
-
     <div class="shadow rounded-lg bg-white">
       <div class="grid col-span-1 md:flex items-center mt-5 justify-center py-5">
         <div class="mr-14">

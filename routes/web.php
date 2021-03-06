@@ -39,7 +39,6 @@ Route::resource('datos_docentes', DatosDocentesController::class)->only([
 
 Route::get('docente/cursos_docente',[ CursosController::class,'index'])->name('cursos_docentes.index')->middleware('auth','role:Docente');
 Route::get('docente/cursos_docente/{id}',[ CursosController::class,'show'])->name('cursos_docentes.show')->middleware('auth','role:Docente');
-
 Route::get('horarios_docentes',[PrivateController::class, 'horario_docente'])->name('horario_docente')->middleware('auth','role:Docente');
 Route::get('docente/actividad/create/{curso}/{tema}',[PrivateController::class, 'formActividadesTemaCurso'])->name('docenteaddActividad')->middleware('auth','role:Docente');
 Route::get('docente/viewActividad/{id}', [ActividadTemaDocente::class, 'show'])->name('viewActividadDocente')->middleware('auth');
@@ -48,6 +47,8 @@ Route::get('docente/cal_actividades', [PrivateController::class, 'calActividades
 Route::get('docente/curso/{curso}/calActividades', [PrivateController::class, 'calificarActividades'])->name('calificarActividades')->middleware('auth','role:Docente');
 Route::get('docente/curso/{curso}/calUnidades', [PrivateController::class, 'calificarUnidad'])->name('calificarUnidades')->middleware('auth','role:Docente');
 Route::get('docente/curso/{curso}/calCurso', [PrivateController::class, 'calificarCurso'])->name('calificarCurso')->middleware('auth','role:Docente');
+Route::get('docente/curso/{curso}/createExamen', [PrivateController::class, 'createExamen'])->name('createExamen')->middleware('auth', 'role:Docente');
+Route::get('docente/curso/examen/{examen}/preguntas', [PrivateController::class, 'createPreguntasExamen'])->name('createPreguntasExamen')->middleware('auth', 'role:Docente');
 /* * */
 
 // TODO: rutas alumnos
@@ -59,11 +60,9 @@ Route::resource('datos_alumnos', DatosAlumnosController::class)->only([
 ])->middleware('auth','role:Alumno');
 
 Route::get('descripcion_cursos/{id}', [PrivateController::class, 'descripcionCursoAlumno'])->name('descripcionCurso')->middleware('auth','role:Alumno');
-Route::get('alumnos/cursos_alumno',[CursosAlumnosController::class, 'index'])->name('cursos_alumnos.index')
-->middleware('auth','role:Alumno');
+Route::get('alumnos/cursos_alumno',[CursosAlumnosController::class, 'index'])->name('cursos_alumnos.index')->middleware('auth','role:Alumno');
 Route::get('alumnos/cursos_alumno/{id}',[CursosAlumnosController::class, 'show'])->name('cursos_alumnos.show')->middleware('auth','role:Alumno');
 Route::get('horarios_alumnos',[PrivateController::class, 'horario_alumno'])->name('horarios_alumnos')->middleware('auth','role:Alumno');
-
 Route::post('sendSolicitud', [PrivateController::class, 'sendSolicitud'])->name('sendSolicitud')->middleware('auth','role:Alumno');
 Route::get('alumnos/all_cursos', [PrivateController::class, 'allCursos'])->name('allCursos')->middleware('auth','role:Alumno');
 Route::get('alumnos/view_actividad/{id}', [PrivateController::class, 'viewActividadAlumno'])->name('viewActividadAlumno')->middleware('auth','role:Alumno');

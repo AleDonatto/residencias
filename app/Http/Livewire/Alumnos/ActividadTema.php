@@ -8,11 +8,12 @@ use Models\Actividades;
 
 class ActividadTema extends Component
 {
-    public $actividadTema, $cursoid;
+    public $actividadTema, $cursoid, $examenCurso;
 
     public function render()
     {
         $this->getActividadTema();
+        $this->getExamen();
         return view('livewire.alumnos.actividad-tema');
     }
 
@@ -33,6 +34,13 @@ class ActividadTema extends Component
         ->groupBy('actividadtemas.semana_id', 'actividadtemas.idActividadTemas')
         //->having('actividadtemas.fechainicio', '=', '2021-01-18')
         ->get();
+    }
+
+    public function getExamen(){
+        $this->examenCurso = DB::table('examencurso')
+        ->where('examencurso.curso_id', $this->cursoid)
+        ->select('examencurso.*')
+        ->get(); 
     }
 
 }

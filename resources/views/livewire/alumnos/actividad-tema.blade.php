@@ -1,10 +1,27 @@
 <div>
     {{-- Do your work, then step back. --}}
 
+    <div class="mt-1">
+    @if(count($examenCurso) > 0)
+        <h4 class="">Examenes </h4>
+        @foreach($examenCurso as $item)
+           
+        <div class="md:container md:mx-auto bg-white rounded-lg border-dashed shadow-md mt-2 px-15">
+             <p>{{ $item->titulo }}</p>
+            <p>{{ $item->descripcion }}</p>
+            <p>Fecha de Apertura: {{ $item->fecha_apertura.' - '.$item->fechalimite }}</p>
+            <p>Hora de Apertura: {{ $item->hora_apertura.' - '.$item->horalimite  }}</p>
+            
+        </div>
+        @endforeach
+    @endif
+    </div>
+
     @if(count($actividadTema) == 0)
         <p class="font-sans text-xl text-black text-center">No hay actividades Agregadas</p>
     @else
     <div class="mb-5">
+        <h4 class="mt-4 text-black text-lg">Actividades</h4>
         @php 
             $idSemana = '';
         @endphp
