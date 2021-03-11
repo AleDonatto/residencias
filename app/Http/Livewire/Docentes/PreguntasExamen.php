@@ -14,6 +14,7 @@ class PreguntasExamen extends Component
     public $preguntaEdit, $puntosPreguntaEdit, $idPreguntaEdit;
     public $respuesta, $iscorrect;
     public $listPreguntas, $listRespuestas;
+    public $idRespuestaEdit, $respuestaEdit, $isCorrectEdit, $preguntaIdEdit;
 
     public function render()
     {
@@ -114,6 +115,19 @@ class PreguntasExamen extends Component
         $this->dispatchBrowserEvent('closeModalPreguntaEdit');
     }
 
+    public function showModalEditRespuestas($idrespuesta, $respuesta, $correct, $preguntaId){
+        $this->idRespuestaEdit = $idrespuesta;
+        $this->respuestaEdit = $respuesta;
+        $this->isCorrectEdit = $correct;
+        $this->preguntaIdEdit = $preguntaId;
+
+        $this->dispatchBrowserEvent('modalRespuestasEdit');
+    }
+
+    public function closeShowModalEditRespuestas(){
+        $this->dispatchBrowserEvent('closeModalRespuestasEdit');
+    }
+
     public function getRespuestas($identificador){
         $respuestas = DB::table('respuestas_preguntas')
         ->select('respuestas_preguntas.*')
@@ -145,5 +159,25 @@ class PreguntasExamen extends Component
         ]);
 
         $this->closeShowModalEditPreguntas();
+    }
+
+    public function updateRespuesta(){
+        $validation = $this->validate(
+            [
+                'respuestaEdit' => 'required|string',
+            ],
+            [
+                'respuestaEdit.required' => 'Este campo es necesario',
+            ]
+        );
+
+        RespuestasPreguntas::where('idRespuesta', $this->idRespuestaEdit)
+        ->where('pregunta_id', $this->preguntaIdEdit )
+        ->update([
+            "respuesta" => $this->respuestaEdit,
+            "rcorrecta" => $this->isCorrectEdit, 
+        ]);
+
+        $this->closeShowModalEditRespuestas();
     }
 }
