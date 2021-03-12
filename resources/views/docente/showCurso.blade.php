@@ -51,7 +51,7 @@
         Calificar Actividades
       </a>
       <a href="{{ route('calificarUnidades', $curso->idCurso) }}" class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold text-white rounded transition-all hover:border-purple-500 hover:bg-transparent hover:text-purple-500">
-        Calificar Unidiad
+        Calificar Unidad
       </a>
       <a href="{{ route('calificarCurso', $curso->idCurso) }}" class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold text-white rounded transition-all hover:border-green-500 hover:bg-transparent hover:text-green-500">
         Evaluacion Final
