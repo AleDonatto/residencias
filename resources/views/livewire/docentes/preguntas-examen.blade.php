@@ -294,7 +294,7 @@
         document.getElementById('modalPreguntas').showModal()
     })
     
-    // evento dispara en el navegador genera problemas 
+    // evento disparado en el navegador genera problemas 
     window.addEventListener('closeModalPreguntaEdit',event => {
         document.getElementById('modalPreguntas').close()
         //swal("Good job!", "Se Modifixo la pregunta!", "success");

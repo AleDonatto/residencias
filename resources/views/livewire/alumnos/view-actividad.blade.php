@@ -9,9 +9,9 @@
         <table class="min-w-full divide-y divide-gray-200 px-4 mt-5 table-auto border-collapse">
             <thead>
                 <tr>
-                    <th class="border ">Criterio</th>
-                    <th class="border ">Descripcion</th>
-                    <th class="border ">Puntuacion</th>
+                    <th class="border">Criterio</th>
+                    <th class="border">Descripcion</th>
+                    <th class="border">Puntuacion</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,8 +41,8 @@
             </div>
 
             @if($item->recursos == '' )
-            <div class="">
-                no hay recurso
+            <div class="mt-5">
+                No hay recurso de la actividad
             </div>
             @else
             <div class="mt-11">
@@ -102,7 +102,7 @@
                 </button>
             </form>
             @else
-            <p class="flex flex-wrap content-center justify-center shadow bg-red-500 h-12 rounded-lg">se te paso la fecha krnal</p>
+            <p class="flex flex-wrap content-center justify-center shadow bg-red-500 h-12 rounded-lg">Fuera del rango de fecha de entrega</p>
             @endif
         </div>
 

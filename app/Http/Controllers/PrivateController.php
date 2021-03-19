@@ -118,6 +118,17 @@ class PrivateController extends Controller
         return $pdf->stream();
     }
 
+    public function vistaExamenAlumno($idExamen){
+        
+        $examen = DB::table('examencurso')->select('examencurso.*')->where('idExamen', $idExamen)->first();
+
+        return view('alumnos.viewExamen', ['examen' => $examen]);
+    }
+
+    public function startExamen($idExamen){
+        return view('alumnos.startExamen', ['idExamen' => $idExamen]);
+    }
+
     /* fin metodos de alumnos */
 
     // TODO: docentes
