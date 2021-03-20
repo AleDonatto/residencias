@@ -30,17 +30,17 @@
             $hora = date('H:i:s');
         @endphp
 
-        @if( $fecha >= $examen->fecha_apertura || $fecha <= $examen->fechalimite )
-            @if( $hora >= $examen->hora_apertura || $hora <= $examen->horalimite )        
-            <p class="animate-pulse"><small class="text-sm text-gray-600">Solo puedes realizar el examen en la fecha y hora correspondiente</small></p>
-            <button type="button" disabled class="cursor-wait disabled:opacity-50 bg-blue-500 text-white font-bold py-2 px-4 rounded" disabled>
+        @if( $fecha >= $examen->fecha_apertura && $fecha <= $examen->fechalimite )
+            @if( $hora > $examen->hora_apertura && $hora < $examen->horalimite )        
+            <a href="{{ route('startExamen', $examen->idExamen) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Comenzar Examen
-            </button>
+            </a>
             @endif
         @else
-        <a href="{{ route('startExamen', $examen->idExamen) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <p class="animate-pulse"><small class="text-sm text-gray-600">Solo puedes realizar el examen en la fecha y hora correspondiente</small></p>
+        <button type="button" disabled class="cursor-wait disabled:opacity-50 bg-blue-500 text-white font-bold py-2 px-4 rounded" disabled>
             Comenzar Examen
-        </a>
+        </button>
         @endif
     </div>
 
