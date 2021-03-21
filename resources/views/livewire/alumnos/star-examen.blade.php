@@ -24,6 +24,9 @@
     </div>
     @endforeach
 
+    {{ $listPreguntas }}
+    {{ $iteracion }}
+
     @if($showExamen && count($listPreguntas) > 0 )
 
     <div class="shadow rounded-lg bg-white p-8 mt-5">
@@ -40,7 +43,7 @@
             @foreach( $this->getRespuestasPregunta($listPreguntas[$iteracion]->idPregunta ) as $list )
             <div class="flex mt-2">
                 <input type="hidden" name="pregunta" wire:model="">
-                <input type="checkbox" name="respuesta" id="respuesta"  value="{{ $list->idRespuesta }}" wire:model.defer="respuestaAlumno">
+                <input type="checkbox" name="respuesta" id="respuesta"  value="{{ $list->idRespuesta }}" wire:model="respuestaAlumno">
                 <div class="">
                     <p class="pl-5 -mt-1 font-sans text-gray-700">{{ $list->respuesta }}</p>
                 </div>
@@ -74,7 +77,7 @@
                 Finalizar Examen
             </button>
             @else
-            <button class="bg-gray-100 p-3 rounded-lg hover:bg-gray-200 focus:outline-none" wire:click="saveAndNext({{ $listPreguntas[$iteracion]->idPregunta }},{{ $listPreguntas[$iteracion]->tipo }}, {{ true }} )">
+            <button class="bg-gray-100 p-3 rounded-lg hover:bg-gray-200 focus:outline-none" wire:click="saveAndNext({{ $listPreguntas[$iteracion]->idPregunta }},{{ $listPreguntas[$iteracion]->tipo }}, {{ 'true' }} )">
                 Finalizar Examen
             </button>
             @endif

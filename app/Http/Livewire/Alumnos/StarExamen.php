@@ -128,15 +128,15 @@ class StarExamen extends Component
                 $examenAlumno->respuestas = $respuesta;
                 $examenAlumno->save();
 
-                $this->respuestaAlumno = [];
-                
+                unset($this->respuestaAlumno);
+                $this->respuestaAlumno=[];
             }
 
-            $this->iteracion = $this->iteracion +1;
+            //$this->iteracion = $this->iteracion + 1;
 
             if($ultimo){
                 
-                $this->iteracion = $this->iteracion - 1;
+                //$this->iteracion = $this->iteracion - 1;
                 $this->showExamen = false;
                 $this->mensaje = "Finalizaste tu examen...";
                 $this->bloqueo = true; 
