@@ -23,16 +23,40 @@
             </div>
         </div>
     </div>
+
+    @if(count($listExamenes) == 0)
+    @else 
+    <h4 class="mt-4 text-blue-600 text-2xl font-sans">Examenes</h4>
+    
+    <div class="mt-2">
+        @foreach($listExamenes as $item)
+        <div class="shadow rounded-lg bg-white p-4 m-2">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="">        
+                    <h1 class="font-sans text-xl font-semibold">{{ $item->titulo }}</h1>
+                    <p class="font-sans text-base">{{ $item->descripcion }}</p>
+                </div>
+                <div class="">
+                    <a href="{{ route('resultadosAlumnos', [$item->idExamen, $idCargaAcademica]) }}" type="button" class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                        Ver Resultados
+                    </a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    @endif
     
     @if(count($actividadesAlumno) == 0)
     @else
+    <h4 class="mt-2 text-blue-600 text-2xl font-sans">Actividades del Alumno</h4>
     <div class="shadow rounded-lg bg-white my-4">
         <div class="form-task">
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200 px-4" >
+                            <table class="min-w-full divide-y divide-gray-200 px-4 py-4" >
                                 <thead>
                                     <tr>
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
@@ -111,42 +135,16 @@
     </div>
     @endif
 
-    <div class="grid grid-cols-2 gap-4 mt-5 mb-5">
+    <!--<div class="grid grid-cols-2 gap-4 mt-5 mb-5">
         <div class="shadow rounded-lg bg-white justify-center h-96 md:h-96">
             <div id="container" style="height: 24rem;"></div>
         </div>
         <div class="shadow rounded-lg bg-white">
             <div id="containerPracticas" style="height: 24rem;"></div>
-            <!--<div class="flex">
-                <div class="w-1/2">
-
-                    <div class="container mx-auto flex justify-center h-96">
-                        <div class="w-full h-96 flex flex-col">
-                            <div class="bg-white text-sm text-gray-500 font-bold px-5 py-2 shadow border-b border-gray-300">
-                                Actividades
-                            </div>
-                            
-                            <div class="w-full h-full overflow-auto shadow bg-white" id="journal-scroll">
-                                <table class="w-full">
-                                    <tbody class="">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="w-1/2">
-                    <div class="text-center font-sans text-xl mt-5">
-                        <p class="text-blue-700">Promedio Alcanzado de actividades</p>
-                        
-                    </div>
-                </div>
-            </div>-->
         </div>
-    </div>
+    </div>-->
 
-    <dialog id="myModal" class="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+    <dialog id="myModal" class="w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
         
         <div class="flex flex-col w-full h-auto ">
              <!-- Header -->
@@ -224,23 +222,23 @@ dialog::backdrop {
 
 @push('scripts')
 
-<script src="{{ asset('highcharts/code/highcharts.js') }}"></script>
+<!--<script src="{{ asset('highcharts/code/highcharts.js') }}"></script>
 <script src="{{ asset('highcharts/code/modules/exporting.js') }} "></script>
-<script src="{{ asset('highcharts/code/modules/export-data.js') }}"></script>
+<script src="{{ asset('highcharts/code/modules/export-data.js') }}"></script>-->
 
 <script>
-window.addEventListener('modalCalificacion', event => {
+document.addEventListener('modalCalificacion', event => {
     //alert('Name updated to: ' + event.detail.idAlumnoActividad);
     document.getElementById('myModal').showModal()
 })
 
 // evento dispara en el navegador genera problemas 
-window.addEventListener('closeModalCalficaciones',event => {
+document.addEventListener('closeModalCalficaciones',event => {
     document.getElementById('myModal').close()
     swal("Good job!", "Se agrego la calificacion a la actividad!", "success");
 })
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     grafica(@this.faltantes, @this.canActAlumno, @this.canActividades);
     practicas(@this.pracFaltantes, @this.canPracAlumnos, @this.canPracticas);
 });
@@ -329,7 +327,6 @@ function practicas(faltantes, canActAlumno, canActividades){
             },]
         }]
     });
-}
-
+}*/
 </script>
 @endpush

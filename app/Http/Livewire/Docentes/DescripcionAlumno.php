@@ -13,9 +13,11 @@ class DescripcionAlumno extends Component
     use WithFileUploads;
 
     public $idalumno, $idcurso, $datosAlumno,$actividadesAlumno, $confirmingUserDeletion, $pathImage, $response, $isOpen=0;
+    public $idCargaAcademica;
     public $calificacion=0, $comentarios, $idactividad, $sumCal=0;
     public $recurso, $canActAlumno=0, $canActividades=0, $faltantes=0;
     public $pracFaltantes=0, $canPracticas=0, $canPracAlumnos=0;
+    public $listExamenes;
 
     protected $rules = [
         'calificacion' => 'required|integer|min:0|max:100',
@@ -35,21 +37,24 @@ class DescripcionAlumno extends Component
         $this->getDatosAlumno();
         $this->consActCal();
         $this->consPracticasCalificadas();
-        $this->datosGrafica();
-        $this->datosGraficaPracticas(); 
+        $this->getExamenes();
+        //$this->datosGrafica();
+        //$this->datosGraficaPracticas(); 
         return view('livewire.docentes.descripcion-alumno');
     }
 
     public function getDatosAlumno(){
         $this->datosAlumno = DB::table('alumnos')
         ->join('users', 'alumnos.user_id', '=', 'users.id')
-        ->select('alumnos.nControl', 'alumnos.carrera', 'alumnos.semestre', 'users.name', 'users.lastname', 'users.email','profile_photo_path')
+        ->join('carga_academica', 'alumnos.idAlumno', '=', 'carga_academica.alumno_id')
+        ->select('alumnos.nControl', 'alumnos.carrera', 'alumnos.semestre', 'users.name', 'users.lastname', 'users.email', 'carga_academica.idCA')
         ->where('alumnos.idAlumno', $this->idalumno)
         ->get(); 
 
         $name ='';
         foreach($this->datosAlumno as $item){
             $name = $item->name; 
+            $this->idCargaAcademica = $item->idCA;
         }
 
         $this->pathImage = "https://ui-avatars.com/api/?name=".$name."&background=random";
@@ -151,5 +156,12 @@ class DescripcionAlumno extends Component
         $this->canPracticas = count($practicas);
         
         $this->pracFaltantes = $this->canPracticas - $this->canPracAlumnos; 
+    }
+
+    public function getExamenes(){
+        $this->listExamenes = DB::table('examencurso')
+        ->where('curso_id', $this->idcurso)
+        ->select('titulo', 'descripcion', 'idExamen')
+        ->get();
     }
 }

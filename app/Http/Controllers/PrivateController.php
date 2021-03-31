@@ -103,16 +103,6 @@ class PrivateController extends Controller
         ->select('curso.nombreCurso','curso.horario','curso.aula', 'materias.academia','users.name','users.lastname')       
         ->get();
 
-        
-        /*return view('alumnos.formatoHorario',[
-            'cursos'=> $cursos, 
-            'periodo'=>$periodo, 
-            'year'=>$year, 
-            'nControl'=>$nControl, 
-            'nameAlumno'=> $nameAlumno,
-            'carrera' => $carrera,
-            'semestre' => $semestre,
-        ]);*/
 
         $pdf = PDF::loadView('alumnos.formatoHorario', compact('cursos','periodo','year','nControl','nameAlumno','carrera','semestre'));
         return $pdf->stream();
@@ -127,6 +117,10 @@ class PrivateController extends Controller
 
     public function startExamen($idExamen){
         return view('alumnos.startExamen', ['idExamen' => $idExamen]);
+    }
+
+    public function resultadosExamenStudent($idExamen){
+        return view('alumnos.resultadosExamen', ['examen' => $idExamen]);
     }
 
     /* fin metodos de alumnos */
@@ -171,6 +165,10 @@ class PrivateController extends Controller
 
     public function createPreguntasExamen($examen) {
         return view('docente.createPreguntasExamen', ['examen' => $examen ]);
+    }
+
+    public function resultadosExamenAlumno($examen, $alumno){
+        return view('docente.resultadosExamenAlumno', ['examen' => $examen, 'alumno'=>$alumno]);
     }
     /** fin metodos docentes **/
 

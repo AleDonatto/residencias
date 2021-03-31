@@ -24,9 +24,6 @@
     </div>
     @endforeach
 
-    {{ $listPreguntas }}
-    {{ $iteracion }}
-
     @if($showExamen && count($listPreguntas) > 0 )
 
     <div class="shadow rounded-lg bg-white p-8 mt-5">

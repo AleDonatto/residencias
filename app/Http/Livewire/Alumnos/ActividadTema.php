@@ -43,4 +43,14 @@ class ActividadTema extends Component
         ->get(); 
     }
 
+    public function verificarExamen($idExamen){
+
+        $verificar = DB::table('examen_alumno')
+        ->select('examen_alumno.*')
+        ->where('examen_alumno.examen_id', $idExamen)
+        ->count();
+
+        return $verificar;
+    }
+
 }

@@ -8,15 +8,21 @@
            
         <div class="md:container md:mx-auto bg-white rounded-lg border-dashed shadow-md mt-2 px-15">
             <div class="flex ">
-                <div class="w-1/2">
+                <div class="w-1/2 p-2">
                     <p>{{ $item->titulo }}</p>
                     <p>{{ $item->descripcion }}</p>
                     <p>Fecha de Apertura: {{ $item->fecha_apertura.' - '.$item->fechalimite }}</p>
                     <p>Hora de Apertura: {{ $item->hora_apertura.' - '.$item->horalimite  }}</p>
                 </div>
+                @if($this->verificarExamen($item->idExamen ) == 0)
                 <div class="w-1/2 flex flex-wrap content-center">
                     <a href="{{ route('viewExamenAlumno', $item->idExamen ) }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg">Ir al examen</a>
                 </div>
+                @else
+                <div class="w-1/2 flex flex-wrap content-center">
+                    <a href="{{ route('resultadosStudent', $item->idExamen ) }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg">Ver Resultados</a>
+                </div>
+                @endif
             </div>
         </div>
         @endforeach

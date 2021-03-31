@@ -49,6 +49,7 @@ Route::get('docente/curso/{curso}/calUnidades', [PrivateController::class, 'cali
 Route::get('docente/curso/{curso}/calCurso', [PrivateController::class, 'calificarCurso'])->name('calificarCurso')->middleware('auth','role:Docente');
 Route::get('docente/curso/{curso}/createExamen', [PrivateController::class, 'createExamen'])->name('createExamen')->middleware('auth', 'role:Docente');
 Route::get('docente/curso/examen/{examen}/preguntas', [PrivateController::class, 'createPreguntasExamen'])->name('createPreguntasExamen')->middleware('auth', 'role:Docente');
+Route::get('docente/curso/examen/{idexamen}/alumno/{alumno}', [PrivateController::class, 'resultadosExamenAlumno'])->name('resultadosAlumnos')->middleware('auth', 'role:Docente');
 /* * */
 
 // TODO: rutas alumnos
@@ -69,4 +70,5 @@ Route::get('alumnos/view_actividad/{id}', [PrivateController::class, 'viewActivi
 Route::get('alumnos/horario', [PrivateController::class, 'getHorario'])->name('horario')->middleware('auth', 'role:Alumno');
 Route::get('alumnos/curso/examen/{idExamen}', [PrivateController::class, 'vistaExamenAlumno'])->name('viewExamenAlumno')->middleware('auth','role:Alumno');
 Route::get('alumnos/curso/startExamen/{idExamen}', [PrivateController::class, 'startExamen'])->name('startExamen')->middleware('auth', 'role:Alumno');
+Route::get('alumnos/curso/resultados_examen/{idExamen}', [PrivateController::class , 'resultadosExamenStudent'])->name('resultadosStudent')->middleware('auth', 'role:Alumno');
 /* * */
